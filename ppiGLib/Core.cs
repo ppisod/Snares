@@ -11,7 +11,7 @@ namespace ppiGLib;
 /// </summary>
 public class Core : Game
 {
-    internal static Core instance;
+    private static Core instance;
     
     /// <summary>
     /// Ref to core instance
