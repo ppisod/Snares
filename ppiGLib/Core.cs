@@ -1,6 +1,66 @@
-namespace ppiGLib;
 
-public class Core
+
+using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace ppiGLib;
+/// <summary>
+/// Singleton Core object for sir. Caltr (Four)
+/// </summary>
+public class Core : Game
 {
+    internal static Core instance;
     
+    /// <summary>
+    /// Ref to core instance
+    /// </summary>
+    public static Core Instance => instance;
+    
+    public static GraphicsDeviceManager CGraphics { get; private set; }
+    public static GraphicsDevice CGraphicsDevice { get; private set; }
+    public static SpriteBatch CSpriteBatch { get; private set; }
+    public new static ContentManager Content { get; private set; }
+
+    /// <summary>
+    /// Creates a Core
+    /// </summary>
+    /// <param name="title">Title of window instance?</param>
+    /// <param name="width">Width?</param>
+    /// <param name="height">Height?</param>
+    /// <param name="fullscreen">Is fullscreen?</param>
+    public Core(string title, int width, int height, bool fullscreen)
+    {
+        if (instance != null)
+        {
+            throw new InvalidOperationException("Only one core, please.");
+        }
+        
+        instance = this;
+        CGraphics = new GraphicsDeviceManager(this);
+        CGraphics.PreferredBackBufferHeight = height;
+        CGraphics.PreferredBackBufferWidth = width;
+        CGraphics.IsFullScreen = fullscreen;
+        
+        CGraphics.ApplyChanges();
+
+        Window.Title = title;
+
+        Content = base.Content;
+        Content.RootDirectory = "Content";
+        IsMouseVisible = true;
+        
+    }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        
+        // set the Graphics device to the Game's graphics device
+        CGraphicsDevice = base.GraphicsDevice;
+        
+        CSpriteBatch = new SpriteBatch(CGraphicsDevice);
+        
+    }
 }
