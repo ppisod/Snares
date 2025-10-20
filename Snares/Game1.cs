@@ -40,13 +40,14 @@ public class Game1() : Core("snares_development", 1400, 700, false)
         base.Update(gameTime);
     }
 
-    protected override void Draw(GameTime gameTime)
+    protected override void Draw (GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.AntiqueWhite);
 
         // TODO: Add your drawing code here
         CSpriteBatch.Begin();
         
+        TextureUtility.DrawBarebones(CSpriteBatch, TextureSnare, Vector2.Zero, new Vector2(50, 50));
         CSpriteBatch.End();
         base.Draw(gameTime);
         
