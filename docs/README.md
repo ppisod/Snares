@@ -2,6 +2,7 @@
 my attempt at a rhythm game in C#, with MonoGame
 
 ---
+
 ## my vision
 a straight line - the Track - where a moving vertical
 bar (just like Taiko, except it's not the Track that's
@@ -31,7 +32,9 @@ be configurable)
 
 I want to take inspiration (especially visuals) from TETR.IO and osu!lazer with their sleek
 interfaces and whatever
+
 ---
+
 ## my roadmap
 - Right now, we are just going to use basic blocked out shapes instead of textures because i want to get the gameplay down first.
 - [ ] the Textures class (store textures by simple names in a hash table or something for easy access?)
