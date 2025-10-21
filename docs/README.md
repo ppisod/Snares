@@ -37,18 +37,20 @@ interfaces and whatever
 
 ## my roadmap
 - Right now, we are just going to use basic blocked out shapes instead of textures because i want to get the gameplay down first.
-- [ ] the TextureController class (store textures by simple names in a hash table or something for easy access?)
+- [ ] the TextureController class (store textures by simple names in a hash table or something for easy access?) optimizations [here](https://docs.monogame.net/articles/tutorials/building_2d_games/07_optimizing_texture_rendering/index.html)
 - [ ] the ShapeGenerator class to generate shapes into textures
 - [x] Node system (Node abstract class)
-- [x] BaseNode node -> alias: Folder node
-- [ ] Frame node
+- [x] BaseNode node ~~-> alias: Folder node~~
+- [x] Frame node
 - [ ] Texture node
-- [ ] GamePage node
-- [ ] Pager system (handling for all game pages)
-
-
+- [ ] ~~GamePage~~ NodeFamily node
+- [x] ~~Pager system (handling for all game pages)~~
+- [ ] get json thingies working and make a template for beatmap in json.
+- [ ] Button node -> event system???????? button.registerMouseRelease(...)
 - [ ] figure out how to render text and make a Text class? maybe just add a placeholder title for now...
-- [ ] the SpriteShape class - dynamic some thimg
-    - [ ] make it extendable (? idk how to do - i put this here so that like if i wanted to make a class "Track" for example, i would just extend the SpriteShape class and add some extra functionality accordingly)
-    - once i have everything mapped out systematically, i need to optimize my sprite rendering
-        - [ ] create a sprite map with all the sprites i use. see [here](https://docs.monogame.net/articles/tutorials/building_2d_games/07_optimizing_texture_rendering/index.html)
+- [ ] get interface working
+- [ ] get the bar working
+- [ ] get the rhythm working
+- [ ] get the moving thing working
+- [ ] evenly space out the beat spaces and figure out how to dynamically instantiate snares
+- [ ] get the events working
