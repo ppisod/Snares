@@ -5,6 +5,7 @@ namespace ppiGLib.Utility;
 
 public class Stretch2 : IEquatable<Stretch2>
 {
+    private Vector2 _offset;
     private Vector2 _baseSize;
     private Vector2 _scale;
     
@@ -19,18 +20,26 @@ public class Stretch2 : IEquatable<Stretch2>
         get => _scale;
         set => SetScale(value);
     }
+
+    public Vector2 Offset
+    {
+        get => _offset;
+        set => SetOffset(value);
+    }
     
     public Vector2 Result { get; private set; }
-
+    
     /// <summary>
-    /// a scale-based alternative to vector2
+    /// Stretch2 instead of Vector2 for scaling things in the nodal system
     /// </summary>
-    /// <param name="baseSize">the base size of something, a frame, or maybe the window size</param>
-    /// <param name="scale">the scale of something in terms of baseSize</param>
-    public Stretch2 (Vector2 baseSize, Vector2 scale)
+    /// <param name="baseSize">parent frame size</param>
+    /// <param name="scale">child size</param>
+    /// <param name="offset">child offset</param>
+    public Stretch2 (Vector2 baseSize, Vector2 scale, Vector2 offset)
     {
         _baseSize = baseSize;
         _scale = scale;
+        _offset = offset;
         UpdateResult();
     }
 
@@ -46,29 +55,15 @@ public class Stretch2 : IEquatable<Stretch2>
         UpdateResult();
     }
 
+    public void SetOffset(Vector2 newOffset)
+    {
+        _offset = newOffset;
+        UpdateResult();
+    }
+
     private void UpdateResult()
     {
-        Result = new Vector2(_baseSize.X * _scale.X, _baseSize.Y * _scale.Y);
-    }
-
-    public static Stretch2 operator + (Stretch2 a, Stretch2 b)
-    {
-        if (VectorUtility.AreVectorsEqual(a.BaseSize, b.BaseSize))
-        {
-            return new Stretch2(a.BaseSize, a.Scale + b.Scale);
-        }
-
-        throw new InvalidOperationException("base sizes don't match, they have to!");
-    }
-
-    public static Stretch2 operator - (Stretch2 a, Stretch2 b)
-    {
-        if (VectorUtility.AreVectorsEqual(a.BaseSize, b.BaseSize))
-        {
-            return new Stretch2(a.BaseSize, a.Scale - b.Scale);
-        }
-        
-        throw new InvalidOperationException("base sizes don't match, they have to!");
+        Result = new Vector2(_baseSize.X * _scale.X + _offset.X, _baseSize.Y * _scale.Y + _offset.Y);
     }
 
     public bool Equals(Stretch2 other)

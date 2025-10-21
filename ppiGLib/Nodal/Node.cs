@@ -26,7 +26,7 @@ public abstract class Node
         Children.Add(child);
     }
 
-    public void RemoveNodeFromChildren(Node child)
+    public void RemoveNodeFromChildren (Node child)
     {
         if (!Children.Contains(child)) return;
         
