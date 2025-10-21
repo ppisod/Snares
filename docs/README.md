@@ -37,14 +37,14 @@ interfaces and whatever
 
 ## my roadmap
 - Right now, we are just going to use basic blocked out shapes instead of textures because i want to get the gameplay down first.
-- [ ] the Textures class (store textures by simple names in a hash table or something for easy access?)
-- [ ] the Shape class
-    - [ ] be able to convert a Shape into a Texture2D (with stretchy compatibility)
-- [ ] GameObject class (using Texture2D OR text OR nothing) (SetTexture, SetPosition ...etc)
-- [ ] a GameObjectController class (SetHierarchy, Add w/ name, Remove) -> this can actually be very useful if I somehow make it into a node tree system similar to the Roblox Workspace
-    - [ ] use the GameObjectController in Game1 to control game objects
-- [ ] a GamePage class
-    - [ ] preconfigured GameObjects in each GamePage, transitioning between GamePages......
+- [ ] the TextureController class (store textures by simple names in a hash table or something for easy access?)
+- [ ] the ShapeGenerator class to generate shapes into textures
+- [x] Node system (Node abstract class)
+- [x] BaseNode node -> alias: Folder node
+- [ ] Frame node
+- [ ] Texture node
+- [ ] GamePage node
+- [ ] Pager system (handling for all game pages)
 
 
 - [ ] figure out how to render text and make a Text class? maybe just add a placeholder title for now...
