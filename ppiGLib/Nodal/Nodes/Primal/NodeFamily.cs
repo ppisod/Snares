@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ppiGLib.Nodal.Definitions;
 
-namespace ppiGLib.Nodal;
+namespace ppiGLib.Nodal.Nodes.Primal;
 
 public class NodeFamily : Node
 {
     
-    public NodeFamily (string name, List<Node> nodes) : base(name)
+    public NodeFamily (GraphicsDevice gDev, string name, List<Node> nodes) : base(gDev, name)
     {
         Children = nodes;
         // disable everything at first.
@@ -18,7 +19,7 @@ public class NodeFamily : Node
         }
     }
 
-    public override void CustomUpdateLogic(GameTime gameTime) {}
+    protected override void CustomUpdateLogic(GameTime gameTime) {}
 
-    public override void CustomDrawLogic(SpriteBatch spriteBatch) {}
+    protected override void CustomDrawLogic(SpriteBatch spriteBatch) {}
 }

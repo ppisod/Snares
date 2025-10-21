@@ -69,14 +69,14 @@ public class Stretch2 : IEquatable<Stretch2>
     public bool Equals(Stretch2 other)
     {
         if (other == null) return false;
-        return VectorUtility.AreVectorsEqual(BaseSize, other.BaseSize) && VectorUtility.AreVectorsEqual(Scale, other.Scale);
+        return VectorUtility.AreVectorsEqual(BaseSize, other.BaseSize) && VectorUtility.AreVectorsEqual(Scale, other.Scale) && VectorUtility.AreVectorsEqual(Offset, other.Offset);
     }
 
     public override bool Equals(object obj) => Equals(obj as Stretch2);
 
-    public override int GetHashCode() => HashCode.Combine(BaseSize, Scale);
+    public override int GetHashCode() => HashCode.Combine(BaseSize, Scale, Offset);
 
-    public override string ToString() => $"Stretch2(BaseSize: {BaseSize}, Scale: {Scale}, Result: {Result})";
+    public override string ToString() => $"Stretch2(BaseSize: {BaseSize}, Scale: {Scale}, Offset: {Offset}, Result: {Result})";
 
     public static bool operator == (Stretch2 a, Stretch2 b) => Equals(a, b);
     public static bool operator != (Stretch2 a, Stretch2 b) => !Equals(a, b);
