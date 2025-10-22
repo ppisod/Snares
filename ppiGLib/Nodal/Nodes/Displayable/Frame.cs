@@ -56,5 +56,12 @@ public class Frame: Node
             SpriteEffects.None, 
             0f
         );
+        
+        Console.Out.WriteLine($"=== FRAME DRAWING ===");
+        Console.Out.WriteLine($"Frame: {Name}");
+        Console.Out.WriteLine($"Position: {Transform.Position.Result}");
+        Console.Out.WriteLine($"Size: {Transform.Size.Result}");
+        Console.Out.WriteLine($"Rotation: {Transform.Rotation}");
+        Console.Out.WriteLine($"=====================");
     }
 }

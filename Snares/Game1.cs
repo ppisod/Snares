@@ -26,22 +26,23 @@ public class Game1() : Core("snares_development", 1400, 700, false)
         
         // lets start noding!
         
-        
-
         var main = new BaseNode(GraphicsDevice, "MainScreen", null);
+        var other = new BaseNode(GraphicsDevice, "OtherScreen", null);
+    
+        NodeFamily = new NodeFamily(GraphicsDevice, "Snares", [main, other]);
+        main.Parent = NodeFamily;
+        other.Parent = NodeFamily;
+
+        // Calculate NodeFamily transform FIRST so that the root transform is in the nodefamily before you add frames to it! this is VERY critical
+        NodeFamily.RecalculateTransform();
+
+        // NOW create the frame - NodeFamily transform exists
         var frame = new Frame(GraphicsDevice, "frame", main, new Vector2(0, 0.3f), new Vector2(1, 0.3f), 0)
         {
             DisplayDebug = true
         };
         main.AddNodeAsChild(frame);
-
-        var other = new BaseNode(GraphicsDevice, "OtherScreen", null);
-        
-        NodeFamily = new NodeFamily(GraphicsDevice, "Snares", [main, other]);
-
-        main.Parent = NodeFamily;
-        other.Parent = NodeFamily;
-        
+    
         NodeFamily.Enable("MainScreen");
         base.Initialize();
     }
