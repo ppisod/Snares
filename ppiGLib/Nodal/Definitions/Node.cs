@@ -214,16 +214,16 @@ public abstract class Node
     
     public Transform2? GetMamaTransform ()
     {
-        if (!IsTransformable)
+        var current = Parent;
+        while (current != null)
         {
-            return null;
+            if (current is { IsTransformable: true, Transform: not null })
+            {
+                return current.Transform;
+            }
+            current = current.Parent;
         }
-        
-        var mama = Parent;
-        if (mama == null) return null;
-        if (mama.IsTransformable) return mama.Transform; // under all cases mama.Transform should not be null
-        var transform = mama.GetMamaTransform(); // recursive
-        return transform;
+        return null;
     }
 
     protected abstract void CustomUpdateLogic (GameTime gameTime);
