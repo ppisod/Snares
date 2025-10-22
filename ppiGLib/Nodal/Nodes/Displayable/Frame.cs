@@ -1,38 +1,60 @@
 using System;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ppiGLib.Generators;
 using ppiGLib.Nodal.Definitions;
 
 namespace ppiGLib.Nodal.Nodes.Displayable;
 
 public class Frame: Node
 {
+    
+    public bool DisplayDebug { get; set; }
+    private Texture2D _debugTexure;
+    
     public  Frame   (   GraphicsDevice gDev, 
-                        string name, 
+                        string name, Node parent,
                         Vector2 position, 
-                        Vector2 size, float rot, 
-                        Texture2D display = null
+                        Vector2 size, float rot,
+                        Texture2D debugTexture = null
                     )
         :   base    (
                         gDev, 
                         name, 
-                        true, 
+                        true, parent,
+                        position,
                         size, 
-                        position, 
                         rot) 
     {
+        if (debugTexture == null)
+        {
+            _debugTexure = ShapeGenerator.ColoredScalable(gDev, Color.Gray);
+            return;
+        }
         
-        // by the way this is the declaration body if i couldn't read my Nasty formatting
-        
+        _debugTexure = debugTexture;
     }
 
     protected override void CustomUpdateLogic(GameTime gameTime)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     protected override void CustomDrawLogic(SpriteBatch spriteBatch)
     {
-        throw new System.NotImplementedException();
+        if (!DisplayDebug) return;
+        Debug.Assert(Transform != null, nameof(Transform) + " != null");
+        spriteBatch.Draw(
+            _debugTexure, 
+            Transform.Position.Result, 
+            null, 
+            Color.White, 
+            Transform.Rotation, 
+            Vector2.Zero, 
+            Transform.Size.Result, 
+            SpriteEffects.None, 
+            0f
+        );
     }
 }

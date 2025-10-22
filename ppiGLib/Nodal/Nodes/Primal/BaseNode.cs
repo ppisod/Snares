@@ -4,13 +4,8 @@ using ppiGLib.Nodal.Definitions;
 
 namespace ppiGLib.Nodal.Nodes.Primal;
 
-public class BaseNode: Node
+public class BaseNode(GraphicsDevice gDev, string name, Node parent) : Node(gDev, name, false, parent)
 {
-    public BaseNode (GraphicsDevice gDev, string name) : base(gDev, name)
-    {
-        Name = name;
-    }
-
     protected override void CustomUpdateLogic(GameTime gameTime)
     {
         

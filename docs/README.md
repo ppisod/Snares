@@ -42,7 +42,7 @@ interfaces and whatever
 - [x] Node system (Node abstract class)
 - [x] BaseNode node ~~-> alias: Folder node~~
 - [x] Frame node
-- [ ] Texture node
+- [x] Texture node
 - [ ] ~~GamePage~~ NodeFamily node
 - [x] ~~Pager system (handling for all game pages)~~
 - [ ] get json thingies working and make a template for beatmap in json.
