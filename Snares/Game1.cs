@@ -35,7 +35,8 @@ public class Game1() : Core("snares_development", 1400, 700, false)
                 0f
             )
         );
-        root.w($"w{windowSize}");
+        
+        root.w($"window:{windowSize}");
 
         var mainView = new NodeBase("MainView", root);
         root.AddChild(mainView);
