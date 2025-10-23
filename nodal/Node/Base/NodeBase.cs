@@ -16,7 +16,8 @@ public class NodeBase : INode
     {
         Name = name;
         Id = new NodeId(Guid.CreateVersion7());
-        Children = new List<INode>();
+        
+        _children = [];
         Parent = parent;
         if (parent == null)
         {
@@ -26,8 +27,9 @@ public class NodeBase : INode
     
     public string Name { get; }
     public NodeId Id { get; }
-    public INode? Parent { get; }
-    public IReadOnlyList<INode> Children { get; }
+    public INode? Parent { get; private set; }
+    public IReadOnlyList<INode> Children => _children;
+    private readonly List<INode> _children;
     public bool UpdateActive { get; set; }
     public bool DrawActive { get; set; }
     public void AddChild(INode child)
@@ -35,31 +37,52 @@ public class NodeBase : INode
         if (child == this) throw new InvalidOperationException("Cannot add myself as a child!");
         if (Children.Contains(child)) return;
         if (child.Parent is NodeBase anotherParent) anotherParent.RemoveChild(child);
-        
+        _children.Add(child);
+        if (child is NodeBase n) n.Parent = this;
+        else throw new InvalidOperationException("Child is not a NodeBase..");
     }
 
     public void RemoveChild(INode child)
     {
-        throw new System.NotImplementedException();
+        if (!Children.Contains(child)) return;
+        if (child.Parent != this) throw new InvalidOperationException("Not my child, not my business! make sure that the child's Parent is ME first. There may be a desync or something wrong with the parenting system.");
+        _children.Remove(child);
+        if (child is NodeBase n) n.Parent = null;
+        else throw new InvalidOperationException("Child is not a NodeBase..");
     }
 
     public void Reparent(INode newParent, ReparentMode mode = ReparentMode.PreserveLocal)
     {
-        throw new System.NotImplementedException();
+        Parent?.RemoveChild(this);
+        newParent.AddChild(this);
     }
 
     public void Update(GameTime gameTime)
     {
-        throw new System.NotImplementedException();
+        if (!UpdateActive) return;
+        // Custom update logic here, in derived types.
+        OnUpdate(gameTime);
+        foreach (var t in Children) t.Update(gameTime);
+        AfterUpdate(gameTime);
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        throw new System.NotImplementedException();
+        if (!DrawActive) return;
+        // Custom draw logic here, in derived types.
+        OnDraw(spriteBatch);
+        foreach (var t in Children) t.Draw(spriteBatch);
+        AfterDraw(spriteBatch);
     }
 
     public INode GetChild(string name)
     {
-        throw new System.NotImplementedException();
+        foreach (var c in _children.Where(c => c.Name == name)) return c;
+        throw new KeyNotFoundException($"Child with name {name} not found.");
     }
+    
+    protected virtual void OnUpdate(GameTime gameTime) { }
+    protected virtual void AfterUpdate(GameTime gameTime) { }
+    protected virtual void OnDraw(SpriteBatch spriteBatch) { }
+    protected virtual void AfterDraw(SpriteBatch spriteBatch) { }
 }

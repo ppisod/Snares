@@ -2,7 +2,7 @@ using System;
 using System.Numerics;
 using ppilib.Utility;
 
-namespace ppilib.Types;
+namespace ppilib.Types.Class;
 
 public class Stretch(Vector2 baseSize, Vector2 scaleMultiplier, Vector2 pixelsOffset) : IEquatable<Stretch>
 {

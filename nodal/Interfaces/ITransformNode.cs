@@ -1,5 +1,6 @@
 using System;
 using ppilib.Types;
+using ppilib.Types.Class;
 using ppilib.Types.Struct;
 
 namespace ppilib.Interfaces;
@@ -14,4 +15,5 @@ public interface ITransformNode : INode
 
     void MarkDirty (DirtyFlags flags = DirtyFlags.All);
     void RecalculateWorld ();
+    void MarkDescendantsDirty();
 }
