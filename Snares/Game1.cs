@@ -5,45 +5,39 @@ using System.Security;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using ppiGLib;
-using ppiGLib.Generators;
-using ppiGLib.Nodal.Definitions;
-using ppiGLib.Nodal.Nodes.Displayable;
-using ppiGLib.Nodal.Nodes.Primal;
-
+using ppilib;
+using ppilib.Node.Base;
+using ppilib.Node.Transformable;
+using ppilib.Types.Class;
+using ppilib.Types.Struct;
 
 
 namespace Snares;
 
 public class Game1() : Core("snares_development", 1400, 700, false)
 {
-
-    public NodeFamily NodeFamily { get; private set; }
     
+    public TransformNodeBase RootNode { get; set; }
     
      protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
-        
         // lets start noding!
+
+        var root = new TransformNodeBase("Snares", null, LocalTransform.Root);
+        var windowSize = new Vector2(GraphicsDevice.Viewport.X, GraphicsDevice.Viewport.Y);
+        root.SetWorldAsRoot(
+            new Transform(
+                new Stretch(windowSize, Vector2.Zero, Vector2.Zero),
+                new Stretch(windowSize, Vector2.One, Vector2.Zero),
+                0f
+            )
+        );
+
+        var mainView = new NodeBase("MainView", root);
+        root.AddChild(mainView);
         
-        var main = new BaseNode(GraphicsDevice, "MainScreen", null);
-        var other = new BaseNode(GraphicsDevice, "OtherScreen", null);
-    
-        NodeFamily = new NodeFamily(GraphicsDevice, "Snares", [main, other]);
-        main.Parent = NodeFamily;
-        other.Parent = NodeFamily;
-
-        // Calculate NodeFamily transform FIRST so that the root transform is in the nodefamily before you add frames to it! this is VERY critical
-        NodeFamily.RecalculateTransform();
-
-        // NOW create the frame - NodeFamily transform exists
-        var frame = new Frame(GraphicsDevice, "frame", main, new Vector2(0, 0.3f), new Vector2(1, 0.3f), 0)
-        {
-            DisplayDebug = true
-        };
-    
-        NodeFamily.Enable("MainScreen");
+        RootNode = root;
+        
         base.Initialize();
     }
     
@@ -59,7 +53,6 @@ public class Game1() : Core("snares_development", 1400, 700, false)
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
         
-        NodeFamily.Update(gameTime);
 
         base.Update(gameTime);
     }
@@ -71,7 +64,6 @@ public class Game1() : Core("snares_development", 1400, 700, false)
         CSpriteBatch.Begin();
         
         // draw
-        NodeFamily.Draw(CSpriteBatch);
         
         CSpriteBatch.End();
         base.Draw(gameTime);
