@@ -1,6 +1,6 @@
 namespace ppilib.Types;
 
-public struct LocalTransform
+public struct LocalTransform ()
 {
     
 }
