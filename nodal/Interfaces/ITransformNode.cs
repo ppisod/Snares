@@ -1,6 +1,17 @@
+using System;
+using ppilib.Types;
+using ppilib.Types.Struct;
+
 namespace ppilib.Interfaces;
 
-public interface ITransformNode
+#nullable enable
+public interface ITransformNode : INode
 {
+    LocalTransform Local { get; set; }
+    Transform World { get; }
     
+    event Action<ITransformNode, Transform>? WorldTransformChanged;
+
+    void MarkDirty (DirtyFlags flags = DirtyFlags.All);
+    void RecalculateWorld ();
 }

@@ -6,5 +6,6 @@ public enum DirtyFlags
     Pos =   0b0010,
     Scale = 0b0100,
     Rot =   0b1000,
+    All =   Pos | Scale | Rot
     
 }
