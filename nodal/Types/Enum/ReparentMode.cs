@@ -1,6 +1,6 @@
 namespace ppilib.Types;
 
-public class ReparentMode
+public enum ReparentMode
 {
-    
+    PreserveLocal, PreserveWorld
 }
