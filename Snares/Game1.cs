@@ -12,6 +12,7 @@ using ppiGLib.Nodal.Nodes.Displayable;
 using ppiGLib.Nodal.Nodes.Primal;
 
 
+
 namespace Snares;
 
 public class Game1() : Core("snares_development", 1400, 700, false)

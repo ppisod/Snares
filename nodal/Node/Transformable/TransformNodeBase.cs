@@ -1,32 +1,50 @@
 using System;
-using System.Numerics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using ppilib.Interfaces;
 using ppilib.Node.Base;
 using ppilib.Types;
 using ppilib.Types.Class;
 using ppilib.Types.Struct;
+using Vector2 = System.Numerics.Vector2;
 
 namespace ppilib.Node.Transformable;
 #nullable enable
+
 public class TransformNodeBase : NodeBase, ITransformNode
 {
     private DirtyFlags _dirties = DirtyFlags.All;
-    private Transform _world;
-    
+
     public TransformNodeBase (string name, INode? parent, LocalTransform wantedTransform) : base(name, parent)
     {
         Local = wantedTransform;
-        _world = Transform.Identity;
+        World = Transform.Identity;
     }
 
     public LocalTransform Local { get; set; }
     public Transform World { get; private set; }
-    
+
     public event Action<ITransformNode, Types.Class.Transform>? WorldTransformChanged;
+
+    public void SetWorldAsRoot(Transform world)
+    {
+        if (Parent != null)
+        {
+            Console.WriteLine("[WARNING] Node is not root, cannot set world as root.");
+            return;
+        }
+        Local = LocalTransform.Root;
+        World = world;
+        _dirties = DirtyFlags.None;
+        // propagate to descendants and notify listeners
+        MarkDescendantsDirty();
+        WorldTransformChanged?.Invoke(this, World);
+    }
     
     public void MarkDirty(DirtyFlags flags = DirtyFlags.All)
     {
-        _dirties = flags;
+        // Accumulate dirty flags (even though we currently have only None/All, this is future-proof)
+        _dirties |= flags;
     }
 
     public Transform FindAncestralWorld()
@@ -36,7 +54,13 @@ public class TransformNodeBase : NodeBase, ITransformNode
         var ancestor = Parent;
         while (ancestor != null)
         {
-            if (ancestor is ITransformNode parent) ancestralWorld = parent.World;
+            if (ancestor is ITransformNode parent)
+            {
+                // Ensure the parent's world is up-to-date before using it
+                parent.EnsureWorldUpToDate();
+                ancestralWorld = parent.World;
+                break;
+            }
             ancestor = ancestor.Parent;
         }
         if (ancestralWorld == Transform.Identity) Console.WriteLine("[WARNING] AncestralWorld is Identity! this means that the node is not attached to a root-node which has a transform.");
@@ -45,18 +69,29 @@ public class TransformNodeBase : NodeBase, ITransformNode
 
     public void MarkDescendantsDirty ()
     {
-        foreach (var child in Children)
+        // TODO: change this into a recursive tree traversal thing, this is inefficient!!!
+        var descendants = GetDescendants();
+        foreach (var descendant in descendants)
         {
-            if (child is ITransformNode transformableChild)
+            if (descendant is ITransformNode transformableDescendant)
             {
-                transformableChild.MarkDirty();
-                transformableChild.MarkDescendantsDirty();
-            }
-            else
-            {
-                // what do I do here?
+                transformableDescendant.MarkDirty();
             }
         }
+    }
+
+    public void EnsureWorldUpToDate()
+    {
+        if (_dirties != DirtyFlags.None)
+        {
+            RecalculateWorld();
+        }
+    }
+
+    public void SetLocalTransform(LocalTransform t)
+    {
+        Local = t;
+        RecalculateWorld();
     }
 
     public void RecalculateWorld()
@@ -68,22 +103,20 @@ public class TransformNodeBase : NodeBase, ITransformNode
         var position = new Stretch(scale.Result, Local.Pos, ancestralWorld.Position.Result);
         var rotation = ancestralWorld.Rotation + Local.Rotation;
         World = new Transform(position, scale, rotation);
+        // clear own dirties now that world is valid
+        _dirties = DirtyFlags.None;
         // we need to mark all (transformable) descendants as dirty, so they can be recalculated.
-        // there's an issue here,
-        // if the parent only does a marking for their children,
-        // and their children are not ITransform,
-        // and their grandchildren are ITransform,
-        // then their grandchildren will not be marked. This issue can be fixed with a recursive function.
-        foreach (var child in Children)
-        {
-            if (child is ITransformNode transformableChild)
-            {
-                transformableChild.MarkDirty();
-            }
-            else
-            {
-                // 
-            }
-        }
+        MarkDescendantsDirty();
+        // fire the event
+        WorldTransformChanged?.Invoke(this, World);
+    }
+
+    protected override void OnUpdate (GameTime gameTime)
+    {
+        EnsureWorldUpToDate();
+    }
+    protected override void OnDraw (SpriteBatch spriteBatch)
+    {
+        EnsureWorldUpToDate();
     }
 }

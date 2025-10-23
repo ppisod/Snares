@@ -15,6 +15,7 @@ public interface INode
     
     INode? Parent { get; }
     IReadOnlyList<INode> Children { get; }
+    List<INode> GetDescendants () ;
     
     bool UpdateActive { get; set; }
     bool DrawActive { get; set; }
@@ -25,6 +26,5 @@ public interface INode
     
     void Update (GameTime gameTime);
     void Draw (SpriteBatch spriteBatch);
-    
     INode GetChild (string name);
 }

@@ -30,6 +30,18 @@ public class NodeBase : INode
     public INode? Parent { get; private set; }
     public IReadOnlyList<INode> Children => _children;
     private readonly List<INode> _children;
+    public List<INode> GetDescendants()
+    {
+        var result = new List<INode>();
+        foreach (var c in Children)
+        {
+            result.Add(c);
+            result.AddRange(c.GetDescendants());
+        }
+
+        return result;
+    }
+
     public bool UpdateActive { get; set; }
     public bool DrawActive { get; set; }
     public void AddChild(INode child)

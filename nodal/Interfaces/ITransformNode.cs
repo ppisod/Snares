@@ -15,5 +15,6 @@ public interface ITransformNode : INode
 
     void MarkDirty (DirtyFlags flags = DirtyFlags.All);
     void RecalculateWorld ();
-    void MarkDescendantsDirty();
+    public void EnsureWorldUpToDate();
+    public void SetLocalTransform (LocalTransform t);
 }
