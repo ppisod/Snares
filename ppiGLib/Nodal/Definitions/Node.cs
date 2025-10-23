@@ -31,23 +31,13 @@ public abstract class Node
     protected Vector2? LocalScale;
     protected float LocalRot;
     
-    private GraphicsDevice _graphicsDevice;
+    private readonly GraphicsDevice _graphicsDevice;
 
     public bool UpdateActive { get; set; } = true;
     public bool DrawActive { get; set; } = true;
     
     public UniqueId Identifier { get; private set; }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="graphDev">the graphics device</param>
-    /// <param name="name">string, node name</param>
-    /// <param name="transformable">, is it sized</param>
-    /// <param name="parent">parent node</param>
-    /// <param name="size">Size parameter. Size: 0 to 1 is 0% to 100% of parent size.</param>
-    /// <param name="pos">Position parameter. Pos: 0 to 1 means 0% to 100% offset from top-left corner of parent size</param>
-    /// <param name="rotation">Rotation parameter. This is added to the parent rotation.</param>
+    
     protected Node (GraphicsDevice graphDev, string name, 
         bool transformable = false, Node? parent = null,
         Vector2? pos = null,
@@ -64,31 +54,38 @@ public abstract class Node
         w($"is transformable: {transformable}");
         w($"parent: {parent?.Name}");
         
+        // Initialize local transform parameters first (if transformable)
+        if (transformable)
+        {
+            LocalPos = pos ?? Vector2.Zero;
+            LocalScale = size ?? Vector2.One;
+            LocalRot = rotation ?? 0f;
+            
+            w($"localpos: {LocalPos}");
+            w($"localscale: {LocalScale}");
+            w($"localrot: {LocalRot}");
+            w($"argument pos: {pos}");
+            w($"argument size: {size}");
+            w($"argument rotation: {rotation}");
+        }
+        
+        // Couple with parent AFTER locals are ready so RecalculateTransform works
+        w($"coupling child with parent... This: {name}, Parent: {parent?.Name}");
         Parent = parent;
         if (parent == null)
         {
-            RecalculateTransform();
-            w("nilparent transform..");
-            w($"t.pos {Transform?.Position}");
-            w($"t.scl {Transform?.Size}");
+            if (transformable)
+            {
+                RecalculateTransform();
+                w("parent nil; recalculating transform...");
+            }
+        }
+        else
+        {
+            w($"coupling parent with child... Parent: {parent.Name}, This: {name}");
+            parent.AddNodeAsChild(this);
         }
 
-        if (!transformable)
-        {
-            w("-----------------------------------");
-            return;
-        }
-        
-        LocalPos = pos ?? Vector2.Zero;
-        LocalScale = size ?? Vector2.One;
-        LocalRot = rotation ?? 0f;
-        
-        w($"defined localpos: {LocalPos}");
-        w($"defined localscale: {LocalScale}");
-        w($"defined localrot: {LocalRot}");
-        w($"argument pos: {pos}");
-        w($"argument size: {size}");
-        w($"argument rotation: {rotation}");
         w("-----------------------------------");
 
         /*

@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snares", "Snares\Snares.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppiGLib", "ppiGLib\ppiGLib.csproj", "{DA65FA6B-F917-4545-B15E-7558E04C2455}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nodal", "nodal\nodal.csproj", "{4A943E0A-AEFA-4F56-8207-8A129734C836}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{DA65FA6B-F917-4545-B15E-7558E04C2455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA65FA6B-F917-4545-B15E-7558E04C2455}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA65FA6B-F917-4545-B15E-7558E04C2455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A943E0A-AEFA-4F56-8207-8A129734C836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A943E0A-AEFA-4F56-8207-8A129734C836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A943E0A-AEFA-4F56-8207-8A129734C836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A943E0A-AEFA-4F56-8207-8A129734C836}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

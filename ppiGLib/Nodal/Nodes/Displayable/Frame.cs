@@ -34,6 +34,7 @@ public class Frame: Node
         }
         
         _debugTexure = debugTexture;
+        Console.Out.WriteLine($"transform {Transform?.Position} / {Transform?.Size}");
     }
 
     protected override void CustomUpdateLogic(GameTime gameTime)
@@ -44,7 +45,9 @@ public class Frame: Node
     protected override void CustomDrawLogic(SpriteBatch spriteBatch)
     {
         if (!DisplayDebug) return;
+        
         Debug.Assert(Transform != null, nameof(Transform) + " != null");
+        
         spriteBatch.Draw(
             _debugTexure, 
             Transform.Position.Result, 

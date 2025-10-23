@@ -41,7 +41,6 @@ public class Game1() : Core("snares_development", 1400, 700, false)
         {
             DisplayDebug = true
         };
-        main.AddNodeAsChild(frame);
     
         NodeFamily.Enable("MainScreen");
         base.Initialize();
