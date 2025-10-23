@@ -1,3 +1,5 @@
-namespace ppilib.Types;
+using System;
 
-public record struct NodeId();
+namespace ppilib.Types.Struct;
+
+public record struct NodeId(Guid V);
