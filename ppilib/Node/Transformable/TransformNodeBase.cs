@@ -6,7 +6,7 @@ using ppilib.Node.Base;
 using ppilib.Types;
 using ppilib.Types.Class;
 using ppilib.Types.Struct;
-using Vector2 = System.Numerics.Vector2;
+using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace ppilib.Node.Transformable;
 #nullable enable

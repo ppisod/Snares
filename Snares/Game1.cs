@@ -2,9 +2,12 @@
 using Microsoft.Xna.Framework.Input;
 using ppilib;
 using ppilib.Node.Base;
+using ppilib.Node.Custom;
 using ppilib.Node.Transformable;
 using ppilib.Types.Class;
 using ppilib.Types.Struct;
+using ppilib.Utility.Shapes;
+using ppilib.Utility.Textures;
 
 
 namespace Snares;
@@ -13,13 +16,18 @@ public class Game1() : Core("snares_development", 1400, 700, false)
 {
     
     public TransformNodeBase RootNode { get; set; }
+    public TextureCache TextureCache { get; set; }
     
      protected override void Initialize()
     {
         // lets start noding!
+        
+        // texturecache
+        var textureCache = new TextureCache(GraphicsDevice);
+        textureCache.Add("gray", ShapeGenerator.ColoredScalable(GraphicsDevice, Color.Gray));
 
         var root = new TransformNodeBase("Snares", null, LocalTransform.Root);
-        var windowSize = new Vector2(GraphicsDevice.Viewport.X, GraphicsDevice.Viewport.Y);
+        var windowSize = new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
         root.SetWorldAsRoot(
             new Transform(
                 new Stretch(windowSize, Vector2.Zero, Vector2.Zero),
@@ -27,11 +35,18 @@ public class Game1() : Core("snares_development", 1400, 700, false)
                 0f
             )
         );
+        root.w($"w{windowSize}");
 
         var mainView = new NodeBase("MainView", root);
         root.AddChild(mainView);
+
+        var frame = new Frame("Frame", mainView, new LocalTransform(new Vector2(0, 0.3f), new Vector2(1, 0.3f), 0f),
+            textureCache.Get("gray"));
+        frame.DrawDebugShape = true;
+        mainView.AddChild(frame);
         
         RootNode = root;
+        TextureCache = textureCache;
         
         base.Initialize();
     }

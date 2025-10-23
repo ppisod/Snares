@@ -12,6 +12,11 @@ namespace ppilib.Node.Base;
 
 public class NodeBase : INode
 {
+    public void w (string q)
+    {
+        Console.WriteLine(q);
+    }
+
     public NodeBase (string name, INode? parent)
     {
         Name = name;
@@ -42,8 +47,8 @@ public class NodeBase : INode
         return result;
     }
 
-    public bool UpdateActive { get; set; }
-    public bool DrawActive { get; set; }
+    public bool UpdateActive { get; set; } = true;
+    public bool DrawActive { get; set; } = true;
     public void AddChild(INode child)
     {
         if (child == this) throw new InvalidOperationException("Cannot add myself as a child!");

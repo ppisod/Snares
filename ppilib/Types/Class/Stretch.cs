@@ -4,11 +4,19 @@ using ppilib.Utility;
 
 namespace ppilib.Types.Class;
 
-public class Stretch(Vector2 baseSize, Vector2 scaleMultiplier, Vector2 pixelsOffset) : IEquatable<Stretch>
+public class Stretch : IEquatable<Stretch>
 {
-    private Vector2 _base = baseSize;
-    private Vector2 _scale = scaleMultiplier;
-    private Vector2 _offset = pixelsOffset;
+    private Vector2 _base;
+    private Vector2 _scale;
+    private Vector2 _offset;
+
+    public Stretch(Vector2 baseSize, Vector2 scaleMultiplier, Vector2 pixelsOffset)
+    {
+        _base = baseSize;
+        _scale = scaleMultiplier;
+        _offset = pixelsOffset;
+        UpdateResult();
+    }
 
     public Vector2 Base
     {

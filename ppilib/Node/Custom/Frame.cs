@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ppilib.Interfaces;
@@ -17,6 +18,7 @@ public class Frame
     {
         // draw the frame using World -> result
         if (!DrawDebugShape) return;
+        w("Frame.OnDraw");
         // get scale multiplier cuz we want to draw the debug shape in the same scale as the frame
         var texSize = new Vector2(_debugTexture.Width, _debugTexture.Height);
         var scale = World.Scale.Result / texSize;
@@ -31,6 +33,7 @@ public class Frame
             SpriteEffects.None, 
             0f
         );
-
+        w($"{World.Position}");
+        w($"{World.Scale}");
     }
 }
