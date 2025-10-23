@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Security;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using ppilib;
 using ppilib.Node.Base;
@@ -53,6 +48,7 @@ public class Game1() : Core("snares_development", 1400, 700, false)
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
         
+        RootNode.Update(gameTime);
 
         base.Update(gameTime);
     }
@@ -64,6 +60,7 @@ public class Game1() : Core("snares_development", 1400, 700, false)
         CSpriteBatch.Begin();
         
         // draw
+        RootNode.Draw(CSpriteBatch);
         
         CSpriteBatch.End();
         base.Draw(gameTime);

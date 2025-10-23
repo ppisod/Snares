@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snares", "Snares\Snares.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppiGLib", "ppiGLib\ppiGLib.csproj", "{DA65FA6B-F917-4545-B15E-7558E04C2455}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nodal", "nodal\nodal.csproj", "{4A943E0A-AEFA-4F56-8207-8A129734C836}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppilib", "ppilib\ppilib.csproj", "{4A943E0A-AEFA-4F56-8207-8A129734C836}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
