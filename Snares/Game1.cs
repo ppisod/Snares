@@ -45,11 +45,18 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
             textureCache.Get("gray"));
         mainView.AddChild(frame);
         
-        var track = new Frame("Track", frame, new LocalTransform(new Vector2(0.1f, 0.25f), new (0.8f, 0.5f), 0f), textureCache.Get("lightgray"))
+        var track = new Frame("Track", frame, new LocalTransform(new Vector2(0.1f, 0.25f), new Vector2(0.8f, 0.5f), 0f), textureCache.Get("lightgray"))
             {
                 DrawDebugShape = true
             };
         frame.AddChild(track);
+
+        var slider = new LerpableFrame("Slider", track, new LocalTransform(new Vector2(0f, -0.25f), new Vector2(0.01f, 1.5f), 0f),
+            textureCache.Get("gray"))
+        {
+            DrawDebugShape = true
+        };
+        track.AddChild(slider);
         
         RootNode = root;
         TextureCache = textureCache;
