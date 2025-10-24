@@ -13,6 +13,13 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Fonts/HelvNeue.xml
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/HelvNeue.xml
+
 #begin Images/RhythmObjects/Snares/SnareL.png
 /importer:TextureImporter
 /processor:TextureProcessor

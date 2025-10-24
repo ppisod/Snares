@@ -14,8 +14,7 @@ public class LerpableFrame(string name, INode parent, LocalTransform wantedTrans
 
     public void SetLocalPos (Vector2 v)
     {
-        LocalPos = v;
-        SetLocalTransform(new LocalTransform(LocalPos, Local.Scale, Local.Rotation));
+        SetLocalTransform(new LocalTransform(v, Local.Scale, Local.Rotation));
     }
     public Vector2 LocalPos
     {
