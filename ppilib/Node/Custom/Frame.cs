@@ -28,9 +28,10 @@ public class Frame
             Color.White, 
             0f, 
             Vector2.Zero, 
-            scale, 
+            World.Scale.Result, 
             SpriteEffects.None, 
             0f
         );
+        w($"{FindAncestralWorld().Scale}");
     }
 }

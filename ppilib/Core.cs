@@ -40,7 +40,6 @@ public class Core : Game
         CGraphics.PreferredBackBufferHeight = height;
         CGraphics.PreferredBackBufferWidth = width;
         CGraphics.IsFullScreen = fullscreen;
-        
         CGraphics.ApplyChanges();
 
         Window.Title = title;

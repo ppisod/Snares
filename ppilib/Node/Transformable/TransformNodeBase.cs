@@ -100,7 +100,7 @@ public class TransformNodeBase : NodeBase, ITransformNode
         // we don't know if ancestralWorld is root or not, but it shouldn't matter anyways
         // so now we calculate world with Local
         var scale = new Stretch(ancestralWorld.Scale.Result, Local.Scale, Vector2.Zero);
-        var position = new Stretch(scale.Result, Local.Pos, ancestralWorld.Position.Result);
+        var position = new Stretch(ancestralWorld.Scale.Result, Local.Pos, ancestralWorld.Position.Result);
         var rotation = ancestralWorld.Rotation + Local.Rotation;
         World = new Transform(position, scale, rotation);
         // clear own dirties now that world is valid

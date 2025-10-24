@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ppilib;
 using ppilib.Node.Base;
@@ -12,7 +13,7 @@ using ppilib.Utility.Textures;
 
 namespace Snares;
 
-public class Game1() : Core("snares_development", 1400, 700, false)
+public class Game1() : Core("snares_development", 1600, 1000, true)
 {
     
     public TransformNodeBase RootNode { get; set; }
@@ -20,14 +21,12 @@ public class Game1() : Core("snares_development", 1400, 700, false)
     
      protected override void Initialize()
     {
-        // lets start noding!
-        
-        // texturecache
         var textureCache = new TextureCache(GraphicsDevice);
         textureCache.Add("gray", ShapeGenerator.ColoredScalable(GraphicsDevice, Color.Gray));
 
+        // Monkey patch for issues with scale. I don't know the issue here. And it doesn't work!!
         var root = new TransformNodeBase("Snares", null, LocalTransform.Root);
-        var windowSize = new Vector2(GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height);
+        var windowSize = new Vector2(GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
         root.SetWorldAsRoot(
             new Transform(
                 new Stretch(windowSize, Vector2.Zero, Vector2.Zero),
@@ -41,7 +40,7 @@ public class Game1() : Core("snares_development", 1400, 700, false)
         var mainView = new NodeBase("MainView", root);
         root.AddChild(mainView);
 
-        var frame = new Frame("Frame", mainView, new LocalTransform(new Vector2(0, 0.3f), new Vector2(1, 0.3f), 0f),
+        var frame = new Frame("Frame", mainView, new LocalTransform(new Vector2(0, 0.6f), new Vector2(1, 0.2f), 0f),
             textureCache.Get("gray"));
         frame.DrawDebugShape = true;
         mainView.AddChild(frame);
@@ -65,6 +64,12 @@ public class Game1() : Core("snares_development", 1400, 700, false)
             Exit();
         
         RootNode.Update(gameTime);
+        var windowSize = new Vector2(GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
+        RootNode.SetWorldAsRoot(            new Transform(
+            new Stretch(windowSize, Vector2.Zero, Vector2.Zero),
+            new Stretch(windowSize, Vector2.One, Vector2.Zero),
+            0f
+        ));
 
         base.Update(gameTime);
     }
