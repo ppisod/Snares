@@ -32,7 +32,6 @@
     <ItemGroup>
       <Folder Include="Content\Images\RhythmObjects\Snares\" />
       <Folder Include="Content\Vector\" />
-      <Folder Include="Game\" />
     </ItemGroup>
     <ItemGroup>
       <None Remove="Content\Vector\Snare.svg" />
