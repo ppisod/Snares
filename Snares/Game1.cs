@@ -23,6 +23,7 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
     {
         var textureCache = new TextureCache(GraphicsDevice);
         textureCache.Add("gray", ShapeGenerator.ColoredScalable(GraphicsDevice, Color.Gray));
+        textureCache.Add("lightgray", ShapeGenerator.ColoredScalable(GraphicsDevice, Color.LightGray));
 
         // Monkey patch for issues with scale. I don't know the issue here. And it doesn't work!!
         var root = new TransformNodeBase("Snares", null, LocalTransform.Root);
@@ -40,10 +41,15 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
         var mainView = new NodeBase("MainView", root);
         root.AddChild(mainView);
 
-        var frame = new Frame("Frame", mainView, new LocalTransform(new Vector2(0, 0.6f), new Vector2(1, 0.2f), 0f),
+        var frame = new Frame("Frame", mainView, new LocalTransform(new Vector2(0, 0.45f), new Vector2(1, 0.1f), 0f),
             textureCache.Get("gray"));
-        frame.DrawDebugShape = true;
         mainView.AddChild(frame);
+        
+        var track = new Frame("Track", frame, new LocalTransform(new Vector2(0.1f, 0.25f), new (0.8f, 0.5f), 0f), textureCache.Get("lightgray"))
+            {
+                DrawDebugShape = true
+            };
+        frame.AddChild(track);
         
         RootNode = root;
         TextureCache = textureCache;

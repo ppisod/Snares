@@ -32,6 +32,5 @@ public class Frame
             SpriteEffects.None, 
             0f
         );
-        w($"{FindAncestralWorld().Scale}");
     }
 }
