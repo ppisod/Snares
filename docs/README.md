@@ -1,6 +1,18 @@
 # Snares
 my attempt at a rhythm game in C#, with MonoGame
 
+
+---
+
+## CHANGELOG
+
+24/10/2025
+- Added DummyBeatmap.json
+- Added ppilib/Utility/MovingThings (a lerper system)
+- Added a LerpableFrame into ppilib/Node/Custom
+- ppiGLib is now obselete
+
+
 ---
 
 ## my vision
@@ -36,21 +48,18 @@ interfaces and whatever
 ---
 
 ## my roadmap
-- Right now, we are just going to use basic blocked out shapes instead of textures because i want to get the gameplay down first.
-- [ ] the TextureController class (store textures by simple names in a hash table or something for easy access?) optimizations [here](https://docs.monogame.net/articles/tutorials/building_2d_games/07_optimizing_texture_rendering/index.html)
-- [ ] the ShapeGenerator class to generate shapes into textures
-- [x] Node system (Node abstract class)
-- [x] BaseNode node ~~-> alias: Folder node~~
-- [x] Frame node
-- [x] Texture node
-- [ ] ~~GamePage~~ NodeFamily node
-- [x] ~~Pager system (handling for all game pages)~~
-- [ ] get json thingies working and make a template for beatmap in json.
-- [ ] Button node -> event system???????? button.registerMouseRelease(...)
-- [ ] figure out how to render text and make a Text class? maybe just add a placeholder title for now...
-- [ ] get interface working
-- [ ] get the bar working
-- [ ] get the rhythm working
-- [ ] get the moving thing working
-- [ ] evenly space out the beat spaces and figure out how to dynamically instantiate snares
-- [ ] get the events working
+
+
+-----------------------------------------
+
+
+Info about the DummyBeatmap:  
+The Snare event either takes the at_beats or the at_time, not both  
+Any event, except for SongStart, can have a timestamp, so it uses at_beats or at_time  
+Planned events:
+SongStart(starts the song. This event can be removed), SongEnd(Ends the song, at specified time/beat), 
+TrackIntroduce(introduces a track, this track has to be not already introduced), 
+TrackDelete(deletes a track from the screen, this track has to exist first), 
+TrackModify(modifies the speed_multiplier or segments_per_bar or easing_style etc.)
+Snare(a key has to be pressed, has to be placed on a introduced track), 
+Hold(a key has to be held, any key, it counts for score when pressed and released at the right time), 

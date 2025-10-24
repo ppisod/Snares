@@ -1,0 +1,43 @@
+{
+  "config": {
+    "beatmap_set": "None",
+    "name": "Dummy Beatmap",
+    "author": "",
+    "difficulty": 0
+  },
+  "song": {
+    "bpm": 80,
+    "song_time_signature_numerator": 4,
+    "song_time_signature_denominator": 4,
+    "song_path": "",
+    "song_start_at": 0
+  },
+  "events": [
+    {
+      "SongStart": {
+        
+      }
+    },
+    {
+      "TrackIntroduce": {
+        "at_beats": 0,
+        "track": 1,
+        "speed_modify": 2,
+        "segments_per_bar": 4,
+        "easing": "linear"
+      }
+    },
+    {
+      "Snare": {
+        "track": 1,
+        "at_beats": 5,
+        "at_seconds": 5.12634612719
+      }
+    },
+    {
+      "TrackDelete": {
+        "track": 1
+      }
+    }
+  ]
+}
