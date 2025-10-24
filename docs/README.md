@@ -56,10 +56,10 @@ interfaces and whatever
 Info about the DummyBeatmap:  
 The Snare event either takes the at_beats or the at_time, not both  
 Any event, except for SongStart, can have a timestamp, so it uses at_beats or at_time  
-Planned events:
-SongStart(starts the song. This event can be removed), SongEnd(Ends the song, at specified time/beat), 
-TrackIntroduce(introduces a track, this track has to be not already introduced), 
-TrackDelete(deletes a track from the screen, this track has to exist first), 
-TrackModify(modifies the speed_multiplier or segments_per_bar or easing_style etc.)
-Snare(a key has to be pressed, has to be placed on a introduced track), 
-Hold(a key has to be held, any key, it counts for score when pressed and released at the right time), 
+Planned events:  
+SongStart(starts the song. This event can be removed), SongEnd(Ends the song, at specified time/beat),  
+TrackIntroduce(introduces a track, this track has to be not already introduced),  
+TrackDelete(deletes a track from the screen, this track has to exist first),  
+TrackModify(modifies the speed_multiplier or segments_per_bar or easing_style etc.)  
+Snare(a key has to be pressed, has to be placed on a introduced track),  
+Hold(a key has to be held, any key, it counts for score when pressed and released at the right time),   
