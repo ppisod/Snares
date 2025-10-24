@@ -11,7 +11,16 @@ my attempt at a rhythm game in C#, with MonoGame
 - Added ppilib/Utility/MovingThings (a lerper system)
 - Added a LerpableFrame into ppilib/Node/Custom
 - ppiGLib is now obselete
-
+- Made a demo of how the game will work.
+- ISSUES: (for tomorrow)
+  - [ ] The slider spacing is inaccurate.
+  - [ ] The beat counter / section counter is not correct.
+  - [ ] it should be Current Beat, not Section (later)
+  - [ ] We have to generalize this track and slider into its own class.
+    - [ ] we have to have a TimeHandler thing to handle time and beat values.
+  - [ ] Create the Button node, and detect mouse clicks, and handle them
+    - [ ] figure out hierarchal issues so only the top button code will be executed when the region on screen is clicked
+  - [ ] figure out how to store beatmaps and load them! (not doing snares yet)
 
 ---
 
