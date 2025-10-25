@@ -71,6 +71,8 @@ public class Track
         };
         _track.AddChild(_slider);
         Metronome.Beat += OnBeat;
+        
+        UpdateTickers();
     }
 
     private void OnBeat(long beats)
