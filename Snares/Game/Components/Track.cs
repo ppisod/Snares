@@ -13,7 +13,7 @@ namespace Snares.Game.Components;
 public class Track
 {
     private bool _direction;
-    private readonly List<Frame> _tickers;
+    private readonly List<LerpableFrame> _tickers;
     private int _currentTicker; // 0 inclusive. for example: 0, 1, 2, 3, / 4, 3, 2, 1 for numerator 4.
                                 // note that the number of tickers will always be 1 more.
     private bool _areTickersDirty;
@@ -22,6 +22,8 @@ public class Track
     private readonly LerpableFrame _slider;
     public Metronome Metronome;
     private int _lastNumerator;
+
+    private bool _isPlaying;
 
     private readonly Texture2D _tickTexture;
 
@@ -48,6 +50,7 @@ public class Track
         _identifier = id;
         _tickTexture = tickerTexture;
         _tickers = [];
+        _isPlaying = false;
         _track = new LerpableFrame(
             $"Track{id}",
             parent,
@@ -58,6 +61,8 @@ public class Track
             DrawDebugShape = true
         };
         parent.AddChild(_track);
+        _track.Easing = EasingTypes.Quad;
+        _track.EasingMode = Lerper.Mode.Out;
 
         _slider = new LerpableFrame(
             $"Slider{id}",
@@ -81,6 +86,10 @@ public class Track
 
     public void Update (GameTime _)
     {
+        if (!_isPlaying)
+        {
+            return;
+        }
         
         if (Metronome.Numerator != _lastNumerator)
         {
@@ -116,7 +125,7 @@ public class Track
         var lenOfSection = 1f / beats;
         for (var i = 0; i <= beats; i++)
         {
-            var f = new Frame(
+            var f = new LerpableFrame(
                 $"TickerLine{_identifier}_{i}",
                 _track,
                 new LocalTransform(
@@ -160,6 +169,37 @@ public class Track
             _direction = true;
             _currentTicker = 1;
         }   
+    }
+
+    public void SetIsRunning (bool v)
+    {
+        switch (_isPlaying)
+        {
+            case true when v:
+            case false when !v:
+                return;
+        }
+        _isPlaying = v;
+        // tween transparency
+        _slider.Easing = EasingTypes.Quad;
+        _slider.EasingMode = Lerper.Mode.Out;
+        if (!v)
+        {
+            _slider.LerpOpacity(0f, 0.5f);
+            _slider.Easing = EasingTypes.Linear;
+            _slider.EasingMode = Lerper.Mode.InOut;
+            _track.LerpOpacity(0f, 0.5f);
+            foreach (var ticker in _tickers)
+            {
+                ticker.LerpOpacity(0f, 0.5f);
+            }
+        }
+        else
+        {
+            _slider.LerpOpacity(1f, 0.1f);
+            _slider.Easing = EasingTypes.Linear;
+            _slider.EasingMode = Lerper.Mode.InOut;
+        }
     }
     
 }
