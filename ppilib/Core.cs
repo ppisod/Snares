@@ -9,12 +9,12 @@ namespace ppilib;
 /// </summary>
 public class Core : Game
 {
-    private static Core _Instance;
+    private static Core _instance;
     
     /// <summary>
     /// Ref to core _Instance
     /// </summary>
-    public static Core Instance => _Instance;
+    public static Core Instance => _instance;
     
     public static GraphicsDeviceManager CGraphics { get; private set; }
     public static GraphicsDevice CGraphicsDevice { get; private set; }
@@ -30,12 +30,12 @@ public class Core : Game
     /// <param name="fullscreen">Is fullscreen?</param>
     public Core(string title, int width, int height, bool fullscreen)
     {
-        if (_Instance != null)
+        if (_instance != null)
         {
             throw new InvalidOperationException("Only one core, please.");
         }
         
-        _Instance = this;
+        _instance = this;
         CGraphics = new GraphicsDeviceManager(this);
         CGraphics.PreferredBackBufferHeight = height;
         CGraphics.PreferredBackBufferWidth = width;

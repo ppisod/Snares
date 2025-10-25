@@ -20,6 +20,10 @@ public interface INode
     bool UpdateActive { get; set; }
     bool DrawActive { get; set; }
 
+    // Lifecycle
+    bool IsDestroyed { get; }
+    void Destroy ();
+
     void AddChild (INode child);
     void RemoveChild(INode child);
     void Reparent(INode newParent, ReparentMode mode = ReparentMode.PreserveLocal);

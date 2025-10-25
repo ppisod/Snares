@@ -19,18 +19,10 @@ namespace Snares;
 
 public class Game1() : Core("snares_development", 1600, 1000, true)
 {
-    private const int BeatsPerMinute = 180;
-    private const int Sections = 3;
-    private bool _forward = true;
+    private const int BeatsPerMinute = 120;
+    private const int BeatsPerMeasure = 4;
+    
     public SpriteFont Helvetica;
-    private double _lastBeatTime;
-    private int _sectionCounter;
-
-    public LerpableFrame Slider;
-
-    private double _timeSinceLastBeat;
-
-    public float TotalGameTime;
     public TransformNodeBase RootNode { get; set; }
     public TextureCache TextureCache { get; set; }
 
@@ -54,7 +46,7 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
             )
         );
 
-        root.w($"window:{windowSize}");
+        NodeBase.W($"window:{windowSize}");
 
         var mainView = new NodeBase("MainView", root);
         root.AddChild(mainView);
@@ -62,22 +54,6 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
         var frame = new Frame("Frame", mainView, new LocalTransform(new Vector2(0, 0.45f), new Vector2(1, 0.1f), 0f),
             textureCache.Get("gray"));
         mainView.AddChild(frame);
-
-        var track = new Frame("Track", frame, new LocalTransform(new Vector2(0.1f, 0.25f), new Vector2(0.8f, 0.5f), 0f),
-            textureCache.Get("lightgray"))
-        {
-            DrawDebugShape = true
-        };
-        frame.AddChild(track);
-
-        var slider = new LerpableFrame("Slider", track,
-            new LocalTransform(new Vector2(-0.005f, -0.25f), new Vector2(0.01f, 1.5f), 0f),
-            textureCache.Get("gray"))
-        {
-            DrawDebugShape = true
-        };
-        track.AddChild(slider);
-        Slider = slider;
 
         RootNode = root;
         TextureCache = textureCache;
@@ -105,40 +81,8 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
             0f
         ));
         if (!(gameTime.TotalGameTime.TotalSeconds > 2)) return; // replace with some thing like a button
-        // time per beat:
-        const double secondsPerBeat = 60d / BeatsPerMinute;
-        const float sectionLength = -0.005f + 1f / Sections;
-
-        if (_timeSinceLastBeat > secondsPerBeat)
-        {
-            // Beat!
-            _timeSinceLastBeat = 0;
-            _lastBeatTime = gameTime.TotalGameTime.TotalSeconds;
-            if (_sectionCounter >= Sections)
-            {
-                _sectionCounter = 0;
-                _forward = !_forward;
-            }
-
-            if (_forward)
-            {
-                var resultPos = new Vector2(-0.005f + sectionLength * _sectionCounter, -0.25f);
-                Slider.Lerper.LerpVector2(() => Slider.Local.Pos, Slider.SetLocalPos, resultPos, secondsPerBeat,
-                    EasingTypes.Quad, Lerper.Mode.Out);
-                _sectionCounter += 1;
-            }
-            else
-            {
-                var resultPos = new Vector2(0.995f - sectionLength * _sectionCounter, -0.25f);
-                Slider.Lerper.LerpVector2(() => Slider.Local.Pos, Slider.SetLocalPos, resultPos, secondsPerBeat,
-                    EasingTypes.Quad, Lerper.Mode.Out);
-                _sectionCounter += 1;
-            }
-        }
-        else
-        {
-            _timeSinceLastBeat = gameTime.TotalGameTime.TotalSeconds - _lastBeatTime;
-        }
+        
+        
 
         base.Update(gameTime);
     }
@@ -152,7 +96,7 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
         // draw
         RootNode.Draw(CSpriteBatch);
         
-        CSpriteBatch.DrawString(Helvetica, $"beat: {_sectionCounter}", new Vector2(10, 10), Color.Black);
+        CSpriteBatch.DrawString(Helvetica, $"beat...", new Vector2(10, 10), Color.Black);
 
         CSpriteBatch.End();
         base.Draw(gameTime);

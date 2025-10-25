@@ -95,10 +95,11 @@ public class Lerper
     public void LerpFloat(Func<float> get, Action<float> set, float end, double durationSeconds, Easing easing, Mode mode)
     {
         AddTween(get, set, end, durationSeconds, easing, mode, (a, b, t) => a + (b - a) * t);
+        // also Don't be scared by that cuz it's just a simple lerp.
     }
 
     /// <summary>
-    /// Advance all tweens by delta time. Call once per frame.
+    /// Advance all tweens by delta time. Call once per frame.........!!!
     /// </summary>
     public void Update(GameTime gameTime)
     {

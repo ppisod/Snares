@@ -10,9 +10,10 @@ using ppilib.Types.Struct;
 
 namespace ppilib.Node.Base;
 
-public class NodeBase : INode
+public class NodeBase : INode, IDisposable
 {
-    public void w (string q)
+    private bool _disposed;
+    public static void W (string q)
     {
         Console.WriteLine(q);
     }
@@ -49,6 +50,44 @@ public class NodeBase : INode
 
     public bool UpdateActive { get; set; } = true;
     public bool DrawActive { get; set; } = true;
+
+    public bool IsDestroyed { get; private set; }
+
+    public void Destroy()
+    {
+        if (IsDestroyed) return;
+        // Prevent any further Update/Draw while destroying
+        UpdateActive = false;
+        DrawActive = false;
+        
+        // Copy children to avoid modification during iteration
+        var childrenSnapshot = _children.ToArray();
+        foreach (var child in childrenSnapshot)
+        {
+            child.Destroy();
+        }
+        
+        // Detach from parent
+        if (Parent is NodeBase parentNode)
+        {
+            parentNode.RemoveChild(this);
+        }
+        
+        // Clear children list
+        _children.Clear();
+        
+        // Allow subclasses to clean up
+        OnDestroyed();
+        
+        // Dispose if supported
+        if (this is IDisposable disposable)
+        {
+            try { disposable.Dispose(); } catch { /* swallow */ }
+        }
+        
+        IsDestroyed = true;
+    }
+
     public void AddChild(INode child)
     {
         if (child == this) throw new InvalidOperationException("Cannot add myself as a child!");
@@ -76,7 +115,7 @@ public class NodeBase : INode
 
     public void Update(GameTime gameTime)
     {
-        if (!UpdateActive) return;
+        if (!UpdateActive || IsDestroyed) return;
         // Custom update logic here, in derived types.
         OnUpdate(gameTime);
         foreach (var t in Children) t.Update(gameTime);
@@ -85,7 +124,7 @@ public class NodeBase : INode
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        if (!DrawActive) return;
+        if (!DrawActive || IsDestroyed) return;
         // Custom draw logic here, in derived types.
         OnDraw(spriteBatch);
         foreach (var t in Children) t.Draw(spriteBatch);
@@ -102,4 +141,19 @@ public class NodeBase : INode
     protected virtual void AfterUpdate(GameTime gameTime) { }
     protected virtual void OnDraw(SpriteBatch spriteBatch) { }
     protected virtual void AfterDraw(SpriteBatch spriteBatch) { }
+    protected virtual void OnDestroyed() { }
+
+    // IDisposable pattern
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed) return;
+        _disposed = true;
+        // Note: managed/unmanaged cleanup would go here. Keep minimal for now.
+    }
 }

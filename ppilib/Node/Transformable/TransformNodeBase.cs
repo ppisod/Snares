@@ -119,4 +119,14 @@ public class TransformNodeBase : NodeBase, ITransformNode
     {
         EnsureWorldUpToDate();
     }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            // release managed resources specific to TransformNodeBase
+            WorldTransformChanged = null;
+        }
+        base.Dispose(disposing);
+    }
 }
