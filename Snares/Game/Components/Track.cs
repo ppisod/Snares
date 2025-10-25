@@ -48,7 +48,6 @@ public class Track
         _identifier = id;
         _tickTexture = tickerTexture;
         _tickers = [];
-        // btw(Now, I want only ONE metronome. across all tracks.)
         _track = new LerpableFrame(
             $"Track{id}",
             parent,
@@ -63,7 +62,7 @@ public class Track
         _slider = new LerpableFrame(
             $"Slider{id}",
             _track,
-            new LocalTransform(new Vector2(-0.005f, -0.25f), new Vector2(0.01f, 1.5f), 0f),
+            new LocalTransform(new Vector2(-0.0015f, -0.25f), new Vector2(0.01f, 1.5f), 0f),
             sliderTexture
         )
         {
@@ -98,13 +97,7 @@ public class Track
         // we make it safe again
         CheckTickerStateIntegrity();
         
-        _slider.Lerper.LerpVector2(
-            () => _slider.Local.Pos,
-            _slider.SetLocalPos,
-            new Vector2(_tickers[_currentTicker].Local.Pos.X, -0.25f),
-            Metronome.GetTimeToNextBeat(),
-            _easing, _mode
-        );
+        _slider.LerpLocalPos(new Vector2(_tickers[_currentTicker].Local.Pos.X, -0.25f), Metronome.GetTimeToNextBeat());
         
         UpdateTickerState();
         
