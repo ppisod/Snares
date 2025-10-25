@@ -36,7 +36,6 @@ public class Track
         Texture2D trackTexture, 
         Texture2D sliderTexture, 
         Texture2D tickerTexture, 
-        List<Frame> tickers,
         Easing easing, Lerper.Mode mode)
     {
         _easing = easing;
@@ -48,14 +47,17 @@ public class Track
         Metronome = metronome;
         _identifier = id;
         _tickTexture = tickerTexture;
-        _tickers = tickers;
+        _tickers = [];
         // btw(Now, I want only ONE metronome. across all tracks.)
         _track = new LerpableFrame(
             $"Track{id}",
             parent,
-            new LocalTransform(new Vector2(0.1f, 0.25f), new Vector2(0.8f, 0.5f), 0f), 
+            new LocalTransform(new Vector2(0.1f, 0.25f), new Vector2(0.8f, 0.5f), 0f),
             trackTexture
-        );
+        )
+        {
+            DrawDebugShape = true
+        };
         parent.AddChild(_track);
 
         _slider = new LerpableFrame(
@@ -63,7 +65,10 @@ public class Track
             _track,
             new LocalTransform(new Vector2(-0.005f, -0.25f), new Vector2(0.01f, 1.5f), 0f),
             sliderTexture
-        );
+        )
+        {
+            DrawDebugShape = true
+        };
         _track.AddChild(_slider);
         Metronome.Beat += OnBeat;
     }
@@ -113,7 +118,7 @@ public class Track
         _tickers.Clear();
         var beats = Metronome.Numerator; // so, we create sections. Draw section lines.
         // get the length of each section.
-        var lenOfSection = 1 / beats;
+        var lenOfSection = 1f / beats;
         for (var i = 0; i <= beats; i++)
         {
             var f = new Frame(
@@ -121,13 +126,18 @@ public class Track
                 _track,
                 new LocalTransform(
                     new Vector2((i * lenOfSection) - 0.0015f, 0f),
-                    new Vector2(0.003f, 1f), 0f
+                    new Vector2(0.01f, 1f), 0f
                 ),
                 _tickTexture
-            );
+            )
+            {
+                DrawDebugShape = true
+            };
             _track.AddChild(f);
             _tickers.Add(f);
         }
+        
+        _areTickersDirty = false;
     }
 
     private void CheckTickerStateIntegrity()
@@ -146,13 +156,14 @@ public class Track
             if (_currentTicker < _tickers.Count) return;
             _direction = false;
             _currentTicker--;
+            _currentTicker--;
         }
         else
         {
             _currentTicker--;
             if (_currentTicker >= 0) return;
             _direction = true;
-            _currentTicker++;
+            _currentTicker = 1;
         }   
     }
     

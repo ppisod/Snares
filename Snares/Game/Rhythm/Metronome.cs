@@ -19,8 +19,7 @@ public class Metronome : IDisposable
         get => _beatsPerMinute;
         set => SetTempo(value);
     }
-
-    // Updated properties for time signature
+    
     public int Numerator
     {
         get => _numerator;

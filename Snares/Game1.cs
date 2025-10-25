@@ -12,6 +12,8 @@ using ppilib.Utility.MovingThings;
 using ppilib.Utility.MovingThings.Ease.Definitions;
 using ppilib.Utility.Shapes;
 using ppilib.Utility.Textures;
+using Snares.Game.Components;
+using Snares.Game.Rhythm;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 
@@ -21,6 +23,9 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
 {
     private const int BeatsPerMinute = 120;
     private const int BeatsPerMeasure = 4;
+
+    private Track _track;
+    private Metronome _metronome;
     
     public SpriteFont Helvetica;
     public TransformNodeBase RootNode { get; set; }
@@ -48,15 +53,29 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
 
         NodeBase.W($"window:{windowSize}");
 
+        var metronome = new Metronome(BeatsPerMinute, BeatsPerMeasure, 4);
+        _metronome = metronome;
+        
         var mainView = new NodeBase("MainView", root);
         root.AddChild(mainView);
 
         var frame = new Frame("Frame", mainView, new LocalTransform(new Vector2(0, 0.45f), new Vector2(1, 0.1f), 0f),
             textureCache.Get("gray"));
         mainView.AddChild(frame);
+        
+        var track = new Track(1, 
+            frame, 
+            metronome, 
+            textureCache.Get("lightgray"), 
+            textureCache.Get("gray"), 
+            textureCache.Get("gray"), 
+            EasingTypes.Quad, Lerper.Mode.Out);
+        _track = track;
 
         RootNode = root;
         TextureCache = textureCache;
+
+        metronome.Start();
 
         base.Initialize();
     }
@@ -82,7 +101,8 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
         ));
         if (!(gameTime.TotalGameTime.TotalSeconds > 2)) return; // replace with some thing like a button
         
-        
+        _metronome.Update(gameTime.ElapsedGameTime);
+        _track.Update(gameTime);
 
         base.Update(gameTime);
     }
