@@ -9,8 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousLerper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousLerper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousTween.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousTween.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +64,12 @@
     <setting file="file://$PROJECT_DIR$/ppilib/Interfaces/INode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Interfaces/ITransformNode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Base/NodeBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ppilib/Node/Custom/ButtonRegion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/s/RiderProjects/Snares/ppilib/Node/Custom/Frame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Custom/Frame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Custom/LerpableFrame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Custom/TextFrame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib/Node/Input/ButtonRegion.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib/Node/Transformable/LerpableNodeBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Transformable/TransformNodeBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Types/Class/Stretch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Types/Class/Transform.cs" root0="FORCE_HIGHLIGHTING" />
@@ -199,7 +198,7 @@
       <workItem from="1761138659629" duration="1698000" />
       <workItem from="1761182303382" duration="1631000" />
       <workItem from="1761183981981" duration="31057000" />
-      <workItem from="1761287409299" duration="49622000" />
+      <workItem from="1761287409299" duration="52510000" />
     </task>
     <task id="LOCAL-00004" summary="Stretch2, TextureUtility draw functions">
       <option name="closed" value="true" />
