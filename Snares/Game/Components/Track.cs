@@ -29,7 +29,7 @@ public class Track
     private readonly Texture2D _tickTexture;
 
     private readonly Easing _easing;
-    private readonly Lerper.Mode _mode;
+    private readonly LerpMode _mode;
 
     private bool _justBeated;
     
@@ -40,7 +40,7 @@ public class Track
         Texture2D trackTexture, 
         Texture2D sliderTexture, 
         Texture2D tickerTexture,
-        Easing easing, Lerper.Mode mode)
+        Easing easing, LerpMode mode)
     {
         _easing = easing;
         _mode = mode;
@@ -64,7 +64,7 @@ public class Track
         };
         parent.AddChild(_track);
         _track.Easing = EasingTypes.Quad;
-        _track.EasingMode = Lerper.Mode.Out;
+        _track.EasingMode = LerpMode.Out;
 
         _slider = new LerpableFrame(
             $"Slider{id}",
@@ -189,12 +189,12 @@ public class Track
         _isPlaying = v;
         // tween transparency
         _slider.Easing = EasingTypes.Quad;
-        _slider.EasingMode = Lerper.Mode.Out;
+        _slider.EasingMode = LerpMode.Out;
         if (!v)
         {
             _slider.LerpOpacity(0f, 0.5f);
             _slider.Easing = EasingTypes.Linear;
-            _slider.EasingMode = Lerper.Mode.InOut;
+            _slider.EasingMode = LerpMode.InOut;
             _track.LerpOpacity(0f, 0.5f);
             foreach (var ticker in _tickers)
             {
@@ -206,7 +206,7 @@ public class Track
             _track.LerpOpacity(1f, 0.1f);
             _slider.LerpOpacity(1f, 0.1f);
             _slider.Easing = EasingTypes.Linear;
-            _slider.EasingMode = Lerper.Mode.InOut;
+            _slider.EasingMode = LerpMode.InOut;
             UpdateTickers();
             ResyncTicker();
         }

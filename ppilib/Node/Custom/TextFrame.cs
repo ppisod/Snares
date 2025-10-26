@@ -21,7 +21,7 @@ public class TextFrame(
 {
     public Lerper Lerper { get; } = new();
     public Easing Easing { get; set; }
-    public Lerper.Mode EasingMode { get; set; }
+    public LerpMode EasingMode { get; set; }
     public SpriteFont Font { get; set; } = font;
     public string Text { get; set; } = text;
     public Color Color { get; } = color;

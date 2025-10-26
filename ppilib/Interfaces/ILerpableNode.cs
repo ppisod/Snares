@@ -10,7 +10,7 @@ public interface ILerpableNode : ITransformNode
     Lerper Lerper { get; }
     
     Easing Easing { get; set; }
-    Lerper.Mode EasingMode { get; set; }
+    LerpMode EasingMode { get; set; }
     
     void LerpAttribute <T> (Func<T> get, Action<T> set, Func<T, T, float, T> interpolate, T to, double time);
     

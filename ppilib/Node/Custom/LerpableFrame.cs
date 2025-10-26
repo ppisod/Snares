@@ -51,7 +51,7 @@ public class LerpableFrame(string name, INode parent, LocalTransform wantedTrans
     public float Opacity = 1;
     public Lerper Lerper { get; set; } = new Lerper();
     public Easing Easing { get; set; } = EasingTypes.Linear;
-    public Lerper.Mode EasingMode { get; set; } = Lerper.Mode.InOut;
+    public LerpMode EasingMode { get; set; } = LerpMode.InOut;
     public void LerpAttribute<T>(Func<T> get, Action<T> set, Func<T, T, float, T> interpolate, T to, double time) { Lerper.AddTween(get, set, to, time, Easing, EasingMode, interpolate); }
     public void LerpLocalPos(Vector2 to, double time) { Lerper.LerpVector2(() => Local.Pos, SetLocalPos, to, time, Easing, EasingMode); }
     public void LerpLocalScale(Vector2 to, double time) { Lerper.LerpVector2(() => Local.Scale, SetLocalScale, to, time, Easing, EasingMode); }

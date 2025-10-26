@@ -64,10 +64,15 @@ I'll probably put ppilib as a seperate repo for people to use it, but for now it
 - [ ] button class
 - [ ] figure out how to use the scroll wheel?? that can help me make a ScrollableFrame where players can select beatmaps.
   - or make it similar to Osu but draw the frames outside the screen!
-- [ ] FIRST BEATMAP....
+- [x] FIRST BEATMAP....
 - for the future:
-- [ ] make a beatmap creator in Python with quantization built in.
+- [x] make a beatmap creator in Python with quantization built in.
     - Vision: for every different key pressed, it represents a new track. 
     - tracks are initialized a bar before the first beat, and every beat is a snare,
     - when tracks are not used they are deleted, time signatures are mixed up and configurable difficulty setting.
+
+26/10/2025
+- ILerpable, MouseController, KeyboardController
+- ButtonRegion, MouseEventArgs/InputDispatcher/IInputRegion
+- BeatmapGen
 ---

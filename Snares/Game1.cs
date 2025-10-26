@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.IO;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -22,16 +23,9 @@ namespace Snares;
 
 public class Game1() : Core("snares_development", 1920, 1080, true)
 {
-    private const int BeatsPerMinute = 120;
-    private const int BeatsPerMeasure = 4;
 
     private MouseController _mouse;
     private KeyboardController _keyboard;
-    
-    private Track _track;
-    private Metronome _metronome;
-    private TextFrame _text;
-    private bool _toRun;
     
     public SpriteFont Helvetica;
     public TransformNodeBase RootNode { get; set; }
@@ -39,7 +33,6 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
 
     protected override void Initialize()
     {
-        _toRun = true;
         _mouse = new MouseController();
         _keyboard = new KeyboardController();
         
@@ -62,43 +55,18 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         );
 
         NodeBase.W($"window:{windowSize}");
-
-        var metronome = new Metronome(BeatsPerMinute, BeatsPerMeasure, 4);
-        _metronome = metronome;
         
         var mainView = new NodeBase("MainView", root);
         root.AddChild(mainView);
 
-        var text = new TextFrame("BeatText", "balls", mainView,
+        var text = new TextFrame("BeatText", "snares", mainView,
             new LocalTransform(new Vector2(0.01f, 0.01f), new Vector2(1, 0.05f), 0f), Helvetica, Color.Black);
         mainView.AddChild(text);
-        _text = text;
-
-        var frame = new Frame("Frame", mainView, new LocalTransform(new Vector2(0, 0.45f), new Vector2(1, 0.1f), 0f),
-            textureCache.Get("gray"));
-        mainView.AddChild(frame);
         
-        var track = new Track(1, 
-            frame, 
-            metronome, 
-            textureCache.Get("lightgray"), 
-            textureCache.Get("gray"), 
-            textureCache.Get("gray"),
-            EasingTypes.Quad, Lerper.Mode.Out);
-        _track = track;
-
         RootNode = root;
         TextureCache = textureCache;
 
-        metronome.Start();
-
         base.Initialize();
-    }
-
-
-    protected override void LoadContent()
-    {
-        // TODO: use this.Content to load your game content here
     }
 
     protected override void Update(GameTime gameTime)
@@ -118,24 +86,8 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
             new Stretch(windowSize, Vector2.One, Vector2.Zero),
             0f
         ));
-        if (!(gameTime.TotalGameTime.TotalSeconds > 2)) return; // replace with some thing like a button
         
-        _metronome.Update(gameTime.ElapsedGameTime);
-        _track.Update(gameTime);
-        _text.Text = $"beat: {_metronome.CurrentBeatInMeasure}";
         base.Update(gameTime);
-
-        if (gameTime.TotalGameTime.TotalSeconds > 5)
-        {
-            _toRun = false;
-        };
-
-        if (gameTime.TotalGameTime.TotalSeconds > 10)
-        {
-            _toRun = true;
-        }
-        
-        _track.SetIsRunning(_toRun);
     }
 
     protected override void Draw(GameTime gameTime)
