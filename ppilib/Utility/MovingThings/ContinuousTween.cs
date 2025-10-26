@@ -3,52 +3,52 @@ using Microsoft.Xna.Framework;
 using ppilib.Utility.MovingThings.Ease.Definitions;
 
 namespace ppilib.Utility.MovingThings;
-public class ContinuousTween
+public class ContinuousTween<T>
 {
-    private readonly Func<float> _get;
-    private readonly Action<float> _set;
+    private readonly Func<T> _get;
+    private readonly Action<T> _set;
+    private readonly Func<T, T, float, T> _lerp;
 
-    private float _start;
+
+    public bool Active => true;
+
+    private T _start;
     private float _progress;
     
-    private float _lastTarget;
-    public float Target;
-    
-    private float _rate;
-    
-    private Func<float, float> _ease;
+    private T _lastTarget;
+    public T Target { get; }
 
-    public ContinuousTween (Func<float> get, Action<float> set, Func<float, float> ease, float rate)
+    public float Rate { get; }
+
+    public Func<float, float> Ease { get; }
+
+    public ContinuousTween (Func<T> get, Action<T> set, Func<T, T, float, T> lerp, Func<float, float> ease, float rate)
     {
         _get = get;
         _set = set;
-        _ease = ease;
-        _rate = Math.Abs(rate);
+        _lerp = lerp;
+        Ease = ease;
+        Rate = Math.Abs(rate);
         _start = _get();
         _lastTarget = _get();
         Target = _start;
     }
     
-    /// <summary>
-    /// Update of the Continuous Tween, will return the new "set" value so you can build your own vector2 if you even
-    /// need to
-    /// </summary>
-    /// <param name="gameTime"></param>
-    /// <returns></returns>
-    public float Update (GameTime gameTime)
+    public void Update (GameTime gameTime)
     {
+        if (!Active) return;
         var dT = (float) gameTime.ElapsedGameTime.TotalSeconds;
-        if (Math.Abs(_lastTarget - Target) > 0f)
+        if (!_lastTarget.Equals(Target))
         {
             // changed target
             _start = _get();
             _lastTarget = Target;
             _progress = 0;
         }
-        _progress += Math.Min(_rate * dT, 1 - _progress);
-        var toSet = _start + _ease(_progress) * (_lastTarget - _start);
+        _progress += Math.Min(Rate * dT, 1 - _progress);
+        var eased = Ease(_progress);
+        var toSet = _lerp(_start, _lastTarget, eased);/*_start + _ease(_progress) * (_lastTarget - _start);*/
         _set(toSet);
-        return toSet;
     }
 
 }
