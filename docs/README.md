@@ -52,7 +52,7 @@ I'll probably put ppilib as a seperate repo for people to use it, but for now it
     - [x] it should be Current Beat, not Section
     - [x] We have to make a class for this track and slider
     - [x] we have to have a Metronome class to handle time and beat values.
-    - [ ] Create the Button node, and detect mouse clicks, and handle them
+    - [x] Create the Button node, and detect mouse clicks, and handle them
         - [ ] figure out hierarchal issues so only the top button code will be executed when the region on screen is clicked
     - [ ] figure out how to store beatmaps and load them! (not doing snares yet)
 
