@@ -28,8 +28,14 @@ public class ContinuousTween
         _lastTarget = _get();
         Target = _start;
     }
-
-    public void Update (GameTime gameTime)
+    
+    /// <summary>
+    /// Update of the Continuous Tween, will return the new "set" value so you can build your own vector2 if you even
+    /// need to
+    /// </summary>
+    /// <param name="gameTime"></param>
+    /// <returns></returns>
+    public float Update (GameTime gameTime)
     {
         var dT = (float) gameTime.ElapsedGameTime.TotalSeconds;
         if (Math.Abs(_lastTarget - Target) > 0f)
@@ -39,10 +45,10 @@ public class ContinuousTween
             _lastTarget = Target;
             _progress = 0;
         }
-
         _progress += Math.Min(_rate * dT, 1 - _progress);
-        _set(_start + (_ease(_progress) * (_lastTarget - _start)));
-
+        var toSet = _start + _ease(_progress) * (_lastTarget - _start);
+        _set(toSet);
+        return toSet;
     }
 
 }
