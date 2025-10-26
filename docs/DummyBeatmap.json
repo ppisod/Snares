@@ -14,30 +14,32 @@
   },
   "events": [
     {
-      "SongStart": {
-        
-      }
+      "type": "track_introduce",
+      "at_beat": 0,
+      "track_id": 1,
+      "track_time_signature_numerator": 4,
+      "track_time_signature_denominator": 4,
+      "track_bpm": 80
     },
     {
-      "TrackIntroduce": {
-        "at_beats": 0,
-        "track": 1,
-        "speed_modify": 2,
-        "segments_per_bar": 4,
-        "easing": "linear"
-      }
+      "type": "snare",
+      "at_beat": 2,
+      "on_track": 1
     },
     {
-      "Snare": {
-        "track": 1,
-        "at_beats": 5,
-        "at_seconds": 5.12634612719
-      }
+      "type": "snare",
+      "at_beat": 4,
+      "on_track": 1
     },
     {
-      "TrackDelete": {
-        "track": 1
-      }
+      "type": "snare",
+      "at_beat": 6,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 8,
+      "on_track": 1
     }
   ]
 }

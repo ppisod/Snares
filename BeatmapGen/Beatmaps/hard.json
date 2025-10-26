@@ -1,0 +1,2178 @@
+{
+  "config": {
+    "beatmap_set": "None",
+    "name": "KSGS.mp3",
+    "author": "Me",
+    "difficulty": 3
+  },
+  "song": {
+    "bpm": 95,
+    "song_time_signature_numerator": 4,
+    "song_time_signature_denominator": 4,
+    "song_path": "Songs/KSGS.mp3",
+    "song_start_at": 0
+  },
+  "events": [
+    {
+      "type": "track_introduce",
+      "at_beat": 1.125,
+      "track_id": 1,
+      "track_time_signature_numerator": 5,
+      "track_time_signature_denominator": 16,
+      "track_bpm": 380
+    },
+    {
+      "type": "snare",
+      "at_beat": 5.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 5.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 6.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 6.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 7.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 9.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 9.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 10.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 10.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 11.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 11.625,
+      "on_track": 1
+    },
+    {
+      "type": "track_introduce",
+      "at_beat": 9.125,
+      "track_id": 2,
+      "track_time_signature_numerator": 6,
+      "track_time_signature_denominator": 2,
+      "track_bpm": 47.5
+    },
+    {
+      "type": "snare",
+      "at_beat": 13.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 13.375,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 14.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 14.875,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 15.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 15.625,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 17.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 17.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 18.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 18.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 18.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 18.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 18.875,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 19.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 19.625,
+      "on_track": 1
+    },
+    {
+      "type": "track_introduce",
+      "at_beat": 16.125,
+      "track_id": 3,
+      "track_time_signature_numerator": 6,
+      "track_time_signature_denominator": 16,
+      "track_bpm": 380
+    },
+    {
+      "type": "snare",
+      "at_beat": 20.125,
+      "on_track": 3
+    },
+    {
+      "type": "track_introduce",
+      "at_beat": 16.625,
+      "track_id": 4,
+      "track_time_signature_numerator": 3,
+      "track_time_signature_denominator": 8,
+      "track_bpm": 95
+    },
+    {
+      "type": "snare",
+      "at_beat": 20.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 20.875,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 21.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 21.625,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 21.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 22.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 22.375,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 22.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 23.0,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 23.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 23.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 23.625,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 23.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 24.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 24.625,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 25.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 25.375,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 25.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 25.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 26.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 26.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 26.625,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 27.0,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 27.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 27.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 27.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 28.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 28.25,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 29.0,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 29.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 29.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 29.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 29.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 30.25,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 30.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 30.625,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 30.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 31.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 31.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 31.625,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 31.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 32.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 32.875,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 33.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 33.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 33.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 33.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 34.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 34.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 34.625,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 35.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 35.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 35.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 35.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 35.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 36.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 36.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 36.875,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 37.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 37.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 37.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 37.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 38.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 38.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 38.75,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 39.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 39.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 39.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 39.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 39.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 40.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 40.75,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 41.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 41.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 41.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 42.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 42.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 42.625,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 42.875,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 43.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 43.5,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 43.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 43.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 44.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 44.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 44.875,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 45.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 45.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 45.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 45.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 46.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 46.375,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 46.75,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 46.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 47.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 47.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 47.75,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 47.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 48.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 48.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 48.875,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 49.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 49.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 49.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 49.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 50.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 50.375,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 50.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 50.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 51.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 51.5,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 51.625,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 51.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 52.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 52.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 52.875,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 53.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 53.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 53.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 53.875,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 54.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 54.5,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 54.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 55.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 55.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 55.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 55.625,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 55.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 56.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 56.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 56.875,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 57.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 57.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 57.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 57.875,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 58.0,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 58.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 58.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 58.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 59.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 59.5,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 59.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 59.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 60.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 60.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 60.875,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 61.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 61.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 61.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 61.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 62.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 62.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 62.625,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 62.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 63.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 63.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 63.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 64.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 64.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 64.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 65.0,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 65.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 65.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 65.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 65.875,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 66.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 66.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 66.625,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 66.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 67.0,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 67.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 67.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 67.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 68.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 68.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 68.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 68.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 68.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 68.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 69.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 69.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 69.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 69.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 69.875,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 70.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 70.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 70.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 70.5,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 70.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 71.0,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 71.125,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 71.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 71.5,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 71.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 71.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 72.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 72.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 72.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 72.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 72.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 73.0,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 73.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 73.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 73.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 73.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 73.75,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 74.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 74.125,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 74.5,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 74.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 74.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 75.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 75.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 75.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 75.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 75.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 75.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 76.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 76.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 76.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 76.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 76.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 77.0,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 77.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 77.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 77.5,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 77.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 77.75,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 78.0,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 78.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 78.5,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 78.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 78.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 79.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 79.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 79.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 79.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 80.0,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 80.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 80.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 80.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 80.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 81.0,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 81.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 81.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 81.5,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 81.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 81.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 82.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 82.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 82.5,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 82.625,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 82.75,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 83.0,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 83.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 83.375,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 83.5,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 83.625,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 83.875,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 84.0,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 84.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 84.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 84.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 84.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 85.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 85.25,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 85.5,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 85.625,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 85.75,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 86.0,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 86.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 86.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 86.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 86.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 86.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 87.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 87.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 87.5,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 87.625,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 87.75,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 88.0,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 88.125,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 88.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 88.5,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 88.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 88.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 88.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 89.0,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 89.125,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 89.375,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 89.375,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 89.625,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 89.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 89.625,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 89.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 89.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.0,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.0,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.125,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.25,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.375,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.5,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.5,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.75,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 90.875,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.0,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.0,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.0,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.125,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.25,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.375,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.5,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.5,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.625,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.75,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.875,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 91.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.0,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.0,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.0,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.125,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.25,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.5,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.5,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.625,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.625,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.75,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.875,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 92.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.0,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.0,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.125,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.25,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.5,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.5,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.75,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.75,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 93.875,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.0,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.0,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.0,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.125,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.125,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.25,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.375,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.375,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.5,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.625,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.625,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.75,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 94.875,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.0,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.0,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.125,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.25,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.25,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.375,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.375,
+      "on_track": 2
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.5,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.5,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.75,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.75,
+      "on_track": 4
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.75,
+      "on_track": 3
+    },
+    {
+      "type": "snare",
+      "at_beat": 95.875,
+      "on_track": 1
+    },
+    {
+      "type": "end_song",
+      "at_beat": 95.93891666666667
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "config": {
+    "name": "KSGS.mp3",
+    "author": "Me",
+    "difficulty": 0
+  },
+  "song": {
+    "bpm": 95,
+    "song_time_signature_numerator": 4,
+    "song_time_signature_denominator": 4,
+    "song_path": "Songs/KSGS.mp3",
+    "song_start_at": 0
+  },
+  "events": [
+    {
+      "type": "track_introduce",
+      "at_beat": 16,
+      "track_id": 1,
+      "track_time_signature_numerator": 4,
+      "track_time_signature_denominator": 4,
+      "track_bpm": 95
+    },
+    {
+      "type": "snare",
+      "at_beat": 20,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 21,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 22,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 23,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 24,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 25,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 26,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 27,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 28,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 29,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 30,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 31,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 32,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 33,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 34,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 35,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 35.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 36,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 37,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 38,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 39,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 40,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 41,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 42,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 43,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 43.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 44,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 45,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 46,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 47,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 48,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 49,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 50,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 51,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 51.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 52,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 53,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 54,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 55,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 56,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 57,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 58,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 59,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 59.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 60,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 61,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 62,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 62.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 63,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 64,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 65,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 66,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 66.5,
+      "on_track": 1
+    },
+    {
+      "type": "snare",
+      "at_beat": 67,
+      "on_track": 1
+    },
+    {
+      "type": "end_song",
+      "at_beat": 68
+    }
+  ]
+}
