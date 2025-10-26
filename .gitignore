@@ -1,8 +1,17 @@
-bin/
-obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
-ppiGLib/
-.DS_Store
+# IDE
+.idea/
+*.sln
+*.csproj.user
+*.userprefs
 
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+[Bb]in/
+[Oo]bj/
+
+# OS
+.DS_Store
+Thumbs.db

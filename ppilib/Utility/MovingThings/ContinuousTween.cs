@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using ppilib.Utility.MovingThings.Ease.Definitions;
 
 namespace ppilib.Utility.MovingThings;
-// continuous tween
 public class ContinuousTween
 {
     private readonly Func<float> _get;

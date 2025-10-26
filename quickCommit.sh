@@ -1,6 +1,6 @@
 #!/bin/bash
 TMPFILE=$(mktemp /tmp/git-commit-status-message.XXX)
-git add -A
+git add -u
 git status --porcelain \
   | grep '^[MARCDT]' \
   | sort \
