@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -153,6 +154,11 @@ public class Track
         }
     }
 
+    private void ResyncTicker()
+    {
+        _currentTicker = Metronome.CurrentBeatInMeasure;
+    }
+
     private void UpdateTickerState()
     {
         if (_direction)
@@ -202,6 +208,7 @@ public class Track
             _slider.Easing = EasingTypes.Linear;
             _slider.EasingMode = Lerper.Mode.InOut;
             UpdateTickers();
+            ResyncTicker();
         }
     }
     

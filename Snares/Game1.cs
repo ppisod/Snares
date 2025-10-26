@@ -31,6 +31,7 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
     private Track _track;
     private Metronome _metronome;
     private TextFrame _text;
+    private bool _toRun;
     
     public SpriteFont Helvetica;
     public TransformNodeBase RootNode { get; set; }
@@ -38,7 +39,7 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
 
     protected override void Initialize()
     {
-        
+        _toRun = true;
         _mouse = new MouseController();
         _keyboard = new KeyboardController();
         
@@ -122,8 +123,19 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         _metronome.Update(gameTime.ElapsedGameTime);
         _track.Update(gameTime);
         _text.Text = $"beat: {_metronome.CurrentBeatInMeasure}";
-
         base.Update(gameTime);
+
+        if (gameTime.TotalGameTime.TotalSeconds > 5)
+        {
+            _toRun = false;
+        };
+
+        if (gameTime.TotalGameTime.TotalSeconds > 10)
+        {
+            _toRun = true;
+        }
+        
+        _track.SetIsRunning(_toRun);
     }
 
     protected override void Draw(GameTime gameTime)
