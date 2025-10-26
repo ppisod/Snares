@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ppilib;
+using ppilib.Input;
 using ppilib.Node.Base;
 using ppilib.Node.Custom;
 using ppilib.Node.Transformable;
@@ -19,13 +20,17 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace Snares;
 
-public class Game1() : Core("snares_development", 1600, 1000, true)
+public class Game1() : Core("snares_development", 1920, 1080, true)
 {
     private const int BeatsPerMinute = 120;
     private const int BeatsPerMeasure = 4;
 
+    private MouseController _mouse;
+    private KeyboardController _keyboard;
+    
     private Track _track;
     private Metronome _metronome;
+    private TextFrame _text;
     
     public SpriteFont Helvetica;
     public TransformNodeBase RootNode { get; set; }
@@ -33,6 +38,10 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
 
     protected override void Initialize()
     {
+        
+        _mouse = new MouseController();
+        _keyboard = new KeyboardController();
+        
         var textureCache = new TextureCache(GraphicsDevice);
         textureCache.Add("gray", ShapeGenerator.ColoredScalable(GraphicsDevice, Color.Gray));
         textureCache.Add("lightgray", ShapeGenerator.ColoredScalable(GraphicsDevice, Color.LightGray));
@@ -59,6 +68,11 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
         var mainView = new NodeBase("MainView", root);
         root.AddChild(mainView);
 
+        var text = new TextFrame("BeatText", "balls", mainView,
+            new LocalTransform(new Vector2(0.01f, 0.01f), new Vector2(1, 0.05f), 0f), Helvetica, Color.Black);
+        mainView.AddChild(text);
+        _text = text;
+
         var frame = new Frame("Frame", mainView, new LocalTransform(new Vector2(0, 0.45f), new Vector2(1, 0.1f), 0f),
             textureCache.Get("gray"));
         mainView.AddChild(frame);
@@ -68,7 +82,7 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
             metronome, 
             textureCache.Get("lightgray"), 
             textureCache.Get("gray"), 
-            textureCache.Get("gray"), 
+            textureCache.Get("gray"),
             EasingTypes.Quad, Lerper.Mode.Out);
         _track = track;
 
@@ -88,6 +102,10 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
 
     protected override void Update(GameTime gameTime)
     {
+        
+        _mouse.Update();
+        _keyboard.Update();
+        
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
@@ -103,6 +121,7 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
         
         _metronome.Update(gameTime.ElapsedGameTime);
         _track.Update(gameTime);
+        _text.Text = $"beat: {_metronome.CurrentBeatInMeasure}";
 
         base.Update(gameTime);
     }
@@ -112,11 +131,8 @@ public class Game1() : Core("snares_development", 1600, 1000, true)
         GraphicsDevice.Clear(Color.White);
 
         CSpriteBatch.Begin();
-
         // draw
         RootNode.Draw(CSpriteBatch);
-        
-        CSpriteBatch.DrawString(Helvetica, $"beat...", new Vector2(10, 10), Color.Black);
 
         CSpriteBatch.End();
         base.Draw(gameTime);

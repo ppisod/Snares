@@ -32,12 +32,13 @@ public class Track
 
     private bool _justBeated;
     
+    
     public Track (int id, 
         INode parent,
         Metronome metronome, 
         Texture2D trackTexture, 
         Texture2D sliderTexture, 
-        Texture2D tickerTexture, 
+        Texture2D tickerTexture,
         Easing easing, Lerper.Mode mode)
     {
         _easing = easing;
@@ -50,7 +51,7 @@ public class Track
         _identifier = id;
         _tickTexture = tickerTexture;
         _tickers = [];
-        _isPlaying = false;
+        _isPlaying = true;
         _track = new LerpableFrame(
             $"Track{id}",
             parent,
@@ -159,8 +160,8 @@ public class Track
             _currentTicker++;
             if (_currentTicker < _tickers.Count) return;
             _direction = false;
-            _currentTicker--;
-            _currentTicker--;
+            _currentTicker -= 2;
+
         }
         else
         {
@@ -196,9 +197,11 @@ public class Track
         }
         else
         {
+            _track.LerpOpacity(1f, 0.1f);
             _slider.LerpOpacity(1f, 0.1f);
             _slider.Easing = EasingTypes.Linear;
             _slider.EasingMode = Lerper.Mode.InOut;
+            UpdateTickers();
         }
     }
     

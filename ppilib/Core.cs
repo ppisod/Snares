@@ -47,7 +47,9 @@ public class Core : Game
         Content = base.Content;
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
-        
+
+        IsFixedTimeStep = false;
+
     }
 
     protected override void Initialize()

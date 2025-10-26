@@ -25,7 +25,7 @@ public class TextFrame(
     public SpriteFont Font { get; set; } = font;
     public string Text { get; set; } = text;
     public Color Color { get; } = color;
-    public float Opacity { get; set; }
+    public float Opacity { get; set; } = 1f;
     
     public void LerpAttribute<T>(Func<T> get, Action<T> set, Func<T, T, float, T> interpolate, T to, double time)
     {
@@ -54,9 +54,17 @@ public class TextFrame(
 
     protected override void OnDraw(SpriteBatch spriteBatch)
     {
+        // Desired text height in pixels taken from world scale
+        float desiredHeight = World.Scale.Result.Y;
+
+        // Compute a uniform scale so text height ~= desiredHeight
+        float fontPixelHeight = Font.LineSpacing; // base height of the font in pixels
+        float scale = desiredHeight > 0 && fontPixelHeight > 0
+            ? desiredHeight / fontPixelHeight
+            : 1f;
         spriteBatch.DrawString(
-            Font, Text, World.Position.Result, Color * Opacity, World.Rotation, Vector2.Zero, World.Scale.Result, SpriteEffects.None, 0f
-            );
+            Font, Text, World.Position.Result, Color * Opacity, World.Rotation, Vector2.Zero, scale, SpriteEffects.None, 0f
+        );
         base.OnDraw(spriteBatch);
     }
 }
