@@ -14,8 +14,17 @@ namespace ppilib.Utility.Configs;
 public class NodeConfig
 {
 
-    public NodeConfig (NodeConfig? past)
+    public NodeConfig (NodeConfig? past, LocalTransform? transform)
     {
+        if (transform is null)
+        {
+            // this node does not support transforming
+            // code here accordingly
+        }
+        else
+        {
+            T = transform; // or transform can be a bool and initialized with localtransform.root
+        }
         if (past == null) return;
         T = past.T;
         Parent = past.Parent;
@@ -23,14 +32,13 @@ public class NodeConfig
         Opacity = past.Opacity;
         Font = past.Font;
         LerpMethod = past.LerpMethod;
-        
     }
     
     // wantedTransform -> pos, scale, rot, modify accordingly
     
     // all methods reutrn another NodeConfig with modified attributes
 
-    public LocalTransform T { get; } = LocalTransform.Root;
+    public LocalTransform? T { get; }
     public INode? Parent;
     public string? Name;
     
@@ -43,21 +51,29 @@ public class NodeConfig
     // use Lerp Method if exists, if not, use easing + mode if exists, if not, use Linear + InOut
     public Func<float, float>? LerpMethod = new Linear().EaseInOut;
 
+    public NodeConfig SetParent(INode parent)
+    {
+        Parent = parent;
+        return this;
+    }
     
     public NodeConfig SetPos (Vector2 v)
     {
+        if (T == null) throw new InvalidOperationException("Transform is null, cannot set any transform");
         T.Pos = v;
         return this;
     }
 
-    public NodeConfig SetScale(Vector2 v)
+    public NodeConfig SetScale (Vector2 v)
     {
+        if (T == null) throw new InvalidOperationException("Transform is null, cannot set any transform");
         T.Scale = v;
         return this;
     }
 
-    public NodeConfig SetRotate(float v)
+    public NodeConfig SetRotate (float v)
     {
+        if (T == null) throw new InvalidOperationException("Transform is null, cannot set any transform ");
         T.Rotation = v;
         return this;
     }
