@@ -7,7 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="" />
+    <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ppilib/Utility/Configs/NodeConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib/Node/Transformable/ContinuousNodeBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Node/Transformable/ContinuousNodeBase.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,6 +65,7 @@
     <setting file="file://$PROJECT_DIR$/ppilib/Input/MouseController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Interfaces/ILerpableNode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Interfaces/INode.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib/Interfaces/ITextNode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Interfaces/ITransformNode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Base/NodeBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Custom/ContinuousTextFrame.cs" root0="FORCE_HIGHLIGHTING" />
@@ -77,6 +82,7 @@
     <setting file="file://$PROJECT_DIR$/ppilib/Types/Enum/ReparentMode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Types/Struct/LocalTransform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Types/Struct/NodeId.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib/Utility/Configs/NodeConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousTween.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Ease/Definitions/Easing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Ease/Definitions/EasingTypes.cs" root0="FORCE_HIGHLIGHTING" />
@@ -91,6 +97,9 @@
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/Shapes/ShapeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/Textures/TextureCache.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/Vectors.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="LLMProjectSettings">
+    <option name="turned_on" value="false" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -195,7 +204,7 @@
       <workItem from="1761138659629" duration="1698000" />
       <workItem from="1761182303382" duration="1631000" />
       <workItem from="1761183981981" duration="31057000" />
-      <workItem from="1761287409299" duration="65922000" />
+      <workItem from="1761287409299" duration="67653000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />
