@@ -7,7 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="" />
+    <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -196,15 +198,7 @@
       <workItem from="1761138659629" duration="1698000" />
       <workItem from="1761182303382" duration="1631000" />
       <workItem from="1761183981981" duration="31057000" />
-      <workItem from="1761287409299" duration="53172000" />
-    </task>
-    <task id="LOCAL-00004" summary="Stretch2, TextureUtility draw functions">
-      <option name="closed" value="true" />
-      <created>1760953223813</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1760953223813</updated>
+      <workItem from="1761287409299" duration="54572000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />
@@ -590,7 +584,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761475577315</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="fix merge conflicts?">
+      <option name="closed" value="true" />
+      <created>1761522537018</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1761522537018</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,7 +604,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="frame debug draw" />
     <MESSAGE value="fixed frame, finally working!!!!!!UGHH" />
     <MESSAGE value="clean up and remove debug statements" />
     <MESSAGE value="DummyBeatmap + ReadMe + Exclude" />
@@ -627,7 +628,8 @@
     <MESSAGE value="beatmaps" />
     <MESSAGE value="A lot of changes." />
     <MESSAGE value="deleted BeatmapGen.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted BeatmapGen.py" />
+    <MESSAGE value="fix merge conflicts?" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix merge conflicts?" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

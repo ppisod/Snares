@@ -10,7 +10,7 @@ namespace ppilib.Node.Custom;
 
 public class Frame
                         (string name, INode parent, LocalTransform wantedTransform, Texture2D debugTexture)
-    : TransformNodeBase (name, parent, wantedTransform)
+    : LerpableNodeBase(name, parent, wantedTransform)
 {
     public bool DrawDebugShape { get; set; } = false;
     private readonly Texture2D _debugTexture = debugTexture;

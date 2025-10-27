@@ -14,13 +14,13 @@ namespace Snares.Game.Components;
 public class Track
 {
     private bool _direction;
-    private readonly List<LerpableFrame> _tickers;
+    private readonly List<Frame> _tickers;
     private int _currentTicker; // 0 inclusive. for example: 0, 1, 2, 3, / 4, 3, 2, 1 for numerator 4.
                                 // note that the number of tickers will always be 1 more.
     private bool _areTickersDirty;
     private readonly int _identifier;
-    private readonly LerpableFrame _track;
-    private readonly LerpableFrame _slider;
+    private readonly Frame _track;
+    private readonly Frame _slider;
     public Metronome Metronome;
     private int _lastNumerator;
 
@@ -53,7 +53,7 @@ public class Track
         _tickTexture = tickerTexture;
         _tickers = [];
         _isPlaying = true;
-        _track = new LerpableFrame(
+        _track = new Frame(
             $"Track{id}",
             parent,
             new LocalTransform(new Vector2(0.1f, 0.25f), new Vector2(0.8f, 0.5f), 0f),
@@ -66,7 +66,7 @@ public class Track
         _track.Easing = EasingTypes.Quad;
         _track.EasingMode = LerpMode.Out;
 
-        _slider = new LerpableFrame(
+        _slider = new Frame(
             $"Slider{id}",
             _track,
             new LocalTransform(new Vector2(-0.0015f, -0.25f), new Vector2(0.01f, 1.5f), 0f),
@@ -127,7 +127,7 @@ public class Track
         var lenOfSection = 1f / beats;
         for (var i = 0; i <= beats; i++)
         {
-            var f = new LerpableFrame(
+            var f = new Frame(
                 $"TickerLine{_identifier}_{i}",
                 _track,
                 new LocalTransform(
