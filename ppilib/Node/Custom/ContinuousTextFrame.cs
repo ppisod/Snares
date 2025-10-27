@@ -8,15 +8,33 @@ using ppilib.Utility.MovingThings;
 
 namespace ppilib.Node.Custom;
 
-public class ContinuousTextFrame(string name, INode parent, LocalTransform  wantedTransform, Func<float, float> easeF, 
-                                 string text, Color color, SpriteFont font, float opacity)
-                : ContinuousNode(       name,       parent,                 wantedTransform,                    easeF)
+public class ContinuousTextFrame: ContinuousNode
 {
+    public ContinuousTextFrame(string name, INode parent, LocalTransform  wantedTransform, Func<float, float> easeF, 
+        string text, Color color, SpriteFont font, float opacity) : base(name, parent, wantedTransform, easeF)
+    {
+        Text = text;
+        Color = color;
+        Opacity = opacity;
+        Font = font;
+        // this is a BOOTY patch
+        
+        OpacityTween = new ContinuousTween<float>(() => Opacity, v => Opacity = v, (a, b, c) => a+(b-a)*c, easeF, 0.05f);
+    }
+
+    public string Text { get; set; }
+    public Color Color { get; set; }
     
-    public string Text { get; set; } = text;
-    public Color Color { get; set; } = color;
-    public float Opacity { get; set; } = opacity;
-    public SpriteFont Font { get; set; } = font;
+    public float Opacity { get; set; }
+    public readonly ContinuousTween<float> OpacityTween;
+    public SpriteFont Font { get; set; }
+
+    // BOOTY PATCHHHHH
+    protected override void OnUpdate(GameTime gameTime)
+    {
+        OpacityTween.Update(gameTime);
+        base.OnUpdate(gameTime);
+    }
 
     protected override void OnDraw(SpriteBatch spriteBatch)
     {

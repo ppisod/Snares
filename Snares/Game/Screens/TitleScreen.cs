@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using ppilib.Input;
 using ppilib.Interfaces;
 using ppilib.Node.Custom;
 using ppilib.Types.Struct;
@@ -14,6 +16,7 @@ public class TitleScreen
 {
     public List<INode> Nodes { get; private set; } = [];
     private readonly INode _parent;
+    private readonly MouseController _mouse;
     public ScreenState State;
 
     private void AddNode (INode node, INode theirParent)
@@ -23,8 +26,9 @@ public class TitleScreen
         theirParent.AddChild(node);
     }
 
-    public TitleScreen (INode parent, SpriteFont defaultFont)
+    public TitleScreen (INode parent, SpriteFont defaultFont, MouseController mouse)
     {
+        _mouse = mouse;
         _parent = parent;
         var title = new ContinuousTextFrame("Title", parent,
             new LocalTransform(new Vector2(0, 0), new Vector2(0.2f, 1), 0f), 
@@ -52,7 +56,9 @@ public class TitleScreen
         
         AddNode(title, parent);
         AddNode(game, parent);
-        AddNode(quit, parent); 
+        AddNode(quit, parent);
+
+        mouse.Hover += MouseHover;
     }
 
     public void Update (GameTime gT)
@@ -89,10 +95,17 @@ public class TitleScreen
                 break;
         }
     }
+    
+    // we can make it in the BaseScreen class that these functions are overloadable
 
-    public void LoadSequence (GameTime gT)
+    public void LoadSequence (GameTime _)
     {
-        
+        foreach (var node in Nodes)
+        {
+            // this code is repeated
+            if (node is not ContinuousTextFrame cNode) continue;
+            cNode.OpacityTween.Target = 1f;
+        }
     }
 
     public void OnSequence (GameTime gT)
@@ -100,8 +113,22 @@ public class TitleScreen
         
     }
 
-    public void UnloadSequence (GameTime gT)
+    public void UnloadSequence (GameTime _)
     {
-        
+        foreach (var node in Nodes)
+        {
+            // this code is repeated
+            if (node is not ContinuousTextFrame cNode) continue;
+            cNode.OpacityTween.Target = 0f;
+        }
+    }
+    
+    private void MouseHover (MouseState state)
+    {
+        foreach (var node in Nodes)
+        {
+            if (node is not ContinuousTextFrame cNode) continue;
+            cNode.Scale.Target = cNode.GetRect().Contains(state.Position) ? new Vector2(1f, 0.2f) : new Vector2(1f, 0.1f);
+        }
     }
 }

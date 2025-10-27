@@ -129,4 +129,9 @@ public class TransformNodeBase : NodeBase, ITransformNode
         }
         base.Dispose(disposing);
     }
+
+    public Rectangle GetRect ()
+    {
+        return new Rectangle((int) World.Position.Result.X, (int) World.Position.Result.Y, (int) World.Scale.Result.X, (int) World.Scale.Result.Y);
+    }
 }

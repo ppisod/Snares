@@ -16,7 +16,7 @@ public class ContinuousTween<T>
     private float _progress;
     
     private T _lastTarget;
-    public T Target { get; }
+    public T Target { get; set; }
 
     public float Rate { get; }
 
