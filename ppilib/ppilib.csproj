@@ -8,9 +8,4 @@
             <PrivateAssets>All</PrivateAssets>
         </PackageReference>
     </ItemGroup>
-    <ItemGroup>
-      <Compile Update="Node\Custom\ContinuousTextFrame.cs">
-        <DependentUpon>TextFrame.cs</DependentUpon>
-      </Compile>
-    </ItemGroup>
 </Project>

@@ -12,7 +12,7 @@ namespace ppilib.Node.Custom;
 /// Text rendering node built on ContinuousNodeBase so that position/scale/rotation and opacity can smoothly approach targets.
 /// World.Scale.Y controls the rendered text height; the width is derived from the font's aspect ratio.
 /// </summary>
-public class ContinuousTextFrame: ContinuousNodeBase
+public class ContinuousTextFrame: ContinuousNodeBase, ITextNode
 {
     public ContinuousTextFrame(string name, INode parent, LocalTransform  wantedTransform, Func<float, float> easeF, 
         string text, Color color, SpriteFont font, float opacity) : base(name, parent, wantedTransform, easeF)
@@ -43,6 +43,7 @@ public class ContinuousTextFrame: ContinuousNodeBase
     protected override void OnUpdate(GameTime gameTime)
     {
         OpacityTween.Update(gameTime);
+        ColorTween.Update(gameTime);
         base.OnUpdate(gameTime);
     }
 

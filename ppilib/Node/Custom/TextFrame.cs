@@ -18,14 +18,14 @@ public class TextFrame(
     LocalTransform wantedTransform,
     SpriteFont font,
     Color color)
-    : TransformNodeBase(name, parent, wantedTransform), ILerpableNode
+    : TransformNodeBase(name, parent, wantedTransform), ILerpableNode, ITextNode
 {
     public Lerper Lerper { get; } = new();
     public Easing Easing { get; set; }
     public LerpMode EasingMode { get; set; }
     public SpriteFont Font { get; set; } = font;
     public string Text { get; set; } = text;
-    public Color Color { get; } = color;
+    public Color Color { get; set; } = color;
     public float Opacity { get; set; } = 1f;
     
     public void LerpAttribute<T>(Func<T> get, Action<T> set, Func<T, T, float, T> interpolate, T to, double time)
