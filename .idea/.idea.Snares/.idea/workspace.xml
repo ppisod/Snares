@@ -8,7 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Snares/Game/Screens/ScreenState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ppilib/Node/Custom/ContinuousTextFrame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib/ppilib.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/ppilib.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +55,7 @@
     <setting file="file://$PROJECT_DIR$/Snares/Game/Beatmaps/ez.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Components/Track.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Rhythm/Metronome.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/ScreenState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/s/RiderProjects/Snares/docs/DummyBeatmap.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/.config/dotnet-tools.json" root0="FORCE_HIGHLIGHTING" />
@@ -64,9 +69,9 @@
     <setting file="file://$PROJECT_DIR$/ppilib/Interfaces/INode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Interfaces/ITransformNode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Base/NodeBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib/Node/Custom/ContinuousTextFrame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/s/RiderProjects/Snares/ppilib/Node/Custom/Frame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Custom/Frame.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ppilib/Node/Custom/LerpableFrame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Custom/TextFrame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Input/ButtonRegion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Transformable/LerpableNodeBase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -77,7 +82,7 @@
     <setting file="file://$PROJECT_DIR$/ppilib/Types/Enum/ReparentMode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Types/Struct/LocalTransform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Types/Struct/NodeId.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousLerper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousNode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousTween.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Ease/Definitions/Easing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Ease/Definitions/EasingTypes.cs" root0="FORCE_HIGHLIGHTING" />
@@ -198,7 +203,7 @@
       <workItem from="1761138659629" duration="1698000" />
       <workItem from="1761182303382" duration="1631000" />
       <workItem from="1761183981981" duration="31057000" />
-      <workItem from="1761287409299" duration="54572000" />
+      <workItem from="1761287409299" duration="61422000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />
