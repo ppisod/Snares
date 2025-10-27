@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using ppilib.Interfaces;
 using ppilib.Types.Struct;
 using ppilib.Utility.MovingThings;
+using ppilib.Utility.MovingThings.Interfaces;
 
 namespace ppilib.Node.Transformable;
 
@@ -10,14 +11,14 @@ namespace ppilib.Node.Transformable;
 /// Transform node that continuously eases its local transform properties toward target values.
 /// Useful for smooth following/approach behaviors rather than fixed-duration tweens.
 /// </summary>
-public class ContinuousNodeBase : TransformNodeBase
+public class ContinuousNodeBase : TransformNodeBase, IContinuousNode
 {
     /// <summary>Continuous tween controller for the local position.</summary>
-    public ContinuousTween<Vector2> Pos { get; }
+    public IContinuousTween<Vector2> Pos { get; }
     /// <summary>Continuous tween controller for the local scale.</summary>
-    public ContinuousTween<Vector2> Scale { get; }
+    public IContinuousTween<Vector2> Scale { get; }
     /// <summary>Continuous tween controller for the local rotation (radians).</summary>
-    public ContinuousTween<float> Rot { get; }
+    public IContinuousTween<float> Rot { get; }
 
     /// <summary>
     /// Creates a ContinuousNodeBase with provided ease function applied to approach progress.

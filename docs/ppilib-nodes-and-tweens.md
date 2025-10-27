@@ -5,8 +5,8 @@ This document provides a quick overview of the transform-related classes recentl
 - TransformNodeBase: Base node with Local and World transforms and lazy world recomputation with an event when world changes.
 - LerpableNodeBase: Adds simple time-based tweens (fixed duration) for Local.Pos, Local.Scale, Local.Rotation and an Opacity field.
 - ILerpableNode: Interface for lerp-enabled nodes.
-- ContinuousNode: Continuously approaches target values for Local transform components using a rate and easing function.
-- ContinuousTween<T>: Generic continuous approach helper used by ContinuousNode and others.
+- IContinuousNode + ContinuousNodeBase: Interface and base class for nodes that continuously approach target values for Local transform components using a rate and easing function.
+- IContinuousTween<T> + ContinuousTween<T>: Interface and implementation for generic continuous approach helpers used by ContinuousNodeBase and others.
 - Frame: Simple rectangular frame that can draw a debug texture scaled to world size.
 - ContinuousTextFrame: Text node whose position/scale/rotation and opacity smoothly approach targets.
 
