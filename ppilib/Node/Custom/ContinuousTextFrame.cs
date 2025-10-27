@@ -2,16 +2,17 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ppilib.Interfaces;
+using ppilib.Node.Transformable;
 using ppilib.Types.Struct;
 using ppilib.Utility.MovingThings;
 
 namespace ppilib.Node.Custom;
 
 /// <summary>
-/// Text rendering node built on ContinuousNode so that position/scale/rotation and opacity can smoothly approach targets.
+/// Text rendering node built on ContinuousNodeBase so that position/scale/rotation and opacity can smoothly approach targets.
 /// World.Scale.Y controls the rendered text height; the width is derived from the font's aspect ratio.
 /// </summary>
-public class ContinuousTextFrame: ContinuousNode
+public class ContinuousTextFrame: ContinuousNodeBase
 {
     public ContinuousTextFrame(string name, INode parent, LocalTransform  wantedTransform, Func<float, float> easeF, 
         string text, Color color, SpriteFont font, float opacity) : base(name, parent, wantedTransform, easeF)
@@ -22,6 +23,7 @@ public class ContinuousTextFrame: ContinuousNode
         Font = font;
         // smooth opacity like other fields
         OpacityTween = new ContinuousTween<float>(() => Opacity, v => Opacity = v, (a, b, t) => a + (b - a) * t, easeF, 5f);
+        ColorTween = new ContinuousTween<Color>(() => Color, v => Color = v, Color.Lerp, easeF, 5f);
     }
 
     /// <summary>Displayed text.</summary>
@@ -33,6 +35,8 @@ public class ContinuousTextFrame: ContinuousNode
     public float Opacity { get; set; }
     /// <summary>Controller for smoothly approaching Opacity.</summary>
     public readonly ContinuousTween<float> OpacityTween;
+    /// <summary>Controller for smoothly approaching Color.</summary>
+    public readonly ContinuousTween<Color> ColorTween;
     /// <summary>Font used for rendering.</summary>
     public SpriteFont Font { get; set; }
 

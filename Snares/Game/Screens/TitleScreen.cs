@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using ppilib.Input;
 using ppilib.Interfaces;
 using ppilib.Node.Custom;
+using ppilib.Node.Transformable;
 using ppilib.Types.Struct;
 using ppilib.Utility.MovingThings;
 using ppilib.Utility.MovingThings.Ease.Definitions;
@@ -73,7 +74,7 @@ public class TitleScreen
         {
             switch (node)
             {
-                case ContinuousNode contNode:
+                case ContinuousNodeBase contNode:
                     contNode.Update(gT);
                     break;
                 case Frame frame:

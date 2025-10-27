@@ -1,6 +1,7 @@
 using System;
 using Microsoft.Xna.Framework;
 using ppilib.Utility.MovingThings.Ease.Definitions;
+using ppilib.Utility.MovingThings.Interfaces;
 
 namespace ppilib.Utility.MovingThings;
 
@@ -8,7 +9,7 @@ namespace ppilib.Utility.MovingThings;
 /// Continuously approaches a target value each frame at a given rate using an easing curve.
 /// Unlike fixed-duration tweens, this never "completes"; it re-bases when the target changes.
 /// </summary>
-public class ContinuousTween<T>
+public class ContinuousTween<T> : IContinuousTween<T>
 {
     private readonly Func<T> _get;
     private readonly Action<T> _set;

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using ppilib.Utility.MovingThings.Ease;
 using ppilib.Utility.MovingThings.Ease.Definitions;
+using ppilib.Utility.MovingThings.Enums;
+using ppilib.Utility.MovingThings.Interfaces;
 
 namespace ppilib.Utility.MovingThings;
 
 /// <summary>
-/// Small, generic tween/lerp manager that can animate multiple attributes (Vector2, float, etc.)
+/// Small, generic tween/lerp manager that can animate multiple attributes (Vector2, float, Color, etc.)
 /// using the existing Easing types. Designed to be minimal and non-invasive.
 /// </summary>
 public class Lerper
@@ -38,6 +40,14 @@ public class Lerper
     {
         AddTween(get, set, end, durationSeconds, easing, mode, (a, b, t) => a + (b - a) * t);
         // also Don't be scared by that cuz it's just a simple lerp.
+    }
+
+    /// <summary>
+    /// Convenience for Color values using Color.Lerp.
+    /// </summary>
+    public void LerpColor(Func<Color> get, Action<Color> set, Color end, double durationSeconds, Easing easing, LerpMode mode)
+    {
+        AddTween(get, set, end, durationSeconds, easing, mode, Color.Lerp);
     }
 
     /// <summary>

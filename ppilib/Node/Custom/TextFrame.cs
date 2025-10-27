@@ -6,6 +6,7 @@ using ppilib.Node.Transformable;
 using ppilib.Types.Struct;
 using ppilib.Utility.MovingThings;
 using ppilib.Utility.MovingThings.Ease.Definitions;
+using ppilib.Utility.MovingThings.Enums;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace ppilib.Node.Custom;

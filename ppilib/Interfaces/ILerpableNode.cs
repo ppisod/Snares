@@ -2,6 +2,7 @@ using System;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 using ppilib.Utility.MovingThings;
 using ppilib.Utility.MovingThings.Ease.Definitions;
+using ppilib.Utility.MovingThings.Enums;
 
 namespace ppilib.Interfaces;
 

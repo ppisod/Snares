@@ -9,12 +9,6 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-      <Compile Update="Utility\MovingThings\Tween.cs">
-        <DependentUpon>ITween.cs</DependentUpon>
-      </Compile>
-      <Compile Update="Utility\MovingThings\LerpMode.cs">
-        <DependentUpon>Lerper.cs</DependentUpon>
-      </Compile>
       <Compile Update="Node\Custom\ContinuousTextFrame.cs">
         <DependentUpon>TextFrame.cs</DependentUpon>
       </Compile>

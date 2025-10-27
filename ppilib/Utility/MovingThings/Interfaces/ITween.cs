@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace ppilib.Utility.MovingThings;
+namespace ppilib.Utility.MovingThings.Interfaces;
 
 public interface ITween
 {

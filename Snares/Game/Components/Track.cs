@@ -7,6 +7,7 @@ using ppilib.Node.Custom;
 using ppilib.Types.Struct;
 using ppilib.Utility.MovingThings;
 using ppilib.Utility.MovingThings.Ease.Definitions;
+using ppilib.Utility.MovingThings.Enums;
 using Snares.Game.Rhythm;
 
 namespace Snares.Game.Components;

@@ -1,6 +1,8 @@
 using System;
 using Microsoft.Xna.Framework;
 using ppilib.Utility.MovingThings.Ease.Definitions;
+using ppilib.Utility.MovingThings.Enums;
+using ppilib.Utility.MovingThings.Interfaces;
 
 namespace ppilib.Utility.MovingThings;
 
