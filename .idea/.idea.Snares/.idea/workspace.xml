@@ -9,8 +9,10 @@
   <component name="ChangeListManager">
     <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib/Interfaces/ILerpableNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Interfaces/ILerpableNode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ppilib/Node/Custom/ContinuousTextFrame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Node/Custom/ContinuousTextFrame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib/Node/Custom/Frame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Node/Custom/Frame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib/Node/Transformable/LerpableNodeBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Node/Transformable/LerpableNodeBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ppilib/Node/Transformable/TransformNodeBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Node/Transformable/TransformNodeBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousNode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousTween.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousTween.cs" afterDir="false" />
@@ -97,9 +99,6 @@
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/Shapes/ShapeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/Textures/TextureCache.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/Vectors.cs" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="LLMProjectSettings">
-    <option name="turned_on" value="false" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -204,7 +203,7 @@
       <workItem from="1761138659629" duration="1698000" />
       <workItem from="1761182303382" duration="1631000" />
       <workItem from="1761183981981" duration="31057000" />
-      <workItem from="1761287409299" duration="63396000" />
+      <workItem from="1761287409299" duration="64743000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />

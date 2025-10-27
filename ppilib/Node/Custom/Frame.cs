@@ -8,10 +8,15 @@ using Color = Microsoft.Xna.Framework.Color;
 
 namespace ppilib.Node.Custom;
 
+/// <summary>
+/// Simple rectangular frame node. Can optionally draw a debug texture scaled to the world size.
+/// Inherit and override OnDraw for custom visuals; the built-in debug drawing is opt-in.
+/// </summary>
 public class Frame
                         (string name, INode parent, LocalTransform wantedTransform, Texture2D debugTexture)
     : LerpableNodeBase(name, parent, wantedTransform)
 {
+    /// <summary>When true, draws the provided debug texture scaled to the frame's world size.</summary>
     public bool DrawDebugShape { get; set; } = false;
     private readonly Texture2D _debugTexture = debugTexture;
     protected override void OnDraw(SpriteBatch spriteBatch)
@@ -20,7 +25,7 @@ public class Frame
         if (!DrawDebugShape) return;
         // get scale multiplier cuz we want to draw the debug shape in the same scale as the frame
         var texSize = new Vector2(_debugTexture.Width, _debugTexture.Height);
-        var scale = World.Scale.Result / texSize;
+        var scale = texSize.X > 0 && texSize.Y > 0 ? World.Scale.Result / texSize : Vector2.One;
         spriteBatch.Draw(
             _debugTexture, 
             World.Position.Result, 
@@ -28,7 +33,7 @@ public class Frame
             Color.White, 
             0f, 
             Vector2.Zero, 
-            World.Scale.Result, 
+            scale, 
             SpriteEffects.None, 
             0f
         );
