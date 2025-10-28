@@ -125,7 +125,7 @@ public class TitleScreen
     public void LoadSequence (GameTime _)
     {
         var allFadedIn = true;
-        const float epsilon = 0.01f;
+        const float epsilon = 0.001f;
         foreach (var node in Nodes)
         {
             if (node is not ContinuousTextFrame cNode) continue;

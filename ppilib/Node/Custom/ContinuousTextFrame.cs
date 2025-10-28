@@ -23,8 +23,8 @@ public class ContinuousTextFrame: ContinuousNodeBase, ITextNode
         Opacity = config.Opacity ?? throw new NodeConfigMissing(nameof(Opacity), nameof(ContinuousTextFrame));
         Font = config.Font ?? throw new NodeConfigMissing(nameof(Font), nameof(ContinuousTextFrame));
         
-        // smooth opacity like other fields
-        OpacityTween = new ContinuousTween<float>(() => Opacity, v => Opacity = v, (a, b, t) => a + (b - a) * t, config.LerpMethod, 0.5f);
+        // smooth opacity nd color like other fields
+        OpacityTween = new ContinuousTween<float>(() => Opacity, v => Opacity = v, (a, b, t) => a + (b - a) * t, config.LerpMethod, 0.2f);
         ColorTween = new ContinuousTween<Color>(() => Color, v => Color = v, Color.Lerp, config.LerpMethod, 5f);
     }
 

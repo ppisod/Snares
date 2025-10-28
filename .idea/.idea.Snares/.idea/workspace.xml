@@ -7,14 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snares/Game1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snares/Game1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ppilib/Node/Custom/ContinuousTextFrame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Node/Custom/ContinuousTextFrame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ppilib/Utility/Configs/NodeConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Utility/Configs/NodeConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousTween.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Utility/MovingThings/ContinuousTween.cs" afterDir="false" />
-    </list>
+    <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,13 +48,11 @@
     <setting file="file://$PROJECT_DIR$/BeatmapGen/Beatmaps/ez.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BeatmapGen/Beatmaps/hard.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Beatmap/BeatMap.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/s/RiderProjects/Snares/Snares/Game/Beatmap/Beatmap.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Beatmaps/ez.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Components/Track.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Rhythm/Metronome.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/ScreenState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/s/RiderProjects/Snares/docs/DummyBeatmap.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/.config/dotnet-tools.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Core.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Erroring/NodeConfigMissing.cs" root0="FORCE_HIGHLIGHTING" />
@@ -76,7 +67,6 @@
     <setting file="file://$PROJECT_DIR$/ppilib/Interfaces/ITransformNode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Base/NodeBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Custom/ContinuousTextFrame.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/s/RiderProjects/Snares/ppilib/Node/Custom/Frame.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Custom/Frame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Custom/TextFrame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Node/Input/ButtonRegion.cs" root0="FORCE_HIGHLIGHTING" />
@@ -94,6 +84,7 @@
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Ease/Definitions/Easing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Ease/Definitions/EasingTypes.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Ease/Types/Cubic.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Ease/Types/Expo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Ease/Types/Linear.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Ease/Types/Quad.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Enums/LerpMode.cs" root0="FORCE_HIGHLIGHTING" />
@@ -209,7 +200,7 @@
       <workItem from="1761182303382" duration="1631000" />
       <workItem from="1761183981981" duration="31057000" />
       <workItem from="1761287409299" duration="77941000" />
-      <workItem from="1761644067411" duration="1052000" />
+      <workItem from="1761644067411" duration="1493000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />
