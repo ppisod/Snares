@@ -8,7 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snares/Game1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snares/Game1.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +206,7 @@
       <workItem from="1761138659629" duration="1698000" />
       <workItem from="1761182303382" duration="1631000" />
       <workItem from="1761183981981" duration="31057000" />
-      <workItem from="1761287409299" duration="75719000" />
+      <workItem from="1761287409299" duration="76127000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />

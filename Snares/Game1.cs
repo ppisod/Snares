@@ -10,6 +10,7 @@ using ppilib.Node.Custom;
 using ppilib.Node.Transformable;
 using ppilib.Types.Class;
 using ppilib.Types.Struct;
+using ppilib.Utility.Configs;
 using ppilib.Utility.MovingThings;
 using ppilib.Utility.MovingThings.Ease.Definitions;
 using ppilib.Utility.Shapes;
@@ -44,7 +45,10 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         Helvetica = Content.Load<SpriteFont>("Fonts/HelvNeue");
 
         // Monkey patch for issues with scale. I don't know the issue here.
-        var root = new TransformNodeBase("Snares", null, LocalTransform.Root);
+        var rootConfig = new NodeConfig(null, GraphicsDevice, true, false, false, false, false);
+        rootConfig.SetName("Snares");
+        
+        var root = new TransformNodeBase(rootConfig);
         var windowSize = new Vector2(GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
         root.SetWorldAsRoot(
             new Transform(
@@ -56,12 +60,12 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
 
         NodeBase.W($"window:{windowSize}");
         
-        var mainView = new NodeBase("MainView", root);
+        var mainViewConfig = new NodeConfig(null, GraphicsDevice, false, false, false, false, false);
+        mainViewConfig.SetName("MainView").SetParent(root);
+        
+        var mainView = new NodeBase(mainViewConfig);
         root.AddChild(mainView);
-
-        var text = new TextFrame("BeatText", "snares", mainView,
-            new LocalTransform(new Vector2(0.01f, 0.01f), new Vector2(1, 0.05f), 0f), Helvetica, Color.Black);
-        mainView.AddChild(text);
+        
         
         RootNode = root;
         TextureCache = textureCache;
