@@ -1,12 +1,11 @@
-using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ppilib.Interfaces;
 using ppilib.Node.Custom;
-using ppilib.Types.Struct;
-using ppilib.Utility.MovingThings;
+using ppilib.Utility.Configs;
 using ppilib.Utility.MovingThings.Ease.Definitions;
+using ppilib.Utility.MovingThings.Ease.Types;
 using ppilib.Utility.MovingThings.Enums;
 using Snares.Game.Rhythm;
 
@@ -14,6 +13,8 @@ namespace Snares.Game.Components;
 
 public class Track
 {
+    private readonly GraphicsDevice _gD;
+    
     private bool _direction;
     private readonly List<Frame> _tickers;
     private int _currentTicker; // 0 inclusive. for example: 0, 1, 2, 3, / 4, 3, 2, 1 for numerator 4.
@@ -35,7 +36,7 @@ public class Track
     private bool _justBeated;
     
     
-    public Track (int id, 
+    public Track (int id, GraphicsDevice gDev,
         INode parent,
         Metronome metronome, 
         Texture2D trackTexture, 
@@ -43,6 +44,7 @@ public class Track
         Texture2D tickerTexture,
         Easing easing, LerpMode mode)
     {
+        _gD = gDev;
         _easing = easing;
         _mode = mode;
         _currentTicker = 0;
@@ -54,25 +56,31 @@ public class Track
         _tickTexture = tickerTexture;
         _tickers = [];
         _isPlaying = true;
-        _track = new Frame(
-            $"Track{id}",
-            parent,
-            new LocalTransform(new Vector2(0.1f, 0.25f), new Vector2(0.8f, 0.5f), 0f),
-            trackTexture
-        )
+        
+        var nodeConfig = new NodeConfig(null, gDev, true, true, false, true, false);
+        nodeConfig
+            .SetName($"Track{id}")
+            .SetParent(parent)
+            .SetPos(new Vector2(0.1f, 0.25f))
+            .SetScale(new Vector2(0.8f, 0.5f))
+            .SetRotate(0f)
+            .SetDebugTexture(trackTexture);
+        
+        _track = new Frame(nodeConfig)
         {
             DrawDebugShape = true
         };
         parent.AddChild(_track);
-        _track.Easing = EasingTypes.Quad;
-        _track.EasingMode = LerpMode.Out;
+        _track.EasingFunction = new Quad().EaseOut;
 
-        _slider = new Frame(
-            $"Slider{id}",
-            _track,
-            new LocalTransform(new Vector2(-0.0015f, -0.25f), new Vector2(0.01f, 1.5f), 0f),
-            sliderTexture
-        )
+        nodeConfig
+            .SetName($"Slider{id}")
+            .SetParent(_track)
+            .SetPos(new Vector2(-0.0015f, -0.25f))
+            .SetScale(new Vector2(0.01f, 1.5f))
+            .SetDebugTexture(sliderTexture);
+        
+        _slider = new Frame(nodeConfig)
         {
             DrawDebugShape = true
         };
@@ -126,17 +134,15 @@ public class Track
         var beats = Metronome.Numerator; // so, we create sections. Draw section lines.
         // get the length of each section.
         var lenOfSection = 1f / beats;
+        var nodeConfig = new NodeConfig(null, _gD, true, true, false, true, false);
+        nodeConfig
+            .SetParent(_track)
+            .SetDebugTexture(_tickTexture)
+            .SetScale(new Vector2(0.01f, 1f));
         for (var i = 0; i <= beats; i++)
         {
-            var f = new Frame(
-                $"TickerLine{_identifier}_{i}",
-                _track,
-                new LocalTransform(
-                    new Vector2((i * lenOfSection) - 0.0015f, 0f),
-                    new Vector2(0.01f, 1f), 0f
-                ),
-                _tickTexture
-            )
+            nodeConfig.SetName($"TickerLine{_identifier}_{i}").SetPos(new Vector2((i * lenOfSection) - 0.0015f, 0f));
+            var f = new Frame(nodeConfig)
             {
                 DrawDebugShape = true
             };
@@ -189,13 +195,11 @@ public class Track
         }
         _isPlaying = v;
         // tween transparency
-        _slider.Easing = EasingTypes.Quad;
-        _slider.EasingMode = LerpMode.Out;
+        _slider.EasingFunction = EasingTypes.Quad.EaseOut;
         if (!v)
         {
             _slider.LerpOpacity(0f, 0.5f);
-            _slider.Easing = EasingTypes.Linear;
-            _slider.EasingMode = LerpMode.InOut;
+            _slider.EasingFunction = EasingTypes.Linear.EaseInOut;
             _track.LerpOpacity(0f, 0.5f);
             foreach (var ticker in _tickers)
             {
@@ -206,8 +210,7 @@ public class Track
         {
             _track.LerpOpacity(1f, 0.1f);
             _slider.LerpOpacity(1f, 0.1f);
-            _slider.Easing = EasingTypes.Linear;
-            _slider.EasingMode = LerpMode.InOut;
+            _slider.EasingFunction = EasingTypes.Linear.EaseInOut;
             UpdateTickers();
             ResyncTicker();
         }

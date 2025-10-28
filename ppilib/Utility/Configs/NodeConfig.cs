@@ -194,5 +194,12 @@ public class NodeConfig
         LerpRate = f;
         return this;
     }
-    
+
+    public NodeConfig SetDebugTexture(Texture2D texture)
+    {
+        if (!_isDisplaySupported) throw new InvalidOperationException("not display");
+        DebugTexture = texture;
+        return this;
+
+    }
 }
