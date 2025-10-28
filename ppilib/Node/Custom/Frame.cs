@@ -16,7 +16,7 @@ namespace ppilib.Node.Custom;
 /// </summary>
 public class Frame
                         (NodeConfig c)
-    : LerpableNodeBase(c.Name, c.Parent, c.T ?? throw new NodeConfigMissing(nameof(LocalTransform), nameof(Frame)))
+    : LerpableNodeBase(c)
 {
     /// <summary>When true, draws the provided debug texture scaled to the frame's world size.</summary>
     public bool DrawDebugShape { get; set; } = false;

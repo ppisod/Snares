@@ -16,7 +16,7 @@ namespace ppilib.Node.Custom;
 /// </summary>
 public class ContinuousTextFrame: ContinuousNodeBase, ITextNode
 {
-    public ContinuousTextFrame(NodeConfig config) : base(config.Name, config.Parent, config.T, config.LerpMethod)
+    public ContinuousTextFrame(NodeConfig config) : base(config)
     {
         Text = config.Text ?? throw new NodeConfigMissing(nameof(Text), nameof(ContinuousTextFrame));
         Color = config.Color ?? throw new NodeConfigMissing(nameof(Color), nameof(ContinuousTextFrame));

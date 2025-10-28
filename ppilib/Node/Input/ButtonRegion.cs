@@ -6,17 +6,12 @@ using ppilib.Input.Interfaces;
 using ppilib.Interfaces;
 using ppilib.Node.Transformable;
 using ppilib.Types.Struct;
+using ppilib.Utility.Configs;
 
 namespace ppilib.Node.Custom;
 
-public class ButtonRegion : TransformNodeBase, IInputRegion
+public class ButtonRegion(NodeConfig n) : TransformNodeBase(n), IInputRegion
 {
-    public ButtonRegion(string name, INode parent, LocalTransform region) : base(name,
-        parent, region)
-    {
-        
-    }
-
     public bool HitTest(Point point)
     {
         var pos = World.Position.Result;

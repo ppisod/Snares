@@ -20,12 +20,7 @@ public interface ILerpableNode : ITransformNode
     /// <summary>
     /// The default easing function used for newly started tweens when an overload without explicit easing is used.
     /// </summary>
-    Easing Easing { get; set; }
-    
-    /// <summary>
-    /// The default easing mode (In, Out, InOut) used for overloads that don't pass a mode explicitly.
-    /// </summary>
-    LerpMode EasingMode { get; set; }
+    Func<float, float> EasingFunction { get; set; }
     
     /// <summary>
     /// Starts a tween for an arbitrary attribute.

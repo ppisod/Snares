@@ -20,34 +20,34 @@ public class Lerper
     /// <summary>
     /// Adds a generic tween.
     /// </summary>
-    public void AddTween<T>(Func<T> get, Action<T> set, T end, double durationSeconds, Easing easing, LerpMode mode, Func<T, T, float, T> interpolate)
+    public void AddTween<T>(Func<T> get, Action<T> set, T end, double durationSeconds, Func<float, float> easing, Func<T, T, float, T> interpolate)
     {
-        _tweens.Add(new Tween<T>(get, set, end, durationSeconds, easing, mode, interpolate));
+        _tweens.Add(new Tween<T>(get, set, end, durationSeconds, easing, interpolate));
     }
 
     /// <summary>
     /// Convenience for Vector2 using Vector2.Lerp.
     /// </summary>
-    public void LerpVector2(Func<Vector2> get, Action<Vector2> set, Vector2 end, double durationSeconds, Easing easing, LerpMode mode)
+    public void LerpVector2(Func<Vector2> get, Action<Vector2> set, Vector2 end, double durationSeconds, Func<float, float> easing)
     {
-        AddTween(get, set, end, durationSeconds, easing, mode, Vector2.Lerp);
+        AddTween(get, set, end, durationSeconds, easing, Vector2.Lerp);
     }
 
     /// <summary>
     /// Convenience for float values.
     /// </summary>
-    public void LerpFloat(Func<float> get, Action<float> set, float end, double durationSeconds, Easing easing, LerpMode mode)
+    public void LerpFloat(Func<float> get, Action<float> set, float end, double durationSeconds, Func<float, float> easing)
     {
-        AddTween(get, set, end, durationSeconds, easing, mode, (a, b, t) => a + (b - a) * t);
+        AddTween(get, set, end, durationSeconds, easing, (a, b, t) => a + (b - a) * t);
         // also Don't be scared by that cuz it's just a simple lerp.
     }
 
     /// <summary>
     /// Convenience for Color values using Color.Lerp.
     /// </summary>
-    public void LerpColor(Func<Color> get, Action<Color> set, Color end, double durationSeconds, Easing easing, LerpMode mode)
+    public void LerpColor(Func<Color> get, Action<Color> set, Color end, double durationSeconds, Func<float, float> easing)
     {
-        AddTween(get, set, end, durationSeconds, easing, mode, Color.Lerp);
+        AddTween(get, set, end, durationSeconds, easing, Color.Lerp);
     }
 
     /// <summary>

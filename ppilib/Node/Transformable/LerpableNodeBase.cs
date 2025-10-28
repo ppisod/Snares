@@ -1,7 +1,9 @@
 using System;
 using Microsoft.Xna.Framework;
+using ppilib.Erroring;
 using ppilib.Interfaces;
 using ppilib.Types.Struct;
+using ppilib.Utility.Configs;
 using ppilib.Utility.MovingThings;
 using ppilib.Utility.MovingThings.Ease.Definitions;
 using ppilib.Utility.MovingThings.Ease.Types;
@@ -14,17 +16,14 @@ namespace ppilib.Node.Transformable;
 /// Base class for transformable nodes that exposes simple tween/lerp helpers.
 /// Provides default easing settings and convenience methods to animate common attributes.
 /// </summary>
-public class LerpableNodeBase(string name, INode parent, LocalTransform wantedTransform)
-    : TransformNodeBase(name, parent, wantedTransform), ILerpableNode
+public class LerpableNodeBase(NodeConfig n)
+    : TransformNodeBase(n), ILerpableNode
 {
     /// <inheritdoc />
     public Lerper Lerper { get; } = new();
 
     /// <inheritdoc />
-    public Easing Easing { get; set; } = new Linear();
-
-    /// <inheritdoc />
-    public LerpMode EasingMode { get; set; } = LerpMode.InOut;
+    public Func<float, float> EasingFunction { get; set; }
     
     /// <summary>
     /// Optional opacity value that can also be animated via <see cref="LerpOpacity"/>. Consumers may use this in their draw logic.
@@ -34,7 +33,7 @@ public class LerpableNodeBase(string name, INode parent, LocalTransform wantedTr
     /// <inheritdoc />
     public void LerpAttribute<T>(Func<T> get, Action<T> set, Func<T, T, float, T> interpolate, T to, double time)
     {
-        Lerper.AddTween(get, set, to, time, Easing, EasingMode, interpolate);
+        Lerper.AddTween(get, set, to, time, EasingFunction, interpolate);
     }
 
     /// <summary>
@@ -42,7 +41,7 @@ public class LerpableNodeBase(string name, INode parent, LocalTransform wantedTr
     /// </summary>
     public void LerpLocalPos(Vector2 to, double time)
     {
-        Lerper.LerpVector2(() => Local.Pos, v => Local.Pos = v, to, time, Easing, EasingMode);
+        Lerper.LerpVector2(() => Local.Pos, v => Local.Pos = v, to, time, EasingFunction);
     }
     
     /// <summary>
@@ -50,7 +49,7 @@ public class LerpableNodeBase(string name, INode parent, LocalTransform wantedTr
     /// </summary>
     public void LerpLocalScale(Vector2 to, double time)
     {
-        Lerper.LerpVector2(() => Local.Scale, v => Local.Scale = v, to, time, Easing, EasingMode);
+        Lerper.LerpVector2(() => Local.Scale, v => Local.Scale = v, to, time, EasingFunction);
     }
 
     /// <summary>
@@ -58,7 +57,7 @@ public class LerpableNodeBase(string name, INode parent, LocalTransform wantedTr
     /// </summary>
     public void LerpLocalRotation(float to, double time)
     {
-        Lerper.LerpFloat(() => Local.Rotation, v => Local.Rotation = v, to, time, Easing, EasingMode);
+        Lerper.LerpFloat(() => Local.Rotation, v => Local.Rotation = v, to, time, EasingFunction);
     }
 
     /// <summary>
@@ -66,7 +65,7 @@ public class LerpableNodeBase(string name, INode parent, LocalTransform wantedTr
     /// </summary>
     public void LerpOpacity(float to, double time)
     {
-        Lerper.LerpFloat(() => Opacity, f => Opacity = f, to, time, Easing, EasingMode);
+        Lerper.LerpFloat(() => Opacity, f => Opacity = f, to, time, EasingFunction);
     }
 
     /// <summary>

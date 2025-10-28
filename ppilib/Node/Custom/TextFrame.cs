@@ -14,11 +14,10 @@ using Vector2 = Microsoft.Xna.Framework.Vector2;
 namespace ppilib.Node.Custom;
 
 public class TextFrame(NodeConfig c)
-    : TransformNodeBase(c.Name, c.Parent, c.T ?? throw new NodeConfigMissing(nameof(LocalTransform), nameof(TextFrame))), ILerpableNode, ITextNode
+    : TransformNodeBase(c), ILerpableNode, ITextNode
 {
     public Lerper Lerper { get; } = new();
-    public Easing Easing { get; set; }
-    public LerpMode EasingMode { get; set; }
+    public Func<float, float> EasingFunction { get; set; }
     public SpriteFont Font { get; set; } = c.Font ?? throw new NodeConfigMissing(nameof(Font), nameof(TextFrame));
     public string Text { get; set; } = c.Text ?? throw new NodeConfigMissing(nameof(Text), nameof(TextFrame));
     public Color Color { get; set; } = c.Color ?? throw new NodeConfigMissing(nameof(Color), nameof(TextFrame));
@@ -26,27 +25,27 @@ public class TextFrame(NodeConfig c)
     
     public void LerpAttribute<T>(Func<T> get, Action<T> set, Func<T, T, float, T> interpolate, T to, double time)
     {
-        Lerper.AddTween(get, set, to, time, Easing, EasingMode, interpolate);
+        Lerper.AddTween(get, set, to, time, EasingFunction, interpolate);
     }
 
     public void LerpLocalPos(Vector2 to, double time)
     {
-        Lerper.LerpVector2(() => Local.Pos, v => SetLocalTransform(new LocalTransform(v, Local.Scale, Local.Rotation)), to, time, Easing, EasingMode);
+        Lerper.LerpVector2(() => Local.Pos, v => SetLocalTransform(new LocalTransform(v, Local.Scale, Local.Rotation)), to, time, EasingFunction);
     }
 
     public void LerpLocalScale(Vector2 to, double time)
     {
-        Lerper.LerpVector2(() => Local.Scale, v => SetLocalTransform(new LocalTransform(Local.Pos, v, Local.Rotation)), to, time, Easing, EasingMode);
+        Lerper.LerpVector2(() => Local.Scale, v => SetLocalTransform(new LocalTransform(Local.Pos, v, Local.Rotation)), to, time, EasingFunction);
     }
 
     public void LerpLocalRotation(float to, double time)
     {
-        Lerper.LerpFloat(() => Local.Rotation, v => SetLocalTransform(new LocalTransform(Local.Pos, Local.Scale, v)), to, time, Easing, EasingMode);
+        Lerper.LerpFloat(() => Local.Rotation, v => SetLocalTransform(new LocalTransform(Local.Pos, Local.Scale, v)), to, time, EasingFunction);
     }
 
     public void LerpOpacity(float to, double time)
     {
-        Lerper.LerpFloat(() => Opacity, v => Opacity = v, to, time, Easing, EasingMode);
+        Lerper.LerpFloat(() => Opacity, v => Opacity = v, to, time, EasingFunction);
     }
 
     protected override void OnDraw(SpriteBatch spriteBatch)

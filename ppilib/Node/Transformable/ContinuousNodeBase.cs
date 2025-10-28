@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using ppilib.Erroring;
 using ppilib.Interfaces;
 using ppilib.Types.Struct;
+using ppilib.Utility.Configs;
 using ppilib.Utility.MovingThings;
 using ppilib.Utility.MovingThings.Interfaces;
 
@@ -24,16 +26,13 @@ public class ContinuousNodeBase : TransformNodeBase, IContinuousNode
     /// <summary>
     /// Creates a ContinuousNodeBase with provided ease function applied to approach progress.
     /// </summary>
-    /// <param name="name">Node name.</param>
-    /// <param name="parent">Parent node.</param>
-    /// <param name="wantedTransform">Initial local transform.</param>
-    /// <param name="easeF">Easing function mapping progress [0..1] to [0..1].</param>
-    public ContinuousNodeBase (string name, INode parent, LocalTransform wantedTransform, Func<float, float> easeF) : base(name, parent, wantedTransform)
+    /// <param name="n">Node config.</param>
+    protected ContinuousNodeBase (NodeConfig n) : base(n)
     {
         // Default rates chosen empirically; you can expose them if needed.
-        Pos = new ContinuousTween<Vector2>(() => Local.Pos, v => Local.Pos = v, Vector2.Lerp, easeF, 5f);
-        Scale = new ContinuousTween<Vector2>(() => Local.Scale, v => Local.Scale = v, Vector2.Lerp, easeF, 5f);
-        Rot = new ContinuousTween<float>(() => Local.Rotation, v => Local.Rotation = v, (f, f1, t) => f + (f1 - f) * t, easeF, 6f);
+        Pos = new ContinuousTween<Vector2>(() => Local.Pos, v => Local.Pos = v, Vector2.Lerp, n.LerpMethod, 5f);
+        Scale = new ContinuousTween<Vector2>(() => Local.Scale, v => Local.Scale = v, Vector2.Lerp, n.LerpMethod, 5f);
+        Rot = new ContinuousTween<float>(() => Local.Rotation, v => Local.Rotation = v, (f, f1, t) => f + (f1 - f) * t, n.LerpMethod, 6f);
     }
 
     /// <inheritdoc />

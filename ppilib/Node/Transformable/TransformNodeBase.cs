@@ -1,11 +1,13 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ppilib.Erroring;
 using ppilib.Interfaces;
 using ppilib.Node.Base;
 using ppilib.Types;
 using ppilib.Types.Class;
 using ppilib.Types.Struct;
+using ppilib.Utility.Configs;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 namespace ppilib.Node.Transformable;
@@ -22,9 +24,9 @@ public class TransformNodeBase : NodeBase, ITransformNode
     /// <summary>
     /// Create a new transform node with an initial local transform.
     /// </summary>
-    public TransformNodeBase (string name, INode? parent, LocalTransform wantedTransform) : base(name, parent)
+    public TransformNodeBase (NodeConfig n) : base(n)
     {
-        Local = wantedTransform;
+        Local = n.T ?? throw new NodeConfigMissing(nameof(LocalTransform), nameof(TransformNodeBase));
         World = Transform.Identity;
     }
 

@@ -13,22 +13,20 @@ public class Tween<T> : ITween
     private readonly T _start;
     private readonly T _end;
     private readonly Func<T, T, float, T> _interp;
-    private readonly Easing _easing;
-    private readonly LerpMode _mode;
+    private readonly Func<float, float> _easingFunction;
     private readonly double _duration;
 
     private double _elapsed;
     public bool IsActive { get; private set; } = true;
 
-    public Tween(Func<T> get, Action<T> set, T end, double durationSeconds, Easing easing, LerpMode mode, Func<T, T, float, T> interpolate)
+    public Tween(Func<T> get, Action<T> set, T end, double durationSeconds, Func<float, float> easingFunction, Func<T, T, float, T> interpolate)
     {
         _get = get;
         _set = set;
         _start = get();
         _end = end;
         _duration = Math.Max(0.000001, durationSeconds);
-        _easing = easing;
-        _mode = mode;
+        _easingFunction = easingFunction;
         _interp = interpolate;
     }
 
@@ -39,13 +37,7 @@ public class Tween<T> : ITween
         _elapsed += gameTime.ElapsedGameTime.TotalSeconds;
         var t = (float)Math.Clamp(_elapsed / _duration, 0.0, 1.0);
 
-        float eased = _mode switch
-        {
-            LerpMode.In => _easing.EaseIn(t),
-            LerpMode.Out => _easing.EaseOut(t),
-            LerpMode.InOut => _easing.EaseInOut(t),
-            _ => t
-        };
+        float eased = _easingFunction(t);
 
         var value = _interp(_start, _end, eased);
         _set(value);
