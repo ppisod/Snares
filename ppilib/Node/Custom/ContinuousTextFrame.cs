@@ -1,9 +1,11 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ppilib.Erroring;
 using ppilib.Interfaces;
 using ppilib.Node.Transformable;
 using ppilib.Types.Struct;
+using ppilib.Utility.Configs;
 using ppilib.Utility.MovingThings;
 
 namespace ppilib.Node.Custom;
@@ -14,16 +16,16 @@ namespace ppilib.Node.Custom;
 /// </summary>
 public class ContinuousTextFrame: ContinuousNodeBase, ITextNode
 {
-    public ContinuousTextFrame(string name, INode parent, LocalTransform  wantedTransform, Func<float, float> easeF, 
-        string text, Color color, SpriteFont font, float opacity) : base(name, parent, wantedTransform, easeF)
+    public ContinuousTextFrame(NodeConfig config) : base(config.Name, config.Parent, config.T, config.LerpMethod)
     {
-        Text = text;
-        Color = color;
-        Opacity = opacity;
-        Font = font;
+        Text = config.Text ?? throw new NodeConfigMissing(nameof(Text), nameof(ContinuousTextFrame));
+        Color = config.Color ?? throw new NodeConfigMissing(nameof(Color), nameof(ContinuousTextFrame));
+        Opacity = config.Opacity ?? throw new NodeConfigMissing(nameof(Opacity), nameof(ContinuousTextFrame));
+        Font = config.Font ?? throw new NodeConfigMissing(nameof(Font), nameof(ContinuousTextFrame));
+        
         // smooth opacity like other fields
-        OpacityTween = new ContinuousTween<float>(() => Opacity, v => Opacity = v, (a, b, t) => a + (b - a) * t, easeF, 5f);
-        ColorTween = new ContinuousTween<Color>(() => Color, v => Color = v, Color.Lerp, easeF, 5f);
+        OpacityTween = new ContinuousTween<float>(() => Opacity, v => Opacity = v, (a, b, t) => a + (b - a) * t, config.LerpMethod, 5f);
+        ColorTween = new ContinuousTween<Color>(() => Color, v => Color = v, Color.Lerp, config.LerpMethod, 5f);
     }
 
     /// <summary>Displayed text.</summary>

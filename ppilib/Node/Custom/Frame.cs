@@ -1,9 +1,11 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ppilib.Erroring;
 using ppilib.Interfaces;
 using ppilib.Node.Transformable;
 using ppilib.Types.Struct;
+using ppilib.Utility.Configs;
 using Color = Microsoft.Xna.Framework.Color;
 
 namespace ppilib.Node.Custom;
@@ -13,12 +15,12 @@ namespace ppilib.Node.Custom;
 /// Inherit and override OnDraw for custom visuals; the built-in debug drawing is opt-in.
 /// </summary>
 public class Frame
-                        (string name, INode parent, LocalTransform wantedTransform, Texture2D debugTexture)
-    : LerpableNodeBase(name, parent, wantedTransform)
+                        (NodeConfig c)
+    : LerpableNodeBase(c.Name, c.Parent, c.T ?? throw new NodeConfigMissing(nameof(LocalTransform), nameof(Frame)))
 {
     /// <summary>When true, draws the provided debug texture scaled to the frame's world size.</summary>
     public bool DrawDebugShape { get; set; } = false;
-    private readonly Texture2D _debugTexture = debugTexture;
+    private readonly Texture2D _debugTexture = c.DebugTexture;
     protected override void OnDraw(SpriteBatch spriteBatch)
     {
         // draw the frame using World -> result

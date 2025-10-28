@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using ppilib.Interfaces;
 using ppilib.Types;
 using ppilib.Types.Struct;
+using ppilib.Utility.Configs;
 
 namespace ppilib.Node.Base;
 
@@ -18,14 +19,14 @@ public class NodeBase : INode, IDisposable
         Console.WriteLine(q);
     }
 
-    public NodeBase (string name, INode? parent)
+    public NodeBase (NodeConfig nodeConfig)
     {
-        Name = name;
+        Name = nodeConfig.Name;
         Id = new NodeId(Guid.CreateVersion7());
         
         _children = [];
-        Parent = parent;
-        if (parent == null)
+        Parent = nodeConfig.Parent;
+        if (Parent == null)
         {
             // this node is root, it doesn't have a parent, logic here accordingly.
         }

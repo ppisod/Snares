@@ -8,6 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ppilib/Erroring/NodeConfigMissing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib/Node/Base/NodeBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Node/Base/NodeBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib/Node/Custom/ContinuousTextFrame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Node/Custom/ContinuousTextFrame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib/Node/Custom/Frame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Node/Custom/Frame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib/Node/Custom/TextFrame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Node/Custom/TextFrame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ppilib/Utility/Configs/NodeConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Utility/Configs/NodeConfig.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,8 +48,11 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/76b26a7a511f48aeba3bce44a1ba437af82e00/9d/715b3014/Exception.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a69b121f85054691b2a8d28643003c23136600/08/1a47fbcb/Keys.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a69b121f85054691b2a8d28643003c23136600/98/17ad8de4/SpriteBatch.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/46c73e495c10cebaff7ff53b6924a65af27378c69184ba9582781e5c6848887b/InvalidOperationException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/eb883067908c5145e4a877dccdcb70822b4af05a67d69cd4bc64986a56f407/SystemException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BeatmapGen/Beatmaps/ez.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BeatmapGen/Beatmaps/hard.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Beatmap/BeatMap.cs" root0="FORCE_HIGHLIGHTING" />
@@ -56,6 +65,7 @@
     <setting file="mock:///Users/s/RiderProjects/Snares/docs/DummyBeatmap.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/.config/dotnet-tools.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Core.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib/Erroring/NodeConfigMissing.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Input/Definitions/MouseEventArgs.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Input/Dispatchers/InputDispatcher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Input/Interfaces/IInputRegion.cs" root0="FORCE_HIGHLIGHTING" />
@@ -202,7 +212,7 @@
       <workItem from="1761138659629" duration="1698000" />
       <workItem from="1761182303382" duration="1631000" />
       <workItem from="1761183981981" duration="31057000" />
-      <workItem from="1761287409299" duration="68121000" />
+      <workItem from="1761287409299" duration="72813000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />
