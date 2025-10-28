@@ -35,28 +35,32 @@ public class TitleScreen
         _mouse = mouse;
         _parent = parent;
         var nodeConfig = new NodeConfig(null, _g, true, true, true, true, true);
-        
-        var title = new ContinuousTextFrame("Title", parent,
-            new LocalTransform(new Vector2(0, 0), new Vector2(0.2f, 1), 0f), 
-            EasingTypes.Quad.EaseOut, 
-            "snares",
-            Color.Black, 
-            defaultFont, 0f
+        nodeConfig
+            .SetParent(parent)
+            .SetLerpMethod(EasingTypes.Quad.EaseOut)
+            .SetColor(Color.Black)
+            .SetFont(defaultFont);
+        var title = new ContinuousTextFrame(
+            nodeConfig
+                .SetPos(new Vector2(0, 0))
+                .SetScale(new Vector2(1, 0.2f))
+                .SetName("Title")
+                .SetText("snares")
+        ); // new LocalTransform(new Vector2(0, 0), new Vector2(0.2f, 1), 0f), "snares","Title"
+        var game = new ContinuousTextFrame(
+            nodeConfig
+                .SetPos(new Vector2(0, 0.2f))
+                .SetScale(new Vector2(1, 0.1f))
+                .SetName("Game")
+                .SetText("play")
+        ); // new LocalTransform(new Vector2(0, 0.2f), new Vector2(0.1f, 1), 0f), "play","Game"
+        var quit = new ContinuousTextFrame(
+            nodeConfig
+                .SetPos(new Vector2(0, 0.3f))
+                .SetName("Quit")
+                .SetText("quit")
         );
-        var game = new ContinuousTextFrame("Game", parent,
-            new LocalTransform(new Vector2(0, 0.2f), new Vector2(0.1f, 1), 0f),
-            EasingTypes.Quad.EaseOut,
-            "play",
-            Color.Black,
-            defaultFont, 0f
-        );
-        var quit = new ContinuousTextFrame("Quit", parent,
-            new LocalTransform(new Vector2(0, 0.3f), new Vector2(0.1f, 1), 0f),
-            EasingTypes.Quad.EaseOut,
-            "quit",
-            Color.Black,
-            defaultFont, 0f
-        );
+        // "Quit"
 
         State = ScreenState.Loading;
         
