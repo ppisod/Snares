@@ -8,6 +8,7 @@ using ppilib.Interfaces;
 using ppilib.Node.Custom;
 using ppilib.Node.Transformable;
 using ppilib.Types.Struct;
+using ppilib.Utility.Configs;
 using ppilib.Utility.MovingThings;
 using ppilib.Utility.MovingThings.Ease.Definitions;
 
@@ -18,6 +19,7 @@ public class TitleScreen
     public List<INode> Nodes { get; private set; } = [];
     private readonly INode _parent;
     private readonly MouseController _mouse;
+    private readonly GraphicsDevice _g;
     public ScreenState State;
 
     private void AddNode (INode node, INode theirParent)
@@ -27,10 +29,13 @@ public class TitleScreen
         theirParent.AddChild(node);
     }
 
-    public TitleScreen (INode parent, SpriteFont defaultFont, MouseController mouse)
+    public TitleScreen (GraphicsDevice gD, INode parent, SpriteFont defaultFont, MouseController mouse)
     {
+        _g = gD;
         _mouse = mouse;
         _parent = parent;
+        var nodeConfig = new NodeConfig(null, _g, true, true, true, true, true);
+        
         var title = new ContinuousTextFrame("Title", parent,
             new LocalTransform(new Vector2(0, 0), new Vector2(0.2f, 1), 0f), 
             EasingTypes.Quad.EaseOut, 
