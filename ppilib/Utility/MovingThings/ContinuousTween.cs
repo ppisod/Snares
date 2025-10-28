@@ -21,7 +21,7 @@ public class ContinuousTween<T> : IContinuousTween<T>
     public bool Active => true;
 
     private T _start;
-    private float _progress;
+    public float Progress;
     
     private T _lastTarget;
     /// <summary>Current target being approached.</summary>
@@ -69,10 +69,10 @@ public class ContinuousTween<T> : IContinuousTween<T>
             // changed target: re-base from current value
             _start = _get();
             _lastTarget = Target;
-            _progress = 0;
+            Progress = 0;
         }
-        _progress += Math.Min(Rate * dT, 1 - _progress);
-        var eased = Ease(_progress);
+        Progress += Math.Min(Rate * dT, 1 - Progress);
+        var eased = Ease(Progress);
         var toSet = _lerp(_start, _lastTarget, eased);
         _set(toSet);
     }

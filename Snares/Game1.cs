@@ -17,6 +17,7 @@ using ppilib.Utility.Shapes;
 using ppilib.Utility.Textures;
 using Snares.Game.Components;
 using Snares.Game.Rhythm;
+using Snares.Game.Screens;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
 
@@ -27,6 +28,8 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
 
     private MouseController _mouse;
     private KeyboardController _keyboard;
+    
+    private TitleScreen _titleScreen;
     
     public SpriteFont Helvetica;
     public TransformNodeBase RootNode { get; set; }
@@ -65,7 +68,8 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         
         var mainView = new NodeBase(mainViewConfig);
         root.AddChild(mainView);
-        
+
+        _titleScreen = new TitleScreen(GraphicsDevice, mainView, Helvetica, _mouse);
         
         RootNode = root;
         TextureCache = textureCache;
@@ -90,6 +94,8 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
             new Stretch(windowSize, Vector2.One, Vector2.Zero),
             0f
         ));
+        
+        _titleScreen.Update(gameTime);
         
         base.Update(gameTime);
     }

@@ -133,7 +133,7 @@ public class NodeConfig
     {
         if (!_isTransformSupported) throw new InvalidOperationException("not transformable");
         if (T == null) throw new InvalidOperationException("Transform is null, cannot set any transform");
-        T.Pos = v;
+        T = new LocalTransform(v, T.Scale, T.Rotation);
         return this;
     }
 
@@ -141,7 +141,7 @@ public class NodeConfig
     {
         if (!_isTransformSupported) throw new InvalidOperationException("not transformable");
         if (T == null) throw new InvalidOperationException("Transform is null, cannot set any transform");
-        T.Scale = v;
+        T = new LocalTransform(T.Pos, v, T.Rotation);
         return this;
     }
 
@@ -149,7 +149,7 @@ public class NodeConfig
     {
         if (!_isTransformSupported) throw new InvalidOperationException("not transformable");
         if (T == null) throw new InvalidOperationException("Transform is null, cannot set any transform ");
-        T.Rotation = v;
+        T = new LocalTransform(T.Pos, T.Scale, v);
         return this;
     }
 

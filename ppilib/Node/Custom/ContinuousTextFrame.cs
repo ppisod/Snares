@@ -24,7 +24,7 @@ public class ContinuousTextFrame: ContinuousNodeBase, ITextNode
         Font = config.Font ?? throw new NodeConfigMissing(nameof(Font), nameof(ContinuousTextFrame));
         
         // smooth opacity like other fields
-        OpacityTween = new ContinuousTween<float>(() => Opacity, v => Opacity = v, (a, b, t) => a + (b - a) * t, config.LerpMethod, 5f);
+        OpacityTween = new ContinuousTween<float>(() => Opacity, v => Opacity = v, (a, b, t) => a + (b - a) * t, config.LerpMethod, 0.5f);
         ColorTween = new ContinuousTween<Color>(() => Color, v => Color = v, Color.Lerp, config.LerpMethod, 5f);
     }
 
@@ -57,20 +57,22 @@ public class ContinuousTextFrame: ContinuousNodeBase, ITextNode
             ? desiredHeight / fontPixelHeight
             : 1f;
         
-        var textSize = Font.MeasureString(Text) * scale;
-    
-        // Calculate the origin (pivot point) for proper centering
-        var origin = textSize / 2f;
-    
+        // Use unscaled text size for origin because SpriteBatch applies 'scale' afterwards
+        var unscaledTextSize = Font.MeasureString(Text);
+        var origin = unscaledTextSize / 2f;
+        
+        // Draw text centered within the node's rectangle (World.Position is top-left, World.Scale is size)
+        var center = World.Position.Result + (World.Scale.Result / 2f);
+        
         spriteBatch.DrawString(
-            Font, 
-            Text, 
-            World.Position.Result + (World.Scale.Result / 2), 
-            Color * MathHelper.Clamp(Opacity, 0f, 1f), 
-            World.Rotation, 
+            Font,
+            Text,
+            center,
+            Color * MathHelper.Clamp(Opacity, 0f, 1f),
+            World.Rotation,
             origin,
-            scale, 
-            SpriteEffects.None, 
+            scale,
+            SpriteEffects.None,
             0f
         );
         base.OnDraw(spriteBatch);

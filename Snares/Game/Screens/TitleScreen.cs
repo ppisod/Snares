@@ -22,6 +22,10 @@ public class TitleScreen
     private readonly GraphicsDevice _g;
     public ScreenState State;
 
+    private readonly ContinuousTextFrame _title;
+    private readonly ContinuousTextFrame _game;
+    private readonly ContinuousTextFrame _quit;
+
     private void AddNode (INode node, INode theirParent)
     {
         if (theirParent == null) throw new InvalidOperationException("parent node is currently null!");
@@ -37,29 +41,39 @@ public class TitleScreen
         var nodeConfig = new NodeConfig(null, _g, true, true, true, true, true);
         nodeConfig
             .SetParent(parent)
-            .SetLerpMethod(EasingTypes.Quad.EaseOut)
+            .SetLerpMethod(EasingTypes.Expo.EaseOut)
             .SetColor(Color.Black)
-            .SetFont(defaultFont);
+            .SetFont(defaultFont)
+            .SetOpacity(0f);
+
+        nodeConfig
+            .SetPos(new Vector2(0, 0))
+            .SetScale(new Vector2(1f, 0.2f))
+            .SetName("Title")
+            .SetText("snares");
         var title = new ContinuousTextFrame(
             nodeConfig
-                .SetPos(new Vector2(0, 0))
-                .SetScale(new Vector2(1, 0.2f))
-                .SetName("Title")
-                .SetText("snares")
-        ); // new LocalTransform(new Vector2(0, 0), new Vector2(0.2f, 1), 0f), "snares","Title"
+        );
+        _title = title;
+
+        nodeConfig
+            .SetPos(new Vector2(0, 0.2f))
+            .SetScale(new Vector2(1, 0.1f))
+            .SetName("Game")
+            .SetText("play");
         var game = new ContinuousTextFrame(
             nodeConfig
-                .SetPos(new Vector2(0, 0.2f))
-                .SetScale(new Vector2(1, 0.1f))
-                .SetName("Game")
-                .SetText("play")
-        ); // new LocalTransform(new Vector2(0, 0.2f), new Vector2(0.1f, 1), 0f), "play","Game"
+        );
+        _game = game;
+
+        nodeConfig
+            .SetPos(new Vector2(0, 0.3f))
+            .SetName("Quit")
+            .SetText("quit");
         var quit = new ContinuousTextFrame(
             nodeConfig
-                .SetPos(new Vector2(0, 0.3f))
-                .SetName("Quit")
-                .SetText("quit")
         );
+        _quit = quit;
         // "Quit"
 
         State = ScreenState.Loading;
@@ -110,11 +124,19 @@ public class TitleScreen
 
     public void LoadSequence (GameTime _)
     {
+        var allFadedIn = true;
+        const float epsilon = 0.01f;
         foreach (var node in Nodes)
         {
-            // this code is repeated
             if (node is not ContinuousTextFrame cNode) continue;
             cNode.OpacityTween.Target = 1f;
+            // consider it done when opacity is very close to 1
+            if (1f - cNode.Opacity > epsilon) allFadedIn = false;
+        }
+
+        if (allFadedIn)
+        {
+            State = ScreenState.On;
         }
     }
 
@@ -135,10 +157,9 @@ public class TitleScreen
     
     private void MouseHover (MouseState state)
     {
-        foreach (var node in Nodes)
-        {
-            if (node is not ContinuousTextFrame cNode) continue;
-            cNode.Scale.Target = cNode.GetRect().Contains(state.Position) ? new Vector2(1f, 0.2f) : new Vector2(1f, 0.1f);
-        }
+        if (State != ScreenState.On) return;
+        _title.Scale.Target = _title.GetRect().Contains(state.Position) ? new Vector2(1f, 0.21f) : new Vector2(1f, 0.2f);
+        _game.Scale.Target = _game.GetRect().Contains(state.Position) ? new Vector2(1f, 0.12f) : new Vector2(1f, 0.1f);
+        _quit.Scale.Target = _quit.GetRect().Contains(state.Position) ? new Vector2(1f, 0.12f) : new Vector2(1f, 0.1f);
     }
 }
