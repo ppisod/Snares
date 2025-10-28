@@ -7,7 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="" />
+    <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib/Node/Custom/ContinuousTextFrame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib/Node/Custom/ContinuousTextFrame.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -200,7 +204,7 @@
       <workItem from="1761182303382" duration="1631000" />
       <workItem from="1761183981981" duration="31057000" />
       <workItem from="1761287409299" duration="77941000" />
-      <workItem from="1761644067411" duration="1493000" />
+      <workItem from="1761644067411" duration="2902000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />

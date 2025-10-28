@@ -42,13 +42,13 @@ public class TitleScreen
         nodeConfig
             .SetParent(parent)
             .SetLerpMethod(EasingTypes.Expo.EaseOut)
-            .SetColor(Color.Black)
+            .SetColor(Color.Black * 0.9f)
             .SetFont(defaultFont)
             .SetOpacity(0f);
 
         nodeConfig
-            .SetPos(new Vector2(0, 0))
-            .SetScale(new Vector2(1f, 0.2f))
+            .SetPos(new Vector2(0, 0.01f))
+            .SetScale(new Vector2(1f, 0.1f))
             .SetName("Title")
             .SetText("snares");
         var title = new ContinuousTextFrame(
@@ -57,8 +57,9 @@ public class TitleScreen
         _title = title;
 
         nodeConfig
-            .SetPos(new Vector2(0, 0.2f))
-            .SetScale(new Vector2(1, 0.1f))
+            .SetPos(new Vector2(0, 0.1f))
+            .SetScale(new Vector2(1, 0.05f))
+            .SetColor(Color.Black * 0.5f)
             .SetName("Game")
             .SetText("play");
         var game = new ContinuousTextFrame(
@@ -67,7 +68,8 @@ public class TitleScreen
         _game = game;
 
         nodeConfig
-            .SetPos(new Vector2(0, 0.3f))
+            .SetPos(new Vector2(0, 0.15f))
+            .SetColor(Color.Black * 0.5f)
             .SetName("Quit")
             .SetText("quit");
         var quit = new ContinuousTextFrame(
@@ -83,6 +85,8 @@ public class TitleScreen
         AddNode(quit, parent);
 
         mouse.Hover += MouseHover;
+        mouse.LeftMouseDown += MouseDown;
+        mouse.LeftMouseUp += MouseUp;
     }
 
     public void Update (GameTime gT)
@@ -130,8 +134,7 @@ public class TitleScreen
         {
             if (node is not ContinuousTextFrame cNode) continue;
             cNode.OpacityTween.Target = 1f;
-            // consider it done when opacity is very close to 1
-            if (1f - cNode.Opacity > epsilon) allFadedIn = false;
+            if (cNode.OpacityTween.Finished) allFadedIn = false;
         }
 
         if (allFadedIn)
@@ -158,8 +161,24 @@ public class TitleScreen
     private void MouseHover (MouseState state)
     {
         if (State != ScreenState.On) return;
-        _title.Scale.Target = _title.GetRect().Contains(state.Position) ? new Vector2(1f, 0.21f) : new Vector2(1f, 0.2f);
-        _game.Scale.Target = _game.GetRect().Contains(state.Position) ? new Vector2(1f, 0.12f) : new Vector2(1f, 0.1f);
-        _quit.Scale.Target = _quit.GetRect().Contains(state.Position) ? new Vector2(1f, 0.12f) : new Vector2(1f, 0.1f);
+        _title.Scale.Target = _title.GetRect().Contains(state.Position) ? new Vector2(1f, 0.105f) : new Vector2(1f, 0.1f);
+        _game.Scale.Target = _game.GetRect().Contains(state.Position) ? new Vector2(1f, 0.055f) : new Vector2(1f, 0.05f);
+        _quit.Scale.Target = _quit.GetRect().Contains(state.Position) ? new Vector2(1f, 0.055f) : new Vector2(1f, 0.05f);
+    }
+
+    private void MouseDown (MouseState state)
+    {
+        if (State != ScreenState.On) return;
+        _title.Scale.Target = _title.GetRect().Contains(state.Position) ? new Vector2(1f, 0.095f) : new Vector2(1f, 0.1f);
+        _game.Scale.Target = _game.GetRect().Contains(state.Position) ? new Vector2(1f, 0.045f) : new Vector2(1f, 0.05f);
+        _quit.Scale.Target = _quit.GetRect().Contains(state.Position) ? new Vector2(1f, 0.045f) : new Vector2(1f, 0.05f);
+    }
+    
+    private void MouseUp (MouseState state)
+    {
+        if (State != ScreenState.On) return;
+        State = ScreenState.Unloading;
+        
+        
     }
 }

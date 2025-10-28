@@ -22,6 +22,7 @@ public class ContinuousTween<T> : IContinuousTween<T>
 
     private T _start;
     public float Progress;
+    public bool Finished; // TODO: encap -> private setter; public getter;
     
     private T _lastTarget;
     /// <summary>Current target being approached.</summary>
@@ -75,5 +76,6 @@ public class ContinuousTween<T> : IContinuousTween<T>
         var eased = Ease(Progress);
         var toSet = _lerp(_start, _lastTarget, eased);
         _set(toSet);
+        if (Math.Abs(1 - Progress) < 0.001f) Finished = true;
     }
 }
