@@ -102,9 +102,11 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.White);
+        GraphicsDevice.Clear(Color.Black);
+        // draw BG first to hide black.
 
         CSpriteBatch.Begin();
+        
         // draw
         RootNode.Draw(CSpriteBatch);
 

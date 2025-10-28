@@ -178,7 +178,15 @@ public class TitleScreen
     {
         if (State != ScreenState.On) return;
         State = ScreenState.Unloading;
-        
-        
+
+        if (_game.GetRect().Contains(state.Position))
+        {
+            // go to BeatmapSelection screen
+        }
+
+        if (_quit.GetRect().Contains(state.Position))
+        {
+            // go to 
+        }
     }
 }
