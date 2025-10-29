@@ -64,7 +64,7 @@ public class MatrixContext
         return this;
     }
 
-    public MatrixContext SetAnchor(UDimT<V> to)
+    public MatrixContext SetAnchor (UDimT<V> to)
     {
         Anchor = to;
         return this;

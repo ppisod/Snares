@@ -5,11 +5,14 @@ namespace ppilib2.Graphics;
 
 public class Drawable
 {
-    [Dependent]
-    public UDimT<V> WorldPosition { get; private set; }
+    public Drawable (Matrix local)
+    {
+        Local = local;
+    }
     
     [Dependent]
-    public UDimT<V> WorldSize { get; private set; }
+    public Matrix World { get; private set; }
     
-    
+    [Independent]
+    public Matrix Local { get; private set; }
 }
