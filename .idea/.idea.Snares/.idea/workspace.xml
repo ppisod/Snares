@@ -8,9 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ppilib/Utility/Textures/TextureGenerator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ppilib2/.config/dotnet-tools.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ppilib2/docs/System.MD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ppilib2/ppilib2.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snares.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Snares.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snares.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Snares.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Snares/Game1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snares/Game1.cs" afterDir="false" />
     </list>
@@ -208,7 +210,7 @@
       <workItem from="1761182303382" duration="1631000" />
       <workItem from="1761183981981" duration="31057000" />
       <workItem from="1761287409299" duration="77941000" />
-      <workItem from="1761644067411" duration="3813000" />
+      <workItem from="1761644067411" duration="10649000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />

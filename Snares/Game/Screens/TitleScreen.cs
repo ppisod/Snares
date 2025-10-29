@@ -186,7 +186,7 @@ public class TitleScreen
 
         if (_quit.GetRect().Contains(state.Position))
         {
-            // go to 
+            // go to Quit screen
         }
     }
 }

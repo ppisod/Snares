@@ -30,6 +30,8 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
     private KeyboardController _keyboard;
     
     private TitleScreen _titleScreen;
+
+    private Vector2 _windowSize;
     
     public SpriteFont Helvetica;
     public TransformNodeBase RootNode { get; set; }
@@ -43,6 +45,7 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         var textureCache = new TextureCache(GraphicsDevice);
         textureCache.Add("gray", ShapeGenerator.ColoredScalable(GraphicsDevice, Color.Gray));
         textureCache.Add("lightgray", ShapeGenerator.ColoredScalable(GraphicsDevice, Color.LightGray));
+        textureCache.Add("bg", TextureGenerator.CreateVerticalGradient(GraphicsDevice, GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height, Color.White, Color.Gray));
         
         // fonts
         Helvetica = Content.Load<SpriteFont>("Fonts/HelvNeue");
@@ -52,16 +55,16 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         rootConfig.SetName("Snares");
         
         var root = new TransformNodeBase(rootConfig);
-        var windowSize = new Vector2(GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
+        _windowSize = new Vector2(GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
         root.SetWorldAsRoot(
             new Transform(
-                new Stretch(windowSize, Vector2.Zero, Vector2.Zero),
-                new Stretch(windowSize, Vector2.One, Vector2.Zero),
+                new Stretch(_windowSize, Vector2.Zero, Vector2.Zero),
+                new Stretch(_windowSize, Vector2.One, Vector2.Zero),
                 0f
             )
         );
 
-        NodeBase.W($"window:{windowSize}");
+        NodeBase.W($"window:{_windowSize}");
         
         var mainViewConfig = new NodeConfig(null, GraphicsDevice, false, false, false, false, false);
         mainViewConfig.SetName("MainView").SetParent(root);
@@ -88,10 +91,10 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
             Exit();
 
         RootNode.Update(gameTime);
-        var windowSize = new Vector2(GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
+        _windowSize = new Vector2(GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
         RootNode.SetWorldAsRoot(new Transform(
-            new Stretch(windowSize, Vector2.Zero, Vector2.Zero),
-            new Stretch(windowSize, Vector2.One, Vector2.Zero),
+            new Stretch(_windowSize, Vector2.Zero, Vector2.Zero),
+            new Stretch(_windowSize, Vector2.One, Vector2.Zero),
             0f
         ));
         
@@ -106,7 +109,11 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         // draw BG first to hide black.
 
         CSpriteBatch.Begin();
-        
+        // calculate BG height/width, scale
+        var bg = TextureCache.Get("bg"); 
+        var bgSize = new Vector2(bg.Width, bg.Height);
+        var scale = _windowSize / bgSize;
+        CSpriteBatch.Draw(bg, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
         // draw
         RootNode.Draw(CSpriteBatch);
 

@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppiGLib", "ppiGLib\ppiGLib.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppilib", "ppilib\ppilib.csproj", "{4A943E0A-AEFA-4F56-8207-8A129734C836}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppilib2", "ppilib2\ppilib2.csproj", "{7D704B29-B182-49D5-8FBD-65E697DA912D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{4A943E0A-AEFA-4F56-8207-8A129734C836}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A943E0A-AEFA-4F56-8207-8A129734C836}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A943E0A-AEFA-4F56-8207-8A129734C836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D704B29-B182-49D5-8FBD-65E697DA912D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D704B29-B182-49D5-8FBD-65E697DA912D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D704B29-B182-49D5-8FBD-65E697DA912D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D704B29-B182-49D5-8FBD-65E697DA912D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
