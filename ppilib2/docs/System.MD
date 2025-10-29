@@ -82,6 +82,194 @@ Checklist:
     - [ ] Padding, Margin (struct)
     - [ ] Alpha/Colour
     - [ ] Visible, AlwaysPresent, IsPresent behavior
+      Good — let’s map each of those properties onto concrete behavior and show how they interact with the Local/World concept you already know. I’ll explain what each property is, what it affects, how it changes the local/world transforms, what invalidation it must trigger, and a few practical gotchas and recommended conventions.
+
+Short mapping up-front
+- Your old system: Local = (pos, scale, rot) per-node, World = composed parent * local.
+- New (recommended) system: keep that same idea (LocalMatrix + WorldMatrix), but compute LocalMatrix from richer properties:
+    - LocalMatrix ← function(Position, Size, Scale, Rotation, Origin, AnchorOffset, Margin).
+    - WorldMatrix ← Parent.WorldMatrix * LocalMatrix.
+      So Position/Scale/Rotation are still the basic local transform, but Origin, Anchor, Size, RelativeSize and Padding/Margin influence the LocalMatrix and layout phase (Size can be dynamic via RelativeSizeAxes/AutoSizeAxes).
+
+Now the full walk-through.
+
+1) Position (Vector2)
+- Meaning: local translation of the node’s pivot/origin within parent coordinate space (i.e., where the node’s origin is placed relative to parent).
+- Effect: directly used to compute LocalMatrix (translation step).
+- Example: Position = (10, 20) moves node 10px right and 20px down from its anchor/origin placement.
+- Invalidations: setting Position → mark Transform dirty (LocalMatrix, WorldMatrix of self and descendants).
+- Notes:
+    - Position is typically in parent local coordinates (not screen pixels).
+    - If you support RelativePositionAxes, Position.X or Y could be interpreted as fraction of parent size (extension).
+
+2) Size (Vector2)
+- Meaning: the node’s logical content size (used for layout, origin pivot calculation and when drawing sprites to know intrinsic size).
+- Effect: used for:
+    - origin pivot calculations (Origin * Size gives pivot point in local coords),
+    - when RelativeSizeAxes is enabled, Size becomes a fraction of parent content size,
+    - drawing (texture fit) and autosize.
+- Invalidations:
+    - set Size → mark Layout dirty (if container), mark Transform dirty (because Origin * Size changed), cause children with RelativeSizeAxes to recompute.
+- Notes:
+    - If AutoSizeAxes includes X or Y, Size is computed from children/content instead of being set directly.
+    - If RelativeSizeAxes includes an axis, Size for that axis is treated as a fraction (0..1) and is computed from parent content size each layout pass.
+
+3) Scale (Vector2)
+- Meaning: local scale factor applied to the node after the origin pivot is applied.
+- Effect: influences LocalMatrix (Scale step).
+- Example: Scale=(2,1) doubles width but keeps height same.
+- Invalidations: setting Scale → Transform dirty (LocalMatrix and world descendants).
+- Notes:
+    - Use Vector2(1,1) default.
+    - If you want uniform scale convenience, expose float ScaleUniform { set => Scale = new Vector2(v) }.
+
+4) Rotation (float) — units & convention
+- Meaning: local rotation applied about the pivot/origin.
+- Recommended unit: radians internally (Matrix3x2.CreateRotation takes radians). Expose helpers to set/get in degrees if you prefer (DegreesToRadians conversion).
+- Direction convention: document explicitly (e.g., positive = clockwise or counter-clockwise). MonoGame/Matrix uses radians with standard orientation (positive = clockwise on screen Y-down coordinate systems? be explicit for your engine).
+- Effect: influences LocalMatrix (Rotation step).
+- Invalidations: setting Rotation → Transform dirty.
+- Notes:
+    - Convert degrees<->radians at property boundaries if you want degrees API.
+
+5) Origin (Vector2) — normalized & absolute modes
+- Meaning: pivot point around which rotation and scale are applied.
+- Two modes:
+    - Normalized origin: values in [0..1], 0 = left/top, 0.5 = center, 1 = right/bottom. OriginNormalised=(0.5,0.5) is common.
+    - Absolute origin: values in pixels relative to local coordinate (you might store it as OriginAbsolute = OriginNormalized * Size).
+- Use both by storing Origin as normalized + bool OriginIsAbsolute flag OR provide API SetOriginNormalized(Vector2) and SetOriginAbsolute(Vector2).
+- Effect on LocalMatrix: first translate by -Origin*Size so pivot moves to (0,0), then apply Scale/Rotate, then translate back into place by Position+AnchorOffset.
+- Invalidations: changing Origin or switching mode → Transform dirty.
+- Example:
+    - Normalized origin (0.5,0.5) for a Size(100,50) → pivot at (50,25) px.
+
+6) Anchor (enum/struct)
+- Meaning: where the drawable is anchored within its parent’s content rectangle (e.g., TopLeft, Centre, BottomRight, or fractional Anchor(0.25, 0.6)).
+- Implementation:
+    - Represent Anchor as either a discrete enum (TopLeft, Centre, etc.) or an Anchor struct with normalized Vector2 (0..1) — I recommend Anchor be a normalized Vector2 to generalize.
+    - Compute AnchorOffset = Parent.ContentRect.TopLeft + Anchor.Normalized * (Parent.ContentRect.Size - Self.Size)
+        - Equivalently: AnchorOffset places the Drawable’s origin point (after accounting for Origin*Size) inside the parent's content area.
+- Effect: AnchorOffset is added into Position at LocalMatrix translation step (effectively sets the baseline location before local Position offset).
+- Invalidations: changing Anchor or parent padding/size → Layout dirty (recompute AnchorOffset), ultimately Transform dirty for the descendant.
+- Example:
+    - Parent size = (200, 100). Child size = (50, 20). Anchor center (0.5,0.5) → anchor offset = (75, 40) placing child centered.
+
+7) RelativeSizeAxes (flags)
+- Meaning: indicates which axes interpret Size as a fraction of parent content size instead of absolute pixels.
+- Example:
+    - RelativeSizeAxes = X: Size.X = SpecifiedSizeX * Parent.ContentWidth.
+    - If SpecifiedSizeX is 1.0 → child fills parent width.
+- Behavior:
+    - Must compute Size during layout pass after parent size is known.
+    - If both RelativeSizeAxes and AutoSizeAxes conflict: define precedence (usually AutoSize wins; you’ll want a deterministic rule).
+- Invalidations: parent size change → children with RelativeSizeAxes set must be marked Layout dirty and recomputed.
+
+8) AutoSizeAxes (flags)
+- Meaning: the node should compute its Size from content (children or intrinsic content such as texture bounds or text measurement) on axes marked AutoSize.
+- Behavior:
+    - Measure pass: query children or content to produce intrinsic size (e.g., sum widths/heights or max).
+    - Arrange pass: set Size to measured size on those axes, then compute LocalMatrix.
+- Interaction:
+    - AutoSize can propagate up: if a child autosizes, parent autosize may need re-layout (careful to avoid infinite cycles).
+- Invalidations:
+    - child content change or text change → parent InvalidateLayout(propagateUp: true).
+- Recommendation:
+    - Separate Measure() and Arrange() phases so you can compute autosize without immediate side effects.
+
+9) Padding / Margin (struct)
+- Two distinct concepts:
+    - Padding (internal to containers): shrinks the container’s content rect (children are laid out inside parent.ContentRect = Parent.Size minus Padding).
+    - Margin (external on each child): shifts child away from anchor or adjacent siblings; affects Position/layout of the child.
+- Data: Margin { Left, Top, Right, Bottom } or shorthand { Horizontal, Vertical }.
+- Effects:
+    - Padding changes Parent.ContentRect → affects children anchor offsets & RelativeSize computations.
+    - Margin modifies the child’s final Position/AnchorOffset calculation (e.g., add margin.Left to X).
+- Invalidations: changing padding/margin → Layout dirty.
+
+10) Alpha / Colour
+- Colour: per-drawable colour tint (e.g., Color4 or Color), usually multiplied with texture color.
+- Alpha: transparency as a float 0..1 (often stored in the color’s alpha channel).
+- Composition rule:
+    - EffectiveAlpha = Parent.EffectiveAlpha * LocalAlpha
+    - EffectiveColour = Parent.Colour * LocalColour (you may want to multiply RGB separately and clamp).
+- Invalidations: changing Alpha/Colour → Visual dirty / DrawNode invalidation.
+- Note:
+    - Many systems expose both a Colour and an EffectColour (for glow/blend) — define semantics consistently.
+
+11) Visible, AlwaysPresent, IsPresent behavior
+- Visible: whether the node should be drawn (affects Draw call).
+- AlwaysPresent: forces the node to remain present in the update loop (or layout) even if Visible=false or Alpha=0. Useful for overlays/input catchers that must still respond to input or maintain layout even if not drawn.
+- IsPresent: computed property that decides if the node participates in drawing and/or layout. Example:
+    - IsPresent = (Visible || AlwaysPresent) && IsLoaded && !(parent masked away) && within scissor.
+    - Another common rule: IsPresent = Visible && (Alpha > epsilon) || AlwaysPresent.
+- Expiration: if a node is expired/removed, it's not present even if Visible true.
+- Invalidations: toggling Visible or AlwaysPresent should trigger re-evaluation of presence for parent/children.
+
+How LocalMatrix is computed (concrete formula)
+Pick a canonical operation order; documenting this prevents future confusion. I recommend:
+
+1. pivot = (OriginIsNormalized ? OriginNormalized * Size : OriginAbsolute)
+2. Translate(-pivot)                        // move pivot to origin (0,0)
+3. Scale(Scale)                             // scale around pivot
+4. Rotate(RotationRadians)                  // rotate around pivot
+5. Translate(Position + AnchorOffset + MarginOffset)
+
+So LocalMatrix = T(Position+AnchorOffset+Margin) * R(Rotation) * S(Scale) * T(-pivot)
+
+- Implementation detail:
+    - Use Matrix3x2.MakeTranslation / CreateRotation / CreateScale and multiply in the correct order.
+    - WorldMatrix = Parent != null ? Parent.WorldMatrix * LocalMatrix : LocalMatrix
+        - This means Transforming a local point p to world: worldP = Vector2.Transform(p, WorldMatrix)
+
+Why that order:
+- You usually want scale and rotation about the pivot in local space, then place the whole transformed object at Position+AnchorOffset in parent coordinates.
+- If you swapped order you’d rotate around parent origin rather than local pivot.
+
+Relating to your old Local/World system
+- Old Local = (pos, scale, rot): that’s effectively your LocalMatrix. New system decomposes LocalMatrix into more inputs (Origin, Size, AnchorOffset, Margin).
+- Old World = Parent.World * Local: same as new WorldMatrix; we’re just computing Local more precisely to support layout and anchors.
+- So equivalence:
+    - old.Local.Pos ↔ Position + AnchorOffset (or just Position if your old system ignored anchor)
+    - old.Local.Scale ↔ Scale
+    - old.Local.Rot ↔ Rotation
+    - Computation of world positions is identical once LocalMatrix is assembled.
+
+Invalidation rules — what to mark dirty when a property changes
+- TransformDirty (Local/World):
+    - Position, Scale, Rotation, Origin, Size (because pivot depends on Size), AnchorOffset change → mark TransformDirty (and cascade to children world dirty).
+- LayoutDirty:
+    - Size (if autosize or relative), RelativeSizeAxes toggles, Padding, Margin, Parent size changes → mark LayoutDirty and schedule Measure/Arrange pass.
+- DrawNodeDirty (visual snapshot needs refresh):
+    - Colour, Alpha, Texture, BlendState, ShaderParams → mark DrawNodeDirty
+- PresenceDirty:
+    - Visible, AlwaysPresent changes → recompute IsPresent
+- Implementation tip: set flags on setters and do lazy recompute when LocalMatrix/WorldMatrix/Bounds are requested.
+
+Other practical points and gotchas
+- Rounding & pixel-snapping:
+    - If you need crisp UI, provide an option SnapToPixelGrid which rounds final world-positioned quads to integer pixel positions during rendering.
+- Epsilon equality:
+    - Avoid marking dirty when value change is within a small epsilon (for floats). Use Vector2.Equals with tolerance.
+- Layout cycles:
+    - Guard against autosize cycles (child autosize influences parent which influences child). Use a layout pass ordering and a maximum recursion depth or detect cycles and break them deterministically.
+- Threading:
+    - Compute transforms and layout on your main thread; draw-snapshot (DrawNode) copies immutable state for renderer usage.
+- Caching:
+    - Cache LocalMatrix, WorldMatrix, InverseWorldMatrix, and computed Screen-space AABB/Quad. Recompute lazily when flagged dirty.
+- Performance:
+    - Avoid recomputing world matrices of entire subtree on small local changes by only invalidating descendants when necessary and recomputing on-demand.
+- Hit-test:
+    - To hit-test a screen point p: transform p into local coords via local = Vector2.Transform(p, InverseWorldMatrix) and check containment against local rectangle [0..Size] (account for Origin if you use absolute pivot).
+
+Recommended data types & API ergonomics
+- Use Matrix3x2 for 2D transforms (fast & built-in in System.Numerics or MonoGame’s Matrix types).
+- Internally store rotation in radians; expose Degrees <-> Radians helpers if API consumers prefer degrees.
+- Provide:
+    - SetOriginNormalized(Vector2), SetOriginAbsolute(Vector2)
+    - SetAnchorNormalized(Vector2)
+    - SetRelativeSizeAxes(Axes flags), SetAutoSizeAxes(Axes flags)
+    - InvalidateTransform(), InvalidateLayout(), ForceRecomputeTransform()
+    - Vector2 LocalToWorld(Vector2), Vector2 WorldToLocal(Vector2)
   - Lifecycle:
     - [ ] OnAddedToScene(Scene)
     - [ ] Load / LoadAsync / LoadComplete handlers

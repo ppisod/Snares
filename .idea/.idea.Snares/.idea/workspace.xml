@@ -8,10 +8,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ppilib2/Basic/Drawable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ppilib2/Basic/Scene.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ppilib2/Basic/_Types/ScaleOffset.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ppilib2/Builders/MatrixContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ppilib2/Graphics/Drawable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ppilib2/Graphics/_Attr/Dependent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ppilib2/Graphics/_Attr/Independent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ppilib2/Graphics/_BaseTypes/Matrix.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ppilib2/Graphics/_BaseTypes/UDimT.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ppilib2/Graphics/_BaseTypes/V.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ppilib2/Graphics/_Enums/Anchor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Snares.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Snares.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib2/Basic/Drawable.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib2/Basic/Scene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib2/Graphics/Scene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib2/Basic/_Types/ScaleOffset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib2/Graphics/_BaseTypes/ScaleOffset.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib2/docs/System.MD" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib2/docs/System.MD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ppilib2/ppilib2.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ppilib2/ppilib2.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +59,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/76b26a7a511f48aeba3bce44a1ba437af82e00/9d/715b3014/Exception.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a69b121f85054691b2a8d28643003c23136600/08/1a47fbcb/Keys.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a69b121f85054691b2a8d28643003c23136600/37/4b522b75/GraphicsDevice.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a69b121f85054691b2a8d28643003c23136600/61/2f0229f7/Vector2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a69b121f85054691b2a8d28643003c23136600/98/17ad8de4/SpriteBatch.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/46c73e495c10cebaff7ff53b6924a65af27378c69184ba9582781e5c6848887b/InvalidOperationException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/eb883067908c5145e4a877dccdcb70822b4af05a67d69cd4bc64986a56f407/SystemException.cs" root0="FORCE_HIGHLIGHTING" />
@@ -104,11 +116,18 @@
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/Vectors.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib2/Basic/Drawable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib2/Basic/Scene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib2/Basic/_Attr/Dependent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib2/Basic/_Attr/Independent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib2/Basic/_Enums/Anchor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib2/Basic/_Types/Matrix.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib2/Basic/_Types/ScaleOffset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib2/Basic/_Types/UDimT.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib2/Basic/_Types/V.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ppilib2/Builders/MatrixContext.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="SWEA" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -210,7 +229,8 @@
       <workItem from="1761182303382" duration="1631000" />
       <workItem from="1761183981981" duration="31057000" />
       <workItem from="1761287409299" duration="77941000" />
-      <workItem from="1761644067411" duration="12442000" />
+      <workItem from="1761644067411" duration="15442000" />
+      <workItem from="1761723072409" duration="2859000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />

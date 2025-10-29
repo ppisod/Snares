@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace ppilib2.Basic._Types;
+namespace ppilib2.Graphics._BaseTypes;
 
 /// <summary>
 /// Represents a Scale, Offset pair for a data type.

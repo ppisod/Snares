@@ -8,6 +8,14 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="Basic\_Attr\" />
+      <Compile Update="Basic\_Types\UDimT.cs">
+        <DependentUpon>ScaleOffset.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Basic\_Types\Matrix.cs">
+        <DependentUpon>V.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Graphics\_UtilTypes\" />
     </ItemGroup>
 </Project>
