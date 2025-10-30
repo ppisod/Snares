@@ -20,11 +20,14 @@ public class TitleScreen
     private readonly INode _parent;
     private readonly MouseController _mouse;
     private readonly GraphicsDevice _g;
+    private readonly Microsoft.Xna.Framework.Game _gameInstance;
     public ScreenState State;
 
     private readonly ContinuousTextFrame _title;
     private readonly ContinuousTextFrame _game;
     private readonly ContinuousTextFrame _quit;
+
+    private TitleScreenState _actionContext = TitleScreenState.BeatmapSelection;
 
     private void AddNode (INode node, INode theirParent)
     {
@@ -33,9 +36,10 @@ public class TitleScreen
         theirParent.AddChild(node);
     }
 
-    public TitleScreen (GraphicsDevice gD, INode parent, SpriteFont defaultFont, MouseController mouse)
+    public TitleScreen (Microsoft.Xna.Framework.Game g, INode parent, SpriteFont defaultFont, MouseController mouse)
     {
-        _g = gD;
+        _gameInstance = g;
+        _g = g.GraphicsDevice;
         _mouse = mouse;
         _parent = parent;
         var nodeConfig = new NodeConfig(null, _g, true, true, true, true, true);
@@ -50,7 +54,7 @@ public class TitleScreen
             .SetPos(new Vector2(0, 0.01f))
             .SetScale(new Vector2(1f, 0.1f))
             .SetName("Title")
-            .SetText("snares");
+            .SetText("game");
         var title = new ContinuousTextFrame(
             nodeConfig
         );
@@ -150,12 +154,22 @@ public class TitleScreen
 
     public void UnloadSequence (GameTime _)
     {
+        var allFadedIn = false;
         foreach (var node in Nodes)
         {
             // this code is repeated
             if (node is not ContinuousTextFrame cNode) continue;
             cNode.OpacityTween.Target = 0f;
+            if (cNode.OpacityTween.Finished) allFadedIn = true;
         }
+        if (allFadedIn && _actionContext == TitleScreenState.Quit)
+        {
+            Console.WriteLine("quitting");
+            // why is it not quitting
+            _gameInstance.Exit();
+        }
+
+        State = ScreenState.Off;
     }
     
     private void MouseHover (MouseState state)
@@ -182,11 +196,20 @@ public class TitleScreen
         if (_game.GetRect().Contains(state.Position))
         {
             // go to BeatmapSelection screen
+            
         }
 
         if (_quit.GetRect().Contains(state.Position))
         {
             // go to Quit screen
+            Console.WriteLine("quit button presed");
+            _actionContext = TitleScreenState.Quit;
         }
     }
+}
+
+internal enum TitleScreenState
+{
+    BeatmapSelection,
+    Quit
 }

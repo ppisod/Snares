@@ -70,6 +70,7 @@ public class ContinuousTween<T> : IContinuousTween<T>
             // changed target: re-base from current value
             _start = _get();
             _lastTarget = Target;
+            Finished = false;
             Progress = 0;
         }
         Progress += Math.Min(Rate * dT, 1 - Progress);

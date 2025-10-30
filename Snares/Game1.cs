@@ -72,7 +72,7 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         var mainView = new NodeBase(mainViewConfig);
         root.AddChild(mainView);
 
-        _titleScreen = new TitleScreen(GraphicsDevice, mainView, Helvetica, _mouse);
+        _titleScreen = new TitleScreen(this, mainView, Helvetica, _mouse);
         
         RootNode = root;
         TextureCache = textureCache;
