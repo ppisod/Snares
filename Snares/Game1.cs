@@ -26,8 +26,8 @@ namespace Snares;
 public class Game1() : Core("snares_development", 1920, 1080, true)
 {
 
-    private MouseController _mouse;
-    private KeyboardController _keyboard;
+    public MouseController Mouse;
+    public KeyboardController Keyboard;
     
     private TitleScreen _titleScreen;
 
@@ -39,8 +39,8 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
 
     protected override void Initialize()
     {
-        _mouse = new MouseController();
-        _keyboard = new KeyboardController();
+        Mouse = new MouseController();
+        Keyboard = new KeyboardController();
         
         var textureCache = new TextureCache(GraphicsDevice);
         textureCache.Add("gray", ShapeGenerator.ColoredScalable(GraphicsDevice, Color.Gray));
@@ -72,7 +72,7 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         var mainView = new NodeBase(mainViewConfig);
         root.AddChild(mainView);
 
-        _titleScreen = new TitleScreen(this, mainView, Helvetica, _mouse);
+        _titleScreen = new TitleScreen(this, mainView, Helvetica, Mouse);
         
         RootNode = root;
         TextureCache = textureCache;
@@ -83,11 +83,11 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
     protected override void Update(GameTime gameTime)
     {
         
-        _mouse.Update();
-        _keyboard.Update();
+        Mouse.Update();
+        Keyboard.Update();
         
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-            Keyboard.GetState().IsKeyDown(Keys.Escape))
+            Microsoft.Xna.Framework.Input.Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
         RootNode.Update(gameTime);

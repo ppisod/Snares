@@ -88,7 +88,7 @@ public class TitleScreen
         AddNode(title, parent);
         AddNode(game, parent);
         AddNode(quit, parent);
-
+        
         mouse.Hover += MouseHover;
         mouse.LeftMouseDown += MouseDown;
         mouse.LeftMouseUp += MouseUp;
@@ -140,7 +140,6 @@ public class TitleScreen
         {
             if (node is not ContinuousTextFrame cNode) continue;
             cNode.OpacityTween.Target = 1f;
-            cNode.OpacityTween.Rate = 0.3f;
             if (cNode.OpacityTween.Finished) allFadedIn = false;
         }
 
