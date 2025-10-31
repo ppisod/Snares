@@ -25,13 +25,24 @@ public class ContinuousTween<T> : IContinuousTween<T>
     public bool Finished; // TODO: encap -> private setter; public getter;
     
     private T _lastTarget;
+
+    private T _target;
+
     /// <summary>Current target being approached.</summary>
-    public T Target { get; set; }
+    public T Target
+    {
+        get => _target;
+        set
+        {
+            _target = value;
+            Finished = false;
+        }
+    }
 
     /// <summary>
     /// Units per second for the normalized approach progress (0..1). Higher is faster.
     /// </summary>
-    public float Rate { get; }
+    public float Rate { get; set; }
 
     /// <summary>
     /// Easing function mapping normalized progress to eased progress.
@@ -73,10 +84,12 @@ public class ContinuousTween<T> : IContinuousTween<T>
             Finished = false;
             Progress = 0;
         }
+
+        Console.WriteLine($"UpdateGT{Finished}");
         Progress += Math.Min(Rate * dT, 1 - Progress);
         var eased = Ease(Progress);
         var toSet = _lerp(_start, _lastTarget, eased);
         _set(toSet);
-        if (Math.Abs(1 - Progress) < 0.001f) Finished = true;
+        if (Math.Abs(Progress - 1) < 0.01f) Finished = true;
     }
 }

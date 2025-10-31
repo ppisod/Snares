@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -99,6 +100,20 @@ public class TitleScreen
         {
             return;
         }
+        
+        switch (State)
+        {
+            case ScreenState.Loading:
+                LoadSequence(gT);
+                break;
+            case ScreenState.On:
+                OnSequence(gT);
+                break;
+            case ScreenState.Unloading:
+                UnloadSequence(gT);
+                break;
+        }
+        
         // general code here, for example, update on the frames
         // TODO: why is the update(gT) function not already overriden in their respective classes??
         foreach (var node in Nodes)
@@ -113,19 +128,6 @@ public class TitleScreen
                     break;
             }
         }
-        
-        switch (State)
-        {
-            case ScreenState.Loading:
-                LoadSequence(gT);
-                break;
-            case ScreenState.On:
-                OnSequence(gT);
-                break;
-            case ScreenState.Unloading:
-                UnloadSequence(gT);
-                break;
-        }
     }
     
     // we can make it in the BaseScreen class that these functions are overloadable
@@ -138,6 +140,7 @@ public class TitleScreen
         {
             if (node is not ContinuousTextFrame cNode) continue;
             cNode.OpacityTween.Target = 1f;
+            cNode.OpacityTween.Rate = 0.3f;
             if (cNode.OpacityTween.Finished) allFadedIn = false;
         }
 
@@ -154,22 +157,30 @@ public class TitleScreen
 
     public void UnloadSequence (GameTime _)
     {
-        var allFadedIn = false;
+        var allFadedOut = true;
         foreach (var node in Nodes)
         {
             // this code is repeated
             if (node is not ContinuousTextFrame cNode) continue;
             cNode.OpacityTween.Target = 0f;
-            if (cNode.OpacityTween.Finished) allFadedIn = true;
+            if (cNode.OpacityTween.Finished) allFadedOut = false;
         }
-        if (allFadedIn && _actionContext == TitleScreenState.Quit)
+        Console.WriteLine(allFadedOut);
+        if (allFadedOut)
         {
-            Console.WriteLine("quitting");
-            // why is it not quitting
-            _gameInstance.Exit();
-        }
+            if (_actionContext == TitleScreenState.Quit)
+            {
+                Console.WriteLine("quitting");
+                // why is it not quitting
+                _gameInstance.Exit();
+            }
 
-        State = ScreenState.Off;
+            if (_actionContext == TitleScreenState.BeatmapSelection)
+            {
+                Console.WriteLine("beatmapselection");
+            }
+            State = ScreenState.Off;
+        }
     }
     
     private void MouseHover (MouseState state)
@@ -191,25 +202,27 @@ public class TitleScreen
     private void MouseUp (MouseState state)
     {
         if (State != ScreenState.On) return;
-        State = ScreenState.Unloading;
 
         if (_game.GetRect().Contains(state.Position))
         {
             // go to BeatmapSelection screen
+            _actionContext = TitleScreenState.BeatmapSelection;
+            State = ScreenState.Unloading;
             
         }
 
         if (_quit.GetRect().Contains(state.Position))
         {
+            State = ScreenState.Unloading;
             // go to Quit screen
             Console.WriteLine("quit button presed");
             _actionContext = TitleScreenState.Quit;
         }
     }
-}
-
-internal enum TitleScreenState
-{
-    BeatmapSelection,
-    Quit
+    
+    internal enum TitleScreenState
+    {
+        BeatmapSelection,
+        Quit
+    }
 }
