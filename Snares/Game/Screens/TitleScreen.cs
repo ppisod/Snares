@@ -140,6 +140,7 @@ public class TitleScreen (
         }
 
         // EVERY screen implementation should call Unload() in UnloadSequence.
+        Console.WriteLine("Unloading!");
         Unload();
         
         State = ScreenState.Off;

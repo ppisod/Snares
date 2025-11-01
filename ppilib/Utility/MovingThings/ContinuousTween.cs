@@ -84,8 +84,6 @@ public class ContinuousTween<T> : IContinuousTween<T>
             Finished = false;
             Progress = 0;
         }
-
-        Console.WriteLine($"UpdateGT{Finished}");
         Progress += Math.Min(Rate * dT, 1 - Progress);
         var eased = Ease(Progress);
         var toSet = _lerp(_start, _lastTarget, eased);
