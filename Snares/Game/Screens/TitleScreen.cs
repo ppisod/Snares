@@ -122,13 +122,14 @@ public class TitleScreen (
         {
             foreach (var node in nodeCollection.Cast<ContinuousTextFrame>())
             {
+                Console.WriteLine($"{node.Name} state: {node.OpacityTween.Finished}");
                 if (!node.OpacityTween.Finished) allFinished = false;
             } // [Finished] is known to fail
         }
 
         if (!allFinished) return;
 
-        switch (Context)
+        switch (Context) // this code is never reached? AllFinished is always false?
         {
             case TitleScreenContext.ActionQuit:
                 Console.WriteLine("Quitting!");
