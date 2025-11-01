@@ -37,7 +37,7 @@ public class TitleScreen (
             .SetParent(_parent1)
             .SetLerpMethod(EasingTypes.Quad.EaseOut)
             .SetColor(Color.Black)
-            .SetFont(_gameInstance.Helvetica)
+            .SetFont(_gameInstance.Font)
             .SetOpacity(0f);
         
         // NODE :: TITLE

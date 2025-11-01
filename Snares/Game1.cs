@@ -21,11 +21,11 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
     public MouseController Mouse;
     public KeyboardController Keyboard;
     
-    private TitleScreen _TitleScreen;
+    private TitleScreen _titleScreen;
 
     private Vector2 _windowSize;
     
-    public SpriteFont Helvetica;
+    public SpriteFont Font;
     public TransformNodeBase RootNode { get; set; }
     public TextureCache TextureCache { get; set; }
 
@@ -40,7 +40,7 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         textureCache.Add("bg", TextureGenerator.CreateVerticalGradient(GraphicsDevice, GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height, Color.White, Color.Gray));
         
         // fonts
-        Helvetica = Content.Load<SpriteFont>("Fonts/HelvNeue");
+        Font = Content.Load<SpriteFont>("Fonts/HelvNeue");
 
         // Monkey patch for issues with scale. I don't know the issue here.
         var rootConfig = new NodeConfig(null, GraphicsDevice, true, false, false, false, false);
@@ -64,8 +64,8 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         var mainView = new NodeBase(mainViewConfig);
         root.AddChild(mainView);
 
-        _TitleScreen = new TitleScreen(this, mainView, Mouse, Keyboard);
-        _TitleScreen.Load();
+        _titleScreen = new TitleScreen(this, mainView, Mouse, Keyboard);
+        _titleScreen.Load();
         
         RootNode = root;
         TextureCache = textureCache;
@@ -91,7 +91,7 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
             0f
         ));
         
-        _TitleScreen.Update(gameTime);
+        _titleScreen.Update(gameTime);
         
         base.Update(gameTime);
     }
