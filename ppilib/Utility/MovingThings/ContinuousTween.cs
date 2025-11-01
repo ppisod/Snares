@@ -34,6 +34,7 @@ public class ContinuousTween<T> : IContinuousTween<T>
         get => _target;
         set
         {
+            if (_target.Equals(value)) return;
             _target = value;
             Finished = false;
         }

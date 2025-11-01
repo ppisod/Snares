@@ -192,7 +192,7 @@ public class TitleScreen (
         {
             if (!node.GetRect().Contains(state.Position))
             {
-                return;
+                continue;
             }
 
             switch (node.Name)
