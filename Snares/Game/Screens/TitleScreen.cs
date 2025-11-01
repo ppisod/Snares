@@ -29,7 +29,7 @@ public class TitleScreen (
     private bool _loadStarted;
     private bool _unloadStarted;
 
-    private class ScaleSelector : IContinuousTweenSelector<ContinuousTextFrame, Vector2>
+    private class ScaleSelector : IContinuousTweenSelector<ContinuousTextFrame, Vector2> // move these to other files?
     {
         public ppilib.Utility.MovingThings.Interfaces.IContinuousTween<Vector2>? Select(ContinuousTextFrame item) => item.Scale;
     }
