@@ -1,22 +1,14 @@
-﻿using System.IO;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ppilib;
 using ppilib.Input;
 using ppilib.Node.Base;
-using ppilib.Node.Custom;
 using ppilib.Node.Transformable;
 using ppilib.Types.Class;
-using ppilib.Types.Struct;
 using ppilib.Utility.Configs;
-using ppilib.Utility.MovingThings;
-using ppilib.Utility.MovingThings.Ease.Definitions;
 using ppilib.Utility.Shapes;
 using ppilib.Utility.Textures;
-using Snares.Game.Components;
-using Snares.Game.Rhythm;
 using Snares.Game.Screens;
 using Vector2 = Microsoft.Xna.Framework.Vector2;
 
