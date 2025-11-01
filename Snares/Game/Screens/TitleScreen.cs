@@ -15,7 +15,7 @@ public enum TitleScreenContext
     None, ActionGame, ActionQuit
 }
 
-public class TitleScreen(
+public class TitleScreen (
     Game1 game,
     INode parent,
     MouseController mouse,
@@ -140,15 +140,73 @@ public class TitleScreen(
             Console.WriteLine("-> BeatmapSelectionScreen");
         }
         
+        // EVERY screen implementation should call Unload() in UnloadSequence.
+        Unload();
+        
         State = ScreenState.Off;
     }
 
     protected override void MouseMove(MouseState state)
     {
-        if (State is ScreenState.On or ScreenState.Loading)
+        if (State is not (ScreenState.On or ScreenState.Loading)) return;
+        
+        // can effects like these be abstracted into some Effects class
+        foreach (var node in NodeGroups["Body"].Cast<ContinuousTextFrame>())
         {
-            
+            // SCALE UP SLIGHTLY
+            node.Scale.Target = node.GetRect().Contains(state.Position)
+                ? new Vector2(1f, 0.055f)
+                : new Vector2(1f, 0.05f);
         }
-        base.MouseMove(state);
+
+        foreach (var node in NodeGroups["Title"].Cast<ContinuousTextFrame>())
+        {
+            node.Scale.Target  = node.GetRect().Contains(state.Position)
+                ? new Vector2(1f, 0.105f) 
+                : new Vector2(1f, 0.1f); 
+        }
+    }
+
+    protected override void MouseDown(MouseState state)
+    {
+        // we don't actually do anything here, it's just for looks
+        if (State is not (ScreenState.On or ScreenState.Loading)) return;
+        
+        foreach (var node in NodeGroups["Body"].Cast<ContinuousTextFrame>())
+        {
+            // SCALE DOWN SLIGHTLY
+            node.Scale.Target = node.GetRect().Contains(state.Position)
+                ? new Vector2(1f, 0.045f)
+                : new Vector2(1f, 0.05f);
+        }
+        base.MouseDown(state);
+    }
+
+    protected override void MouseUp(MouseState state)
+    {
+        if (State is not (ScreenState.On or ScreenState.Loading)) return;
+        
+        // we actually have to reference specific nodes here
+        foreach (var node in NodeGroups["Body"].Cast<ContinuousTextFrame>())
+        {
+            if (!node.GetRect().Contains(state.Position))
+            {
+                return;
+            }
+
+            switch (node.Name)
+            {
+                case "Game":
+                    Context = TitleScreenContext.ActionGame;
+                    State = ScreenState.Unloading; // some buttons don't cause unloading, so we have to specify here.
+                    break;
+                case "Quit":
+                    Context = TitleScreenContext.ActionQuit;
+                    State = ScreenState.Unloading;
+                    break;
+            }
+        }
+        
+        base.MouseUp(state);
     }
 }

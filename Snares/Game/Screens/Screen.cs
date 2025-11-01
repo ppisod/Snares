@@ -69,6 +69,16 @@ public class Screen<T>
         State = ScreenState.Loading;
         Initialize();
     }
+
+    public void Unload ()
+    {
+        State = ScreenState.Off;
+        foreach (var node in NodeGroups.Values.SelectMany(groupNode => groupNode))
+        {
+            node.Destroy();
+        }
+        NodeGroups.Clear();
+    }
     
     /// <summary>
     /// The initialize method is overrideable.
@@ -79,19 +89,19 @@ public class Screen<T>
         
     }
 
-    protected virtual void LoadSequence(GameTime gT)
+    protected virtual void LoadSequence (GameTime gT)
     {
         
     }
 
-    protected virtual void OnSequence(GameTime gT)
+    protected virtual void OnSequence (GameTime gT)
     {
         
     }
 
-    protected virtual void UnloadSequence(GameTime gT)
+    protected virtual void UnloadSequence (GameTime gT)
     {
-        
+        // SHOULD CALL Unload() HERE ONCE FINISHED FADING OUT!
     }
 
     protected virtual void MouseDown (MouseState state)
