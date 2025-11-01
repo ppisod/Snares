@@ -8,14 +8,10 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Snares.Game.Screens;
 
-public class Screen
+public class Screen<T>
 {
-    private enum Context
-    {
-        None
-    }
-    
-    public Dictionary<string, List<INode>> NodeGroups = new();
+
+    protected Dictionary<string, List<INode>> NodeGroups = new();
 
     private readonly MouseController _mouse;
     private readonly KeyboardController _keyboard;
@@ -24,8 +20,8 @@ public class Screen
 
     private readonly INode _parent;
 
-    private Context _ctx;
-    private ScreenState _state;
+    protected T Context;
+    protected ScreenState State;
 
     public Screen
         (Game1 game, 
@@ -39,9 +35,8 @@ public class Screen
         
         _parent = parent;
         
-        _ctx = Context.None;
         _game = game;
-        _state = ScreenState.Off;
+        State = ScreenState.Off;
 
         _mouse.LeftMouseDown += MouseDown;
         _mouse.LeftMouseUp += MouseUp;
@@ -49,14 +44,12 @@ public class Screen
 
         _keyboard.KeyDown += KeyDown;
         _keyboard.KeyUp += KeyUp;
-        
-        Initialize();
     }
 
     public void Update(GameTime gT)
     {
-        if (_state == ScreenState.Off) return;
-        switch (_state)
+        if (State == ScreenState.Off) return;
+        switch (State)
         {
             case ScreenState.Loading: LoadSequence(gT); break;
             case ScreenState.On: OnSequence(gT); break;
@@ -69,6 +62,12 @@ public class Screen
             // isin't the rootnode already going to update
             // this node (given that the parenting is done correctly?)
         }
+    }
+
+    public void Load ()
+    {
+        State = ScreenState.Loading;
+        Initialize();
     }
     
     /// <summary>
