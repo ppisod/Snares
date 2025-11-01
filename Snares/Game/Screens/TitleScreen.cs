@@ -127,19 +127,18 @@ public class TitleScreen (
         }
 
         if (!allFinished) return;
-        
-        // if pressed QUIT
-        if (Context == TitleScreenContext.ActionQuit)
+
+        switch (Context)
         {
-            Console.WriteLine("Quitting!");
-            _gameInstance.Exit();
+            case TitleScreenContext.ActionQuit:
+                Console.WriteLine("Quitting!");
+                _gameInstance.Exit();
+                break;
+            case TitleScreenContext.ActionGame:
+                Console.WriteLine("-> BeatmapSelectionScreen");
+                break;
         }
 
-        if (Context == TitleScreenContext.ActionGame)
-        {
-            Console.WriteLine("-> BeatmapSelectionScreen");
-        }
-        
         // EVERY screen implementation should call Unload() in UnloadSequence.
         Unload();
         
