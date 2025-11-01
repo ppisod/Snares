@@ -84,7 +84,7 @@ public class Screen<T>
     /// The initialize method is overrideable.
     /// Create your nodes and add them to NodeGroups.
     /// </summary>
-    protected virtual void Initialize()
+    protected virtual void Initialize ()
     {
         
     }

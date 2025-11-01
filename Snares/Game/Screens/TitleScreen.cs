@@ -7,6 +7,8 @@ using ppilib.Interfaces;
 using ppilib.Node.Custom;
 using ppilib.Utility.Configs;
 using ppilib.Utility.MovingThings.Ease.Definitions;
+using Snares.Game.Screens.Effects;
+using ppilib.Utility.MovingThings;
 
 namespace Snares.Game.Screens;
 
@@ -22,9 +24,42 @@ public class TitleScreen (
     KeyboardController keyboard)
     : Screen<TitleScreenContext>(game, parent, mouse, keyboard)
 {
+    private readonly TweenTimeline _loadTimeline = new();
+    private readonly TweenTimeline _unloadTimeline = new();
+    private bool _loadStarted;
+    private bool _unloadStarted;
+
+    private class ScaleSelector : IContinuousTweenSelector<ContinuousTextFrame, Vector2>
+    {
+        public ppilib.Utility.MovingThings.Interfaces.IContinuousTween<Vector2>? Select(ContinuousTextFrame item) => item.Scale;
+    }
     
     private readonly Game1 _gameInstance = game;
     private readonly INode _parent1 = parent;
+
+    private void UpdatePointerScale(MouseState state)
+    {
+        var body = NodeGroups.TryGetValue("Body", out var group) ? group.Cast<ContinuousTextFrame>().ToArray() : [];
+        var title = NodeGroups.TryGetValue("Title", out var nodeGroup) ? nodeGroup.Cast<ContinuousTextFrame>().ToArray() : [];
+        // body scales
+        PointerContinuousTweener.Apply(
+            body,
+            n => n.GetRect().Contains(state.Position),
+            new ScaleSelector(),
+            rest: new Vector2(1f, 0.05f),
+            hover: new Vector2(1f, 0.055f),
+            pressed: new Vector2(1f, 0.049f),
+            mouse: state);
+        // title scales (slightly larger base)
+        PointerContinuousTweener.Apply(
+            title,
+            n => n.GetRect().Contains(state.Position),
+            new ScaleSelector(),
+            rest: new Vector2(1f, 0.10f),
+            hover: new Vector2(1f, 0.105f),
+            pressed: new Vector2(1f, 0.095f),
+            mouse: state);
+    }
 
     protected override void Initialize()
     {
@@ -80,121 +115,87 @@ public class TitleScreen (
 
     protected override void LoadSequence(GameTime gT)
     {
-        // Can this code be abstracted to a Transition class or FadeableNodes?
-        foreach (var node in NodeGroups["Title"].Cast<ContinuousTextFrame>())
+        if (!_loadStarted)
         {
-            node.OpacityTween.Target = 1f;
+            _loadTimeline.Reset();
+            // Stagger: Title at 0ms, then each body item every 150ms.
+            var title = NodeGroups["Title"].Cast<ContinuousTextFrame>().ToArray();
+            var body = NodeGroups["Body"].Cast<ContinuousTextFrame>().ToArray();
+            foreach (var t in title)
+                _loadTimeline.TweenAt(0, t.OpacityTween, 1f);
+            for (int i = 0; i < body.Length; i++)
+                _loadTimeline.TweenAt(150 * (i+1), body[i].OpacityTween, 1f);
+            _loadTimeline.Start();
+            _loadStarted = true;
         }
-        
-        foreach (var node in NodeGroups["Body"].Cast<ContinuousTextFrame>())
+        _loadTimeline.Update(gT);
+        // consider complete when timeline empty and all opacities near 1
+        bool allVisible = NodeGroups.Values
+            .SelectMany(x => x)
+            .Cast<ContinuousTextFrame>()
+            .All(n => Math.Abs(n.Opacity - 1f) < 0.02f);
+        if (_loadTimeline.IsEmpty && allVisible)
         {
-            node.OpacityTween.Target = 1f;
+            State = ScreenState.On;
+            _loadStarted = false; // ready for next time
         }
-        
-        // Check if all nodes have reached target opacity
-        var allFinished = true;
-        foreach (var nodeCollection in NodeGroups.Values)
-        {
-            foreach (var node in nodeCollection.Cast<ContinuousTextFrame>())
-            {
-                if (!node.OpacityTween.Finished) allFinished = false;
-            } // [Finished] is known to fail
-        }
-
-        if (allFinished) State = ScreenState.On;
     }
 
     protected override void UnloadSequence(GameTime gT)
     {
-        foreach (var node in NodeGroups["Title"].Cast<ContinuousTextFrame>())
+        if (!_unloadStarted)
         {
-            node.OpacityTween.Target = 0f;
+            _unloadTimeline.Reset();
+            var title = NodeGroups["Title"].Cast<ContinuousTextFrame>().ToArray();
+            var body = NodeGroups["Body"].Cast<ContinuousTextFrame>().ToArray();
+            foreach (var t in title)
+                _unloadTimeline.TweenAt(0, t.OpacityTween, 0f);
+            for (int i = 0; i < body.Length; i++)
+                _unloadTimeline.TweenAt(100 * (i + 1), body[i].OpacityTween, 0f);
+            _unloadTimeline.Start();
+            _unloadStarted = true;
         }
-        
-        foreach (var node in NodeGroups["Body"].Cast<ContinuousTextFrame>())
-        {
-            node.OpacityTween.Target = 0f;
-        }
-        
-        // Check if all nodes have reached target opacity
-        var allFinished = true;
-        foreach (var nodeCollection in NodeGroups.Values)
-        {
-            foreach (var node in nodeCollection.Cast<ContinuousTextFrame>())
-            {
-                Console.WriteLine($"{node.Name} state: {node.OpacityTween.Finished}");
-                if (!node.OpacityTween.Finished) allFinished = false;
-            } // [Finished] is known to fail
-        }
+        _unloadTimeline.Update(gT);
+        bool allHidden = NodeGroups.Values
+            .SelectMany(x => x)
+            .Cast<ContinuousTextFrame>()
+            .All(n => n.Opacity <= 0.02f);
+        if (!(_unloadTimeline.IsEmpty && allHidden)) return;
 
-        if (!allFinished) return;
-
-        switch (Context) // this code is never reached? AllFinished is always false?
+        switch (Context)
         {
             case TitleScreenContext.ActionQuit:
-                Console.WriteLine("Quitting!");
                 _gameInstance.Exit();
                 break;
             case TitleScreenContext.ActionGame:
-                Console.WriteLine("-> BeatmapSelectionScreen");
+                // TODO: navigate to next screen
                 break;
         }
-
-        // EVERY screen implementation should call Unload() in UnloadSequence.
-        Console.WriteLine("Unloading!");
         Unload();
-        
         State = ScreenState.Off;
+        _unloadStarted = false;
     }
 
     protected override void MouseMove(MouseState state)
     {
         if (State is not (ScreenState.On or ScreenState.Loading)) return;
-        
-        // can effects like these be abstracted into some Effects class
-        foreach (var node in NodeGroups["Body"].Cast<ContinuousTextFrame>())
-        {
-            // SCALE UP SLIGHTLY
-            node.Scale.Target = node.GetRect().Contains(state.Position)
-                ? new Vector2(1f, 0.055f)
-                : new Vector2(1f, 0.05f);
-        }
-
-        foreach (var node in NodeGroups["Title"].Cast<ContinuousTextFrame>())
-        {
-            node.Scale.Target  = node.GetRect().Contains(state.Position)
-                ? new Vector2(1f, 0.105f) 
-                : new Vector2(1f, 0.1f); 
-        }
+        UpdatePointerScale(state);
     }
 
     protected override void MouseDown(MouseState state)
     {
-        // we don't actually do anything here, it's just for looks
         if (State is not (ScreenState.On or ScreenState.Loading)) return;
-        
-        foreach (var node in NodeGroups["Body"].Cast<ContinuousTextFrame>())
-        {
-            // SCALE DOWN SLIGHTLY
-            node.Scale.Target = node.GetRect().Contains(state.Position)
-                ? new Vector2(1f, 0.045f)
-                : new Vector2(1f, 0.05f);
-        }
+        UpdatePointerScale(state);
         base.MouseDown(state);
     }
 
     protected override void MouseUp(MouseState state)
     {
         if (State is not (ScreenState.On or ScreenState.Loading)) return;
-        
-        // we actually have to reference specific nodes here
+        // determine actions based on which body item was clicked
         foreach (var node in NodeGroups["Body"].Cast<ContinuousTextFrame>())
         {
-            if (!node.GetRect().Contains(state.Position))
-            {
-                continue;
-            }
-
+            if (!node.GetRect().Contains(state.Position)) continue;
             switch (node.Name)
             {
                 case "Game":
@@ -207,7 +208,8 @@ public class TitleScreen (
                     break;
             }
         }
-        
+        // refresh scale targets after state change / release
+        UpdatePointerScale(state);
         base.MouseUp(state);
     }
 }

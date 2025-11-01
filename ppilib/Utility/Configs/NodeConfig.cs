@@ -87,6 +87,8 @@ public class NodeConfig
         Font = past.Font;
         LerpMethod = past.LerpMethod;
         LerpRate = past.LerpRate;
+        OpacityLerpRate = past.OpacityLerpRate;
+        ColorLerpRate = past.ColorLerpRate;
     }
 
     private readonly bool _isTransformSupported;
@@ -117,6 +119,11 @@ public class NodeConfig
 
     // for contlerp nodes
     public float? LerpRate;
+
+    // Specific rates for certain continuous tweens (optional overrides)
+    public float? OpacityLerpRate;
+    public float? ColorLerpRate;
+    
     public NodeConfig SetParent (INode parent)
     {
         Parent = parent;
@@ -201,5 +208,19 @@ public class NodeConfig
         DebugTexture = texture;
         return this;
 
+    }
+
+    public NodeConfig SetOpacityLerpRate(float rate)
+    {
+        if (!_isContLerp) throw new InvalidOperationException("not contlerp");
+        OpacityLerpRate = rate;
+        return this;
+    }
+
+    public NodeConfig SetColorLerpRate(float rate)
+    {
+        if (!_isContLerp) throw new InvalidOperationException("not contlerp");
+        ColorLerpRate = rate;
+        return this;
     }
 }
