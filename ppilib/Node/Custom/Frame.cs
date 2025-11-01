@@ -21,6 +21,13 @@ public class Frame
     /// <summary>When true, draws the provided debug texture scaled to the frame's world size.</summary>
     public bool DrawDebugShape { get; set; } = false;
     private readonly Texture2D _debugTexture = c.DebugTexture;
+
+    protected override void OnUpdate(GameTime gameTime)
+    {
+        Update(gameTime);
+        base.OnUpdate(gameTime);
+    }
+
     protected override void OnDraw(SpriteBatch spriteBatch)
     {
         // draw the frame using World -> result

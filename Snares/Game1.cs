@@ -29,7 +29,7 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
     public MouseController Mouse;
     public KeyboardController Keyboard;
     
-    private TitleScreen _titleScreen;
+    private OldTitleScreen _oldTitleScreen;
 
     private Vector2 _windowSize;
     
@@ -72,7 +72,7 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         var mainView = new NodeBase(mainViewConfig);
         root.AddChild(mainView);
 
-        _titleScreen = new TitleScreen(this, mainView, Helvetica, Mouse);
+        _oldTitleScreen = new OldTitleScreen(this, mainView, Helvetica, Mouse);
         
         RootNode = root;
         TextureCache = textureCache;
@@ -98,7 +98,7 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
             0f
         ));
         
-        _titleScreen.Update(gameTime);
+        _oldTitleScreen.Update(gameTime);
         
         base.Update(gameTime);
     }

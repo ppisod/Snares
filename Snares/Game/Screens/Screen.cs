@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using ppilib.Input;
 using ppilib.Interfaces;
 
@@ -19,13 +20,15 @@ public class Screen
     private readonly MouseController _mouse;
     private readonly KeyboardController _keyboard;
 
-    private readonly Microsoft.Xna.Framework.Game _game;
+    private readonly Game1 _game;
+
+    private readonly INode _parent;
 
     private Context _ctx;
     private ScreenState _state;
 
     public Screen
-        (Microsoft.Xna.Framework.Game game, 
+        (Game1 game, 
             INode parent, 
             MouseController mouse, 
             KeyboardController keyboard)
@@ -34,6 +37,8 @@ public class Screen
         _keyboard = keyboard;
         _game = game;
         
+        _parent = parent;
+        
         _ctx = Context.None;
         _game = game;
         _state = ScreenState.Off;
@@ -41,13 +46,51 @@ public class Screen
         _mouse.LeftMouseDown += MouseDown;
         _mouse.LeftMouseUp += MouseUp;
         _mouse.Hover += MouseMove;
-        
-        
+
+        _keyboard.KeyDown += KeyDown;
+        _keyboard.KeyUp += KeyUp;
         
         Initialize();
     }
 
+    public void Update(GameTime gT)
+    {
+        if (_state == ScreenState.Off) return;
+        switch (_state)
+        {
+            case ScreenState.Loading: LoadSequence(gT); break;
+            case ScreenState.On: OnSequence(gT); break;
+            case ScreenState.Unloading: UnloadSequence(gT); break;
+        }
+
+        foreach (var node in NodeGroups.Values.SelectMany(groupNode => groupNode))
+        {
+            node.Update(gT); 
+            // isin't the rootnode already going to update
+            // this node (given that the parenting is done correctly?)
+        }
+    }
+    
+    /// <summary>
+    /// The initialize method is overrideable.
+    /// Create your nodes and add them to NodeGroups.
+    /// </summary>
     protected virtual void Initialize()
+    {
+        
+    }
+
+    protected virtual void LoadSequence(GameTime gT)
+    {
+        
+    }
+
+    protected virtual void OnSequence(GameTime gT)
+    {
+        
+    }
+
+    protected virtual void UnloadSequence(GameTime gT)
     {
         
     }
@@ -66,7 +109,15 @@ public class Screen
     {
         
     }
-    
-    
+
+    protected virtual void KeyDown (Keys key)
+    {
+        
+    }
+
+    protected virtual void KeyUp (Keys key)
+    {
+        
+    }
 
 }
