@@ -20,21 +20,19 @@ public partial class TitleScreen (
     : Screen<TitleScreenContext>(game, parent, mouse, keyboard)
 {
     
-    private readonly Game1 _gameInstance = game;
-    private readonly INode _parent1 = parent;
 
     protected override void Initialize()
     {
         Context = TitleScreenContext.None;
         // make nodes here and add them to nodegroups.
         
-        var nodeConfig = new NodeConfig(null, _gameInstance.GraphicsDevice, true, true, true, true, true);
+        var nodeConfig = new NodeConfig(null, Game.GraphicsDevice, true, true, true, true, true);
 
         nodeConfig
-            .SetParent(_parent1)
+            .SetParent(Parent)
             .SetLerpMethod(EasingTypes.Quad.EaseOut)
             .SetColor(Color.Black)
-            .SetFont(_gameInstance.Font)
+            .SetFont(Game.Font)
             .SetOpacity(0f);
         
         // NODE :: TITLE
@@ -44,7 +42,7 @@ public partial class TitleScreen (
             .SetText("game");
 
         var title = new ContinuousTextFrame(nodeConfig);
-        _parent1.AddChild(title);
+        Parent.AddChild(title);
         
         // NODEGROUP :: TITLE
         NodeGroups["Title"] = [title];
@@ -60,7 +58,7 @@ public partial class TitleScreen (
             .SetText("play");
         
         var game = new ContinuousTextFrame(nodeConfig);
-        _parent1.AddChild(game);
+        Parent.AddChild(game);
         
         // NODE :: QUIT
         nodeConfig
@@ -69,7 +67,7 @@ public partial class TitleScreen (
             .SetText("quit");
         
         var quit = new ContinuousTextFrame(nodeConfig);
-        _parent1.AddChild(quit);
+        Parent.AddChild(quit);
         
         // NODEGROUP :: BODY
         NodeGroups["Body"] = [game, quit];

@@ -11,5 +11,8 @@ public enum BeatmapSelectorContext
 public class BeatmapSelectorScreen(Game1 game, INode parent, MouseController mouse, KeyboardController keyboard)
     : Screen<BeatmapSelectorContext>(game, parent, mouse, keyboard)
 {
-    
+    protected override void Initialize()
+    {
+        
+    }
 }

@@ -65,7 +65,7 @@ public partial class TitleScreen
         switch (Context)
         {
             case TitleScreenContext.ActionQuit:
-                _gameInstance.Exit();
+                Game.Exit();
                 break;
             case TitleScreenContext.ActionGame:
                 // TODO: navigate to next screen

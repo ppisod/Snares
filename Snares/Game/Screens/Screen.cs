@@ -16,9 +16,9 @@ public class Screen<T>
     private readonly MouseController _mouse;
     private readonly KeyboardController _keyboard;
 
-    private readonly Game1 _game;
+    public readonly Game1 Game;
 
-    private readonly INode _parent;
+    public readonly INode Parent;
 
     protected T Context;
     protected ScreenState State;
@@ -31,11 +31,10 @@ public class Screen<T>
     {
         _mouse = mouse;
         _keyboard = keyboard;
-        _game = game;
+        Game = game;
         
-        _parent = parent;
+        Parent = parent;
         
-        _game = game;
         State = ScreenState.Off;
 
         _mouse.LeftMouseDown += MouseDown;
