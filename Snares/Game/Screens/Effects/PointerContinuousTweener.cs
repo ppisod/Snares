@@ -7,6 +7,8 @@ using ppilib.Utility.MovingThings.Interfaces;
 
 namespace Snares.Game.Screens.Effects;
 
+// TODO: Move to ppilib
+
 /// <summary>
 /// Utility to reduce repeated code for changing ContinuousTween targets based on mouse states.
 /// You provide a set of items and a predicate indicating whether the mouse is "over/active" for that item,
@@ -38,12 +40,4 @@ public static class PointerContinuousTweener
             }
         }
     }
-}
-
-/// <summary>
-/// Provides a ContinuousTween for a given item. Abstracted so caller can pick which tween (Scale, Pos, Opacity, etc.).
-/// </summary>
-public interface IContinuousTweenSelector<in TItem, TValue>
-{
-    IContinuousTween<TValue>? Select(TItem item);
 }

@@ -45,6 +45,12 @@
       <Compile Update="Game\Screens\TitleScreen.cs">
         <DependentUpon>Screen.cs</DependentUpon>
       </Compile>
+      <Compile Update="Game\Screens\BeatmapSelectorScreen.cs">
+        <DependentUpon>Screen.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Game\Screens\Effects\IContinuousTweenSelector.cs">
+        <DependentUpon>PointerContinuousTweener.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
     <Target Name="RestoreDotnetTools" BeforeTargets="CollectPackageReferences">
         <Message Text="Restoring dotnet tools (this might take a while depending on your internet speed and should only happen upon building your project for the first time, or after upgrading MonoGame, or clearing your nuget cache)" Importance="High" />

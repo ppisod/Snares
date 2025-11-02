@@ -17,7 +17,7 @@ public enum TitleScreenContext
     None, ActionGame, ActionQuit
 }
 
-public class TitleScreen (
+public partial class TitleScreen (
     Game1 game,
     INode parent,
     MouseController mouse,
