@@ -7,11 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Snares/Game/Screens/BeatmapSelectorScreen.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Snares/Snares.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Snares/Snares.csproj" afterDir="false" />
-    </list>
+    <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,7 +54,8 @@
     <setting file="file://$PROJECT_DIR$/Snares/Game/Beatmaps/ez.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Components/Track.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Rhythm/Metronome.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/BeatmapSelector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/BeatmapSelectorScreen.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/Effects/IContinuousTweenSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/Screen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/ScreenState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/TitleScreen.cs" root0="FORCE_HIGHLIGHTING" />
@@ -228,7 +225,7 @@
       <workItem from="1761644067411" duration="15442000" />
       <workItem from="1761723072409" duration="10396000" />
       <workItem from="1761801329196" duration="18882000" />
-      <workItem from="1762034093924" duration="9170000" />
+      <workItem from="1762034093924" duration="9510000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />
