@@ -37,10 +37,8 @@ public partial class BeatmapSelectorScreen(Game1 game, INode parent, MouseContro
         var back = new ContinuousTextFrame(nodeConfig);
         Parent.AddChild(back);
         
-        
         // NODEGROUP :: buttons
-        
-
+        NodeGroups["Buttons"] = [back];
     }
     
 }
