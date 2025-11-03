@@ -29,4 +29,36 @@ public partial class BeatmapSelectorScreen
             mouse: state
         );
     }
+    
+    protected override void MouseMove(MouseState state)
+    {
+        if (State is not (ScreenState.On or ScreenState.Loading)) return;
+        UpdatePointer(state);
+    }
+
+    protected override void MouseDown(MouseState state)
+    {
+        if (State is not (ScreenState.On or ScreenState.Loading)) return;
+        UpdatePointer(state);
+        base.MouseDown(state);
+    }
+
+    protected override void MouseUp(MouseState state)
+    {
+        if (State is not (ScreenState.On or ScreenState.Loading)) return;
+        foreach (var node in NodeGroups["Buttons"].Cast<ContinuousTextFrame>())
+        {
+            if (!node.GetRect().Contains(state.Position)) continue;
+            switch (node.Name)
+            {
+                case "BackButton":
+                    Context = BeatmapSelectorContext.BackToTitle;
+                    State = ScreenState.Unloading; // some buttons don't cause unloading, so we have to specify here.
+                    break;
+            }
+        }
+        // refresh scale targets after state change / release
+        UpdatePointer(state);
+        base.MouseUp(state);
+    }
 }
