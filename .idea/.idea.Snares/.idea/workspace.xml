@@ -7,7 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="" />
+    <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Snares/Game/Screens/BeatmapSelectorInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snares/Game/Screens/BeatmapSelectorInput.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +56,9 @@
     <setting file="file://$PROJECT_DIR$/Snares/Game/Beatmaps/ez.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Components/Track.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Rhythm/Metronome.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/BeatmapSelectorInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/BeatmapSelectorScreen.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/BeatmapSelectorSequences.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/Effects/IContinuousTweenSelector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/Screen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Snares/Game/Screens/ScreenState.cs" root0="FORCE_HIGHLIGHTING" />
@@ -227,7 +231,7 @@
       <workItem from="1761644067411" duration="15442000" />
       <workItem from="1761723072409" duration="10396000" />
       <workItem from="1761801329196" duration="18882000" />
-      <workItem from="1762034093924" duration="16264000" />
+      <workItem from="1762034093924" duration="16792000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />
