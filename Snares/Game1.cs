@@ -21,7 +21,8 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
     public MouseController Mouse;
     public KeyboardController Keyboard;
     
-    private TitleScreen _titleScreen;
+    public TitleScreen TitleScreen;
+    public BeatmapSelectorScreen BeatmapSelectorScreen;
 
     private Vector2 _windowSize;
     
@@ -64,8 +65,10 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
         var mainView = new NodeBase(mainViewConfig);
         root.AddChild(mainView);
 
-        _titleScreen = new TitleScreen(this, mainView, Mouse, Keyboard);
-        _titleScreen.Load();
+        TitleScreen = new TitleScreen(this, mainView, Mouse, Keyboard);
+        TitleScreen.Load();
+
+        BeatmapSelectorScreen = new BeatmapSelectorScreen(this, mainView, Mouse, Keyboard);
         
         RootNode = root;
         TextureCache = textureCache;
@@ -91,7 +94,8 @@ public class Game1() : Core("snares_development", 1920, 1080, true)
             0f
         ));
         
-        _titleScreen.Update(gameTime);
+        TitleScreen.Update(gameTime);
+        BeatmapSelectorScreen.Update(gameTime);
         
         base.Update(gameTime);
     }

@@ -69,6 +69,7 @@ public partial class TitleScreen
                 break;
             case TitleScreenContext.ActionGame:
                 // TODO: navigate to next screen
+                Game.BeatmapSelectorScreen.Load();
                 break;
         }
         Unload();
