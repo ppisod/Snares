@@ -21,7 +21,11 @@ public partial class BeatmapSelectorScreen
         {
             _loadTimeline.Reset();
             var buttons = NodeGroups["Buttons"].Cast<ContinuousTextFrame>().ToArray();
-            foreach (var n in buttons) _loadTimeline.TweenAt(0, n.Pos, new Vector2(0, 0.01f));
+            foreach (var n in buttons)
+            {
+                _loadTimeline.TweenAt(0, n.Pos, new Vector2(0, 0.01f));
+                _loadTimeline.TweenAt(0, n.OpacityTween, 1f);
+            }
             
             _loadTimeline.Start();
             _loadStarted = true;
@@ -41,7 +45,11 @@ public partial class BeatmapSelectorScreen
         {
             _unloadTimeline.Reset();
             var buttons = NodeGroups["Buttons"].Cast<ContinuousTextFrame>().ToArray();
-            foreach (var n in buttons) _unloadTimeline.TweenAt(0, n.Pos, new Vector2(0, 0.01f));
+            foreach (var n in buttons)
+            {
+                _unloadTimeline.TweenAt(0, n.Pos, new Vector2(-3, 0.01f));
+                _unloadTimeline.TweenAt(0, n.OpacityTween, 0f);
+            }
             
             _unloadTimeline.Start();
             _unloadStarted = true;

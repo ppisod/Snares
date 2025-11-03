@@ -33,7 +33,7 @@ public partial class BeatmapSelectorScreen(Game1 game, INode parent, MouseContro
         nodeConfig
             .SetPos(new Vector2(-3, 0.01f)).SetScale(new Vector2(0.2f, 0.1f))
             .SetName("BackButton")
-            .SetText("BACK");
+            .SetText("back");
 
         var back = new ContinuousTextFrame(nodeConfig);
         Parent.AddChild(back);
