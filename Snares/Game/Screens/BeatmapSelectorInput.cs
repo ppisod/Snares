@@ -1,6 +1,6 @@
 namespace Snares.Game.Screens;
 
-public class BeatmapSelectorInput
+public partial class BeatmapSelectorScreen
 {
     
 }
