@@ -27,11 +27,11 @@ public partial class BeatmapSelectorScreen(Game1 game, INode parent, MouseContro
             .SetFont(Game.Font)
             .SetLerpMethod(EasingTypes.Quad.EaseOut)
             .SetColor(Color.Black * 0.6f)
-            .SetOpacity(0f);
+            .SetOpacity(0f).SetOpacityLerpRate(0.3f);
         
         // NODE :: Back button
         nodeConfig
-            .SetPos(new Vector2(-3, 0.01f)).SetScale(new Vector2(0.2f, 0.1f))
+            .SetPos(new Vector2(-3, 0f)).SetScale(new Vector2(0.2f, 0.1f))
             .SetName("BackButton")
             .SetText("back");
 

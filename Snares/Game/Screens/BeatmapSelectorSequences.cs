@@ -23,7 +23,7 @@ public partial class BeatmapSelectorScreen
             var buttons = NodeGroups["Buttons"].Cast<ContinuousTextFrame>().ToArray();
             foreach (var n in buttons)
             {
-                _loadTimeline.TweenAt(0, n.Pos, new Vector2(0, 0.01f));
+                _loadTimeline.TweenAt(0, n.Pos, new Vector2(-0.025f, 0f));
                 _loadTimeline.TweenAt(0, n.OpacityTween, 1f);
             }
             
