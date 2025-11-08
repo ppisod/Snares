@@ -8,7 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="941c51ce-7bd4-4df3-b1c6-775c24757c54" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Snares/Game/Screens/BeatmapSelectorSequences.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Snares/Game/Screens/BeatmapSelectorSequences.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Snares/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -104,8 +109,6 @@
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Interfaces/ITween.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Lerper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/MovingThings/Tween.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/s/RiderProjects/Snares/ppilib/Utility/MovingThings/TweenTimeline.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/s/RiderProjects/Snares/ppilib/Utility/MovingThings/TweenTimeline.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/Shapes/ShapeGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/Textures/TextureCache.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ppilib/Utility/Textures/TextureGenerator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -153,7 +156,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.externalTools",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   },
@@ -163,7 +166,7 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Project.Snares">
+  <component name="RunManager">
     <configuration name="Snares" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -232,6 +235,9 @@
       <workItem from="1761723072409" duration="10396000" />
       <workItem from="1761801329196" duration="18882000" />
       <workItem from="1762034093924" duration="18653000" />
+      <workItem from="1762219953128" duration="1368000" />
+      <workItem from="1762638790140" duration="19000" />
+      <workItem from="1762638838554" duration="191000" />
     </task>
     <task id="LOCAL-00005" summary="Roadmap">
       <option name="closed" value="true" />
